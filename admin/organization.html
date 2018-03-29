@@ -143,30 +143,536 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+            <!-- Modal -->
+
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm chức vụ</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên tổ</label>
+                                    <input type="email" class="form-control" id="exampleInput1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Tên giáo viên</label>
+                                    <input type="email" class="form-control" id="exampleInput1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Giới tính</label>
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                                                    Nam
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                    </div>
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                                                    Nữ
+                                            <span class="circle">
+                                                <span class="check"></span>
+                                            </span>
+                                            </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Chức vụ</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Hiệu Trưởng</option>
+                                        <option>Hiệu Phó</option>
+                                        <option>Tổ Trưởng</option>
+                                        <option>Tổ Phó</option>
+                                        <option>Chủ Nhiệm</option>
+                                        <option>Phó chủ nhiệm</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span>  </span>
+                                    <button type="button" class="btn btn-primary">LƯU LẠI</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Chi tiết tổ chức</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Số thứ tự</label>
+                                    <input class="form-control" type="text" value="1" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput2" class="bmd-label-floating">Tên tổ</label>
+                                    <input class="form-control" type="text" value="Ban Giám Hiệu" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Tên giáo viên</label>
+                                    <input class="form-control" type="text" value="Kiều Nhựt Trường" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Giới tính</label>
+                                    <input class="form-control" type="text" value="Nam" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Chức vụ</label>
+                                    <input class="form-control" type="text" value="Hiệu Trưởng" readonly>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên tổ</label>
+                                    <input type="text" class="form-control" id="exampleInput1" value="Ban giám hiệu">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên giáo viên</label>
+                                    <input type="text" class="form-control" id="exampleInput1" value="Kiều Nhựt Trường">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Giới tính</label>
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                                                    Nam
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                    </div>
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                                                    Nữ
+                                            <span class="circle">
+                                                <span class="check"></span>
+                                            </span>
+                                            </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Chức vụ</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Hiệu Trưởng</option>
+                                        <option>Hiệu Phó</option>
+                                        <option>Tổ Trưởng</option>
+                                        <option>Tổ Phó</option>
+                                        <option>Chủ Nhiệm</option>
+                                        <option>Phó chủ nhiệm</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span>  </span>
+                                    <button type="button" class="btn btn-primary">CẬP NHẬT</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Xác nhận xóa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa trường này ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span>  </span>
+                            <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Model -->
             <div class="content">
                 <div class="container-fluid">
+                    <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#addModal">
+                       <i class="material-icons">add_circle_outline</i>
+                        Thêm mới
+                    </button>
                     <div class="row">
-                        nội dung SUA a
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary" style="background: linear-gradient(80deg, #009900, #009900)">
+                                    <h4 class=" card-title ">DANH SÁCH TỔ CHỨC</h4>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="table-responsive ">
+                                        <table class="table ">
+                                            <thead class=" text-primary ">
+                                                <th>
+                                                    Số thứ tự
+                                                </th>
+                                                <th>
+                                                    Tên tổ
+                                                </th>
+                                                <th>
+                                                    Tên giáo viên
+                                                </th>
+                                                <th>
+                                                    Giới tính
+                                                </th>
+                                                <th>
+                                                    Chức vụ
+                                                </th>
+                                                <th class="text-center ">
+                                                    Thao tác
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Ban giám hiệu
+                                                    </td>
+                                                    <td>
+                                                        Kiều Nhật Trường
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Hiệu trưởng
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        Ban giám hiệu
+                                                    </td>
+                                                    <td>
+                                                        Nguyễn Văn Tài
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Hiệu phó
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        3
+                                                    </td>
+                                                    <td>
+                                                        Kế toán
+                                                    </td>
+                                                    <td>
+                                                        Nguyễn Văn Hiệp
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Tổ trưởng
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        4
+                                                    </td>
+                                                    <td>
+                                                        Y Tế
+                                                    </td>
+                                                    <td>
+                                                        Trương Đức Huy
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Tổ trưởng
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        5
+                                                    </td>
+                                                    <td>
+                                                        Bảo vệ
+                                                    </td>
+                                                    <td>
+                                                        Đặng Minh Nhựt
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Tổ trưởng
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        6
+                                                    </td>
+                                                    <td>
+                                                        Lớp 15-24
+                                                    </td>
+                                                    <td>
+                                                        Võ Hoài Phong
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Chủ Nhiệm
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        7
+                                                    </td>
+                                                    <td>
+                                                        Lớp 25-36
+                                                    </td>
+                                                    <td>
+                                                        Nguyễn Văn Hiệp
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Chủ nhiệm
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        8
+                                                    </td>
+                                                    <td>
+                                                        Lớp mầm
+                                                    </td>
+                                                    <td>
+                                                        Nguyễn Hoài Chung
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Chủ nhiệm
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        9
+                                                    </td>
+                                                    <td>
+                                                        Lớp chồi
+                                                    </td>
+                                                    <td>
+                                                        Phạm Ngọc Long Phi
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Chủ nhiệm
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        10
+                                                    </td>
+                                                    <td>
+                                                        Lớp lá
+                                                    </td>
+                                                    <td>
+                                                        Võ Nguyễn Đại Phúc
+                                                    </td>
+                                                    <td>
+                                                        Nam
+                                                    </td>
+                                                    <td class="text-primary ">
+                                                        Chủ nhiệm
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <footer class="footer ">
-                <div class="container-fluid">
-                    <nav class="pull-left">
+                <div class="container-fluid ">
+                    <nav class="pull-left ">
                         <ul>
                             <li>
-                                <a href="../admin/team.html">
+                                <a href="../admin/team.html ">
                                     Danh sách nhóm
                                 </a>
                             </li>
                             <li>
-                                <a href="https://n8plus.com">
+                                <a href="https://n8plus.com ">
                                     N8 Plus 
                                 </a>
                             </li>
                         </ul>
                     </nav>
-                    <div class="copyright pull-right">
+                    <div class="copyright pull-right ">
                         &copy;
                         <script>
                             document.write(new Date().getFullYear());
@@ -178,21 +684,21 @@
     </div>
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/bootstrap-material-design.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="../assets/js/core/jquery.min.js "></script>
+<script src="../assets/js/core/popper.min.js "></script>
+<script src="../assets/js/bootstrap-material-design.js "></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js "></script>
 <!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
-<script src="../assets/js/plugins/chartist.min.js"></script>
+<script src="../assets/js/plugins/chartist.min.js "></script>
 <!-- Library for adding dinamically elements -->
-<script src="../assets/js/plugins/arrive.min.js" type="text/javascript"></script>
+<script src="../assets/js/plugins/arrive.min.js " type="text/javascript "></script>
 <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="../assets/js/plugins/bootstrap-notify.js "></script>
 <!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
-<script src="../assets/js/material-dashboard.js?v=2.0.0"></script>
+<script src="../assets/js/material-dashboard.js?v=2.0.0 "></script>
 <!-- demo init -->
-<script src="../assets/js/plugins/demo.js"></script>
-<script type="text/javascript">
+<script src="../assets/js/plugins/demo.js "></script>
+<script type="text/javascript ">
     $(document).ready(function() {
 
         //init wizard
