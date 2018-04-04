@@ -146,7 +146,121 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        nội dung
+                        <div class="col-md-12"><button type="button" class="btn btn-lg" data-toggle="modal" data-target="#addStudent"><i class="material-icons">person-add</i>
+                        Thêm học sinh</button></div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary" style="background: linear-gradient(60deg,  #06beb6,  #06beb6)">
+                                    <h4 class="card-title " style="text-transform: uppercase">Bảng danh sách học sinh</h4>
+                                    <!--                                    <p class="card-category"> Here is a subtitle for this table</p>-->
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Họ và tên
+                                                </th>
+                                                <th>
+                                                    Giới tính
+                                                </th>
+                                                <th>
+                                                    Chỗ ở hiện nay
+                                                </th>
+                                                <th>
+                                                    Hộ khẩu thưởng trú
+                                                </th>
+                                                <th>
+                                                    Nơi sinh
+                                                </th>
+                                                <th>
+                                                    Quê quán
+                                                </th>
+                                                <th>
+                                                    Tên cha
+                                                </th>
+                                                <th>
+                                                    Nghề nghiệp cha
+                                                </th>
+                                                <th>
+                                                    Điện thoại cha
+                                                </th>
+                                                <th>
+                                                    Tên mẹ
+                                                </th>
+                                                <th>
+                                                    Nghề nghiệp mẹ
+                                                </th>
+                                                <th>
+                                                    Điện thoại mẹ
+                                                </th>
+
+                                                <th class="text-center">
+                                                    Thao tác
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Dakota Rice
+                                                    </td>
+                                                    <td>
+                                                        Niger
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        $36,738
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-simple">
+                                                            <i class="material-icons">person</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-simple">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-simple">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,7 +275,7 @@
                             </li>
                             <li>
                                 <a href="https://n8plus.com">
-                                    N8 Plus 
+                                    N8 Plus
                                 </a>
                             </li>
                         </ul>
@@ -175,6 +289,111 @@
                     </div>
                 </div>
             </footer>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="form-check form-check-radio form-check-inline">
+                                    <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-radio form-check-inline">
+                                    <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name" class="bmd-label-floating">Email address</label>
+                                <input type="text" class="form-control" id="nameStudent">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-raised">Submit</button>
+                    </form>
+                </div>
+
+            </div>
         </div>
     </div>
 </body>
@@ -208,40 +427,5 @@
     });
 
 </script>
-<!--
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
 
 </html>
