@@ -23,7 +23,7 @@
 
 <body class="">
     <div class="wrapper">
-        <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/sidebar-4.jpg">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-4.jpg">
             <div class="logo">
                 <a href="../admin/index.html" class="simple-text logo-normal">
                     MẪU GIÁO MẦM XANH
@@ -87,7 +87,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">QUẢN LÝ CÁ NHÂN</a>
+                        <a class="navbar-brand" href="#pablo">QUẢN LÝ CỞ SỞ VẬT CHẤT</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -143,10 +143,366 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+            <!-- Modal -->
+
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm cơ sở vật chất mới</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên tài sản</label>
+                                    <input type="email" class="form-control" id="exampleInput1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Đơn vị tính</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Cái</option>
+                                        <option>Chiếc</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Nguồn tài sản</label>
+                                    <input type="email" class="form-control" id="exampleInput1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Số lượng</label>
+                                    <input type="number" class="form-control" id="exampleNumber1">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span>  </span>
+                                    <button type="button" class="btn btn-primary">LƯU LẠI</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Chi tiết cơ sở vật chất</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Số thứ tự</label>
+                                    <input class="form-control" type="text" value="1" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput2" class="bmd-label-floating">Tên tài sản</label>
+                                    <input class="form-control" type="text" value="Dakota Rice" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Đơn vị tính</label>
+                                    <input class="form-control" type="text" value="Cái" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Nguồn tài sản</label>
+                                    <input class="form-control" type="text" value="Oud-Turnhout" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Số lượng</label>
+                                    <input class="form-control" type="text" value="38" readonly>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên tài sản</label>
+                                    <input type="text" class="form-control" id="exampleInput1" value="Dakota Rice">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Đơn vị tính</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Cái</option>
+                                        <option>Chiếc</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Nguồn tài sản</label>
+                                    <input type="text" class="form-control" id="exampleInput1" value="Oud-Turnhout">
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Số lượng</label>
+                                    <input type="number" class="form-control" id="exampleNumber1" value="38">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span>  </span>
+                                    <button type="button" class="btn btn-primary">CẬP NHẬT</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Xác nhận xóa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa trường này ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span>  </span>
+                            <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Model -->
+
             <div class="content">
                 <div class="container-fluid">
+                    <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#addModal">
+                       <i class="material-icons">add_circle_outline</i>
+                        Thêm mới
+                    </button>
                     <div class="row">
-                        nội dung
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">DANH SÁCH CƠ SỞ VẬT CHẤT</h4>
+                                    <!--<p class="card-category"> Here is a subtitle for this table</p>-->
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    Số thứ tự
+                                                </th>
+                                                <th>
+                                                    Tên tài sản
+                                                </th>
+                                                <th>
+                                                    Đơn vị tính
+                                                </th>
+                                                <th>
+                                                    Nguồn tài sản
+                                                </th>
+                                                <th>
+                                                    Số lượng
+                                                </th>
+                                                <th class="text-center">
+                                                    Thao tác
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Dakota Rice
+                                                    </td>
+                                                    <td>
+                                                        Niger
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        38
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons">person</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        Minerva Hooper
+                                                    </td>
+                                                    <td>
+                                                        Curaçao
+                                                    </td>
+                                                    <td>
+                                                        Sinaai-Waas
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        38
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons">person</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        3
+                                                    </td>
+                                                    <td>
+                                                        Sage Rodriguez
+                                                    </td>
+                                                    <td>
+                                                        Netherlands
+                                                    </td>
+                                                    <td>
+                                                        Baileux
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        38
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons">person</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        4
+                                                    </td>
+                                                    <td>
+                                                        Philip Chaney
+                                                    </td>
+                                                    <td>
+                                                        Korea, South
+                                                    </td>
+                                                    <td>
+                                                        Overland Park
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        38
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons">person</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        5
+                                                    </td>
+                                                    <td>
+                                                        Doris Greene
+                                                    </td>
+                                                    <td>
+                                                        Malawi
+                                                    </td>
+                                                    <td>
+                                                        Feldkirchen in Kärnten
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        38
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons">person</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        6
+                                                    </td>
+                                                    <td>
+                                                        Mason Porter
+                                                    </td>
+                                                    <td>
+                                                        Chile
+                                                    </td>
+                                                    <td>
+                                                        Gloucester
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        38
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons">person</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

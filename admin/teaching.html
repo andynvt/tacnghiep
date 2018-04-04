@@ -23,7 +23,7 @@
 
 <body class="">
     <div class="wrapper">
-        <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/sidebar-4.jpg">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-4.jpg">
             <div class="logo">
                 <a href="../admin/index.html" class="simple-text logo-normal">
                     MẪU GIÁO MẦM XANH
@@ -143,10 +143,281 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm Giảng Dạy</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên tổ</label>
+                                    <input type="email" class="form-control" id="exampleInput1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên giáo viên</label>
+                                    <input type="email" class="form-control" id="exampleInput1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Giới tính</label>
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                                                    Nam
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                                                    Nữ
+                                            <span class="circle">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Chức vụ</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Hiệu Trưởng</option>
+                                        <option>Hiệu Phó</option>
+                                        <option>Tổ Trưởng</option>
+                                        <option>Tổ Phó</option>
+                                        <option>Chủ Nhiệm</option>
+                                        <option>Phó chủ nhiệm</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span>  </span>
+                                    <button type="button" class="btn btn-primary">LƯU LẠI</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="chiTietGiangDay">Chi Tiết Giảng Dạy</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="STT" class="bmd-label-floating">STT</label>
+                                    <input class="form-control" type="text" value="1" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maLop" class="bmd-label-floating">Mã Lớp</label>
+                                    <input class="form-control" type="text" value="Ban Giám Hiệu" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tenLop" class="bmd-label-floating">Tên Lớp</label>
+                                    <input class="form-control" type="text" value="Ban Giám Hiệu" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maGiaoVien">Mã Giáo Viên</label>
+                                    <input class="form-control" type="text" value="Kiều Nhựt Trường" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tenGiaoVien" class="bmd-label-floating">Tên Giáo Viên</label>
+                                    <input class="form-control" type="text" value="Nam" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="chucVu" class="bmd-label-floating">Chức vụ</label>
+                                    <input class="form-control" type="text" value="Hiệu Trưởng" readonly>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="suaThongTinGD">Sửa thông tin</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="lopPhuTrach" class="bmd-label-floating">Lớp phụ trách</label>
+                                    <select class="form-control" id="lopPhuTrach">
+                                        <option value=""> </option>
+                                        <option value="">Lớp 15-24 A1</option>
+                                        <option value="">Lớp 15-24 A2</option>
+                                        <option value="">Lớp 25-36 A1</option>
+                                        <option value="">Lớp 25-36 A2</option>
+                                        <option value="">Lớp Mầm A1</option>
+                                        <option value="">Lớp Mầm A2</option>
+                                        <option value="">Lớp Chồi A1</option>
+                                        <option value="">Lớp Chồi A2</option>
+                                        <option value="">Lớp Lá A1</option>
+                                        <option value="">Lớp Lá A2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Mã Giáo Viên</label>
+                                    <select class="form-control" id="maGiaoVien">
+                                        <option value=""> </option>
+                                        <option value="">B1400722</option>
+                                        <option value="">B1400746</option>
+                                        <option value="">B1400747</option>
+                                        <option value="">B1400802</option>
+                                        <option value="">B1400781</option>
+                                        <option value="">B1400782</option>
+                                        <option value="">B1400784</option>
+                                        <option value="">B1400777</option>
+                                        <option value="">B1400748</option>
+                                        <option value="">B1400757</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tenGiaoVien" class="bmd-label-floating">Tên giáo viên phụ trach</label>
+                                    <input class="form-control" type="text" value="" readonly>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span>  </span>
+                                    <button type="button" class="btn btn-primary">CẬP NHẬT</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Xác nhận xóa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thao tác này sẽ làm mất dữ liệu!<br>Bạn chắc chắn muốn xóa trường này?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span>  </span>
+                            <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Model -->
             <div class="content">
                 <div class="container-fluid">
+                    <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#addModal">
+                       <i class="material-icons">add_circle_outline</i>
+                        Thêm mới
+                    </button>
                     <div class="row">
-                        nội dung
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class=" card-title ">DANH SÁCH GIẢNG DẠY</h4>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="table-responsive ">
+                                        <table class="table ">
+                                            <thead class=" text-primary ">
+                                                <th>
+                                                    STT
+                                                </th>
+                                                <th>
+                                                    Tên Lớp
+                                                </th>
+                                                <th>
+                                                    Mã giáo viên
+                                                </th>
+                                                <th>
+                                                    Tên giáo viên
+                                                </th>
+                                                <th class="text-center ">
+                                                    Thao tác
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Lớp 15-24 A1
+                                                    </td>
+                                                    <td>
+                                                        B1400802
+                                                    </td>
+                                                    <td>
+                                                        Kiều Nhựt Trường
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                            <i class="material-icons ">person</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                            <i class="material-icons ">edit</i>
+                                                        </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="material-icons ">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Lớp 15-24 A1
+                                                    </td>
+                                                    <td>
+                                                        B1400802
+                                                    </td>
+                                                    <td>
+                                                        Kiều Nhựt Trường
+                                                    </td>
+                                                    <td class="td-actions text-center ">
+                                                        <button type="button " rel="tooltip " class="btn btn-info " data-toggle="modal" data-target="#detailModal">
+                                                                <i class="material-icons ">person</i>
+                                                            </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-success " data-toggle="modal" data-target="#editModal">
+                                                                <i class="material-icons ">edit</i>
+                                                            </button>
+                                                        <button type="button " rel="tooltip " class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
+                                                                <i class="material-icons ">close</i>
+                                                            </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,7 +441,6 @@
                         &copy;
                         <script>
                             document.write(new Date().getFullYear());
-
                         </script>, teamplate by Creative Tim. Design by N8 Plus Team
                     </div>
                 </div>
@@ -206,7 +476,6 @@
         demo.initCharts();
 
     });
-
 </script>
 <!--
 
