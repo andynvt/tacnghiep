@@ -34,7 +34,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="../kiem-toan/cash.html">
                             <i class="material-icons">attach_money</i>
-                            <p>Thu - Chi</p>
+                            <p>Quản lí tài chính</p>
                         </a>
                     </li>
                     <li class="nav-item active-pro ">
@@ -51,7 +51,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">QUẢN LÝ CÁI GÌ</a>
+                        <a class="navbar-brand" href="#pablo">QUẢN LÝ THU CHI</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -109,10 +109,397 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+            <!-- Modal -->
+
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm lịch giảng dạy mới</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Niên khóa</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                          <option>2014 - 2015</option>
+                          <option>2015 - 2016</option>
+                          <option>2016 - 2017</option>
+                          <option>2017 - 2018</option>
+                        </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Học kì</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                          <option>I</option>
+                          <option>II</option>
+                        </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Chọn lớp học</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Mầm 1</option>
+                                      <option>Mầm 2</option>
+                                      <option>Chồi 1</option>
+                                      <option>Chồi 2</option>
+                                      <option>Lá 1</option>
+                                      <option>Lá 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Giáo viên giảng dạy</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Nguyễn Hoài Chung</option>
+                                        <option>Huỳnh Khắc Duy</option>
+                                        <option>Đặng Minh Nhựt</option>
+                                        <option>Võ Hoài Phong</option>
+                                        <option>Võ Nguyễn Đại Phúc</option>
+                                        <option>Nguyễn Văn Tài</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span></span>
+                                    <button type="button" class="btn btn-primary">LƯU LẠI</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Chi tiết cơ sở vật chất</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput2" class="bmd-label-floating">Niên khóa</label>
+                                    <input class="form-control" type="text" value="2014-2015" readonly="readonly">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Học kỳ</label>
+                                    <input class="form-control" type="text" value="I" readonly="readonly">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Tên lớp</label>
+                                    <input class="form-control" type="text" value="Mầm 1" readonly="readonly">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Giáo viên hướng dẫn</label>
+                                    <input class="form-control" type="text" value="Nguyễn Hoài Chung" readonly="readonly">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Niên khóa</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                          <option>2014 - 2015</option>
+                          <option>2015 - 2016</option>
+                          <option>2016 - 2017</option>
+                          <option>2017 - 2018</option>
+                        </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Học kì</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                          <option>I</option>
+                          <option>II</option>
+                        </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Chọn lớp học</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Mầm 1</option>
+                                      <option>Mầm 2</option>
+                                      <option>Chồi 1</option>
+                                      <option>Chồi 2</option>
+                                      <option>Lá 1</option>
+                                      <option>Lá 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput1" class="bmd-label-floating">Giáo viên giảng dạy</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Nguyễn Hoài Chung</option>
+                                      <option>Huỳnh Khắc Duy</option>
+                                      <option>Đặng Minh Nhựt</option>
+                                      <option>Võ Hoài Phong</option>
+                                      <option>Võ Nguyễn Đại Phúc</option>
+                                        <option>Nguyễn Văn Tài</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                                    <span></span>
+                                    <button type="button" class="btn btn-primary">LƯU LẠI</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Xác nhận xóa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa trường này ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span></span>
+                            <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Model -->
             <div class="content">
                 <div class="container-fluid">
+                    <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#addModal">
+              <i class="material-icons">add_circle_outline</i>
+              Thêm phí thu mới
+            </button>
                     <div class="row">
-                        Nội dung
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">DANH SÁCH PHÍ THU</h4>
+                                    <!--<p class="card-category"> Here is a subtitle for this table</p>-->
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    Số thứ tự
+                                                </th>
+                                                <th>
+                                                    Mô tả
+                                                </th>
+                                                <th>
+                                                    Số tiền thu
+                                                </th>
+                                                <th>
+                                                    Ngày thu
+                                                </th>
+                                                <th>
+                                                    Người đóng tiền
+                                                </th>
+                                                <th>
+                                                    Người xác nhận
+                                                </th>
+                                                <th class="text-center">
+                                                    Thao tác
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Thu quỹ thương binh
+                                                    </td>
+                                                    <td>
+                                                        50.000
+                                                    </td>
+                                                    <td>
+                                                        01/01/2018
+                                                    </td>
+                                                     <td class="text-primary">
+                                                        Nguyễn Hoài Chung
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        Nguyễn Hoài Chung
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#detailModal">
+                                <i class="material-icons">remove_red_eye</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#editModal">
+                                <i class="material-icons">edit</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                <i class="material-icons">close</i>
+                              </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        Thu quỹ thương binh
+                                                    </td>
+                                                    <td>
+                                                        50.000
+                                                    </td>
+                                                    <td>
+                                                        01/01/2018
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        Huỳnh Khắc Duy
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        Huỳnh Khắc Duy
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal" data-target="#detailModal">
+                                <i class="material-icons">remove_red_eye</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal" data-target="#editModal">
+                                <i class="material-icons">edit</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-toggle="modal" data-target="#deleteModal">
+                                <i class="material-icons">close</i>
+                              </button>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#addModal">
+              <i class="material-icons">add_circle_outline</i>
+              Thêm phí chi mới
+            </button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">DANH SÁCH PHÍ CHI</h4>
+                                    <!--<p class="card-category"> Here is a subtitle for this table</p>-->
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    Số thứ tự
+                                                </th>
+                                                <th>
+                                                    Mô tả
+                                                </th>
+                                                <th>
+                                                    Số tiền chi
+                                                </th>
+                                                <th>
+                                                    Ngày chi
+                                                </th>
+                                                <th>
+                                                    Người xác nhận
+                                                </th>
+                                                <th class="text-center">
+                                                    Thao tác
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Tổ chức cắm trại
+                                                    </td>
+                                                    <td>
+                                                        20.000.000
+                                                    </td>
+                                                    <td>
+                                                        26/03/2018
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        Nguyễn Hoài Chung
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#detailModal">
+                                <i class="material-icons">remove_red_eye</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#editModal">
+                                <i class="material-icons">edit</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                <i class="material-icons">close</i>
+                              </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        Tổ chức cắm trại
+                                                    </td>
+                                                    <td>
+                                                        20.000.000
+                                                    </td>
+                                                    <td>
+                                                        26/03/2018
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        Huỳnh Khắc Duy
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal" data-target="#detailModal">
+                                <i class="material-icons">remove_red_eye</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal" data-target="#editModal">
+                                <i class="material-icons">edit</i>
+                              </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" data-toggle="modal" data-target="#deleteModal">
+                                <i class="material-icons">close</i>
+                              </button>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
