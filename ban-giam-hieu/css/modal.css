@@ -3,3 +3,27 @@
     /*    background-color: white;*/
     background-color: transparent;
 }
+
+
+input[type="radio"][disabled] + label 
+{
+    color: purple;
+}
+
+input[type="radio"][disabled] 
+{
+    border-color: purple;
+}
+input[type="radio"]{
+  border: 1px solid #2b2b2b;
+  border-radius: 8px;
+  height: 16px;
+  width: 16px;
+  -webkit-appearance: none;
+}
+.check-add {
+    padding: 8px 13px 0px 0px;
+    margin-left: -8px;
+
+}
+
