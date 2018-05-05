@@ -81,7 +81,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">QUẢN LÝ HỌC SINH</a>
+                        <a class="navbar-brand" href="#pablo">QUẢN LÝ LỚP HỌC</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -143,7 +143,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#addModal">
+                            <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#add-class">
                               <i class="material-icons">add_circle_outline</i>
                           Thêm mới
                             </button>
@@ -151,7 +151,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #ab47bc, #8e24aa)">
-                                    <h4 class="card-title ">Bảng quản lý học sinh</h4>
+                                    <h4 class="card-title ">Bảng quản lý lớp học</h4>
                                     <!--                                    <p class="card-category"> Here is a subtitle for this table</p>-->
                                 </div>
                                 <div class="card-body">
@@ -162,23 +162,15 @@
                                                     ID
                                                 </th>
                                                 <th>
-                                                    Tên
+                                                    Tên lớp
                                                 </th>
                                                 <th>
-                                                    Lớp
-                                                </th>
-                                                <th>
-                                                    Ngày sinh
-                                                </th>
-                                                <th>
-                                                    Giới tính
-                                                </th>
-                                                <th class="text-center">
-                                                    Địa chỉ
+                                                    Năm học
                                                 </th>
                                                 <th class="text-center">
                                                     Thao tác
                                                 </th>
+
                                             </thead>
                                             <tbody>
                                                 <tr>
@@ -186,28 +178,20 @@
                                                         1
                                                     </td>
                                                     <td>
-                                                        Rick Grimes
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        Mầm 1
+                                                        Mần 1
                                                     </td>
                                                     <td>
-                                                        1-1-2015
+                                                        2017-2018
                                                     </td>
-                                                    <td>
-                                                        Nam
-                                                    </td>
-                                                    <td>
-                                                        6/2 Khu Dân Cư Mê Trô, Ninh Kiều, cần thơ
-                                                    </td>
+
                                                     <td class="td-actions text-center">
-                                                        <button type="button" rel="tooltip" class="btn btn-info btn-simple" data-toggle="modal" data-target="#detailstaff">
-                                                            <i class="material-icons">remove_red_eye</i>
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-simple" data-toggle="modal" data-target="#add-to-class">
+                                                            <i class="material-icons">add</i>
                                                         </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-toggle="modal" data-target="#editstaff">
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-toggle="modal" data-target="#edit-class">
                                                             <i class="material-icons">edit</i>
                                                         </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-simple" data-toggle="modal" data-target="#deletestaff">
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-simple" data-toggle="modal" data-target="#delete-class">
                                                             <i class="material-icons">close</i>
                                                         </button>
                                                     </td>
@@ -248,11 +232,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Thêm nhân viên mới</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Thêm lớp mới</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -289,11 +273,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="detailstaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="add-to-class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Chi tiết học sinh XXX</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Thêm học sinh vào lớp Mầm 1</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -329,7 +313,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editstaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit-class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -371,7 +355,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deletestaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

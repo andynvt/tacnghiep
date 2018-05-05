@@ -18,6 +18,8 @@
     <!-- Documentation extras -->
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../ban-giam-hieu/css/modal.css">
+
     <!-- iframe removal -->
 </head>
 
@@ -81,7 +83,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">QUẢN LÝ CÁI GÌ</a>
+                        <a class="navbar-brand" href="#pablo">QUẢN LÝ NHÂN VIÊN</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -142,7 +144,82 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        Nội dung
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" data-toggle="modal" data-target="#add-emp">
+                              <i class="material-icons">add_circle_outline</i>
+                          Thêm mới
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #ab47bc, #8e24aa)">
+                                    <h4 class="card-title ">Bảng quản lý nhân viên</h4>
+                                    <!--                                    <p class="card-category"> Here is a subtitle for this table</p>-->
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Họ tên
+                                                </th>
+                                                <th>
+                                                    Ngày sinh
+                                                </th>
+                                                <th>
+                                                    Chức vụ
+                                                </th>
+                                                <th>
+                                                    Lớp
+                                                </th>
+                                                <th class="text-center">
+                                                    Địa chỉ
+                                                </th>
+                                                <th class="text-center">
+                                                    Thao tác
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Rick Grimes
+                                                    </td>
+                                                    <td>
+                                                        22-10-1996
+                                                    </td>
+                                                    <td>
+                                                        Giáo viên
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        <a href="#">Mầm 1</a>
+                                                    </td>
+                                                    <td>
+                                                        6/2 Khu Dân Cư Mê Trô, Ninh Kiều, cần thơ
+                                                    </td>
+                                                    <td class="td-actions text-center">
+                                                        <button type="button" rel="tooltip" class="btn btn-info btn-simple" data-toggle="modal" data-target="#detail-emp">
+                                                            <i class="material-icons">remove_red_eye</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-toggle="modal" data-target="#edit-emp">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-simple" data-toggle="modal" data-target="#delete-emp">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,7 +250,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="add-emp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -185,23 +262,55 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Tên tài sản</label>
-                            <input type="email" class="form-control" id="exampleInput1">
+                            <label class="bmd-label-floating">Tên nhân viên</label>
+                            <input type="text" class="form-control" name="student">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Đơn vị tính</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                      <option>Cái</option>
-                      <option>Chiếc</option>
-                    </select>
+                            <label class="bmd-label-floating">Ngày sinh</label>
+                            <input type="date" class="form-control" name="dob">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Nguồn tài sản</label>
-                            <input type="email" class="form-control" id="exampleInput1">
+                            <label class="bmd-label-floating">Giới tính</label>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label col-lg-2">
+                                    <input class="form-check-input" type="radio" name="gender" value="Nam" checked>
+                                    Nam
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                                <label class="form-check-label col-lg-2">
+                                    <input class="form-check-input" type="radio" name="gender" value="Nữ" >
+                                    Nữ
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Số lượng</label>
-                            <input type="number" class="form-control" id="exampleNumber1">
+                            <label class="bmd-label-floating">Số Chứng Minh Nhân Dân</label>
+                            <input type="text" class="form-control" name="id_card">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Ngày cấp</label>
+                            <input type="date" class="form-control" name="doi">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Quê quán</label>
+                            <input type="text" class="form-control" name="hometown">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Địa chỉ thường trú</label>
+                            <input type="text" class="form-control" name="address">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Địa chỉ hiện nay</label>
+                            <input type="text" class="form-control" name="current_address">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Số điện thoại</label>
+                            <input type="text" class="form-control" name="current_address">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
@@ -214,7 +323,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="detailstaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detail-emp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -226,24 +335,36 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Số thứ tự</label>
-                            <input class="form-control" type="text" value="1" readonly="readonly">
+                            <label class="bmd-label-floating">Họ tên</label>
+                            <input class="form-control disable-modal" type="text" value="Nguyễn Văn Tài" readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput2" class="bmd-label-floating">Tên tài sản</label>
-                            <input class="form-control" type="text" value="Dakota Rice" readonly="readonly">
+                            <label class="bmd-label-floating">Ngày sinh</label>
+                            <input class="form-control" type="text" value="22/10/1996" readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Đơn vị tính</label>
-                            <input class="form-control" type="text" value="Cái" readonly="readonly">
+                            <label class="bmd-label-floating">Giới tính</label>
+                            <input class="form-control" type="text" value="Nam" readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Nguồn tài sản</label>
-                            <input class="form-control" type="text" value="Oud-Turnhout" readonly="readonly">
+                            <label class="bmd-label-floating">Số Chứng Minh Nhân Dân</label>
+                            <input class="form-control" type="text" value="366066661" readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Số lượng</label>
-                            <input class="form-control" type="text" value="38" readonly="readonly">
+                            <label class="bmd-label-floating">Ngày cấp</label>
+                            <input class="form-control" type="text" value="11/6/2016" readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Quê quán</label>
+                            <input class="form-control" type="text" value="Sóc Trăng" readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Địa chỉ thường trú</label>
+                            <input class="form-control" type="text" value="Sóc Trăng" readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Địa chỉ hiện nay</label>
+                            <input class="form-control" type="text" value="Cần Thơ" readonly="readonly">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
@@ -254,11 +375,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editstaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit-emp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Sửa thông tin</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Sửa thông tin nhân viên XXX</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -266,25 +387,53 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Tên tài sản</label>
-                            <input type="text" class="form-control" id="exampleInput1" value="Dakota Rice">
+                            <label class="bmd-label-floating">Họ tên</label>
+                            <input class="form-control" type="text" name="name" value="Nguyễn Văn Tài">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Đơn vị tính</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                      <option>Cái</option>
-                      <option>Chiếc</option>
-                    </select>
+                            <label class="bmd-label-floating">Ngày sinh</label>
+                            <input class="form-control" type="date" name="dob" value="1996-10-22">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Nguồn tài sản</label>
-                            <input type="text" class="form-control" id="exampleInput1" value="Oud-Turnhout">
+                            <label class="bmd-label-floating">Giới tính</label>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label col-lg-2">
+                                    <input class="form-check-input" type="radio" name="gender" value="Nam" checked>
+                                    Nam
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                                <label class="form-check-label col-lg-2">
+                                    <input class="form-check-input" type="radio" name="gender" value="Nữ" >
+                                    Nữ
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Số Chứng Minh Nhân Dân</label>
+                            <input class="form-control" type="text" name="hometown" value="366066661">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Ngày cấp</label>
+                            <input class="form-control" type="text" name="hometown" value="18/6/2016">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Quê quán</label>
+                            <input class="form-control" type="text" name="hometown" value="Sóc Trăng">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Địa chỉ thường trú</label>
+                            <input class="form-control" type="text" name="address" value="Sóc Trăng">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Địa chỉ hiện nay</label>
+                            <input class="form-control" type="text" name="current_address" value="Cần Thơ">
+                        </div>
 
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Số lượng</label>
-                            <input type="number" class="form-control" id="exampleNumber1" value="38">
-                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                             <span></span>
@@ -296,11 +445,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deletestaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-emp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Xác nhận xóa</h3>
+                    <h3 class="modal-title">Xác nhận xoá nhân viên XXX</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

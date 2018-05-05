@@ -242,7 +242,6 @@
                         &copy;
                         <script>
                             document.write(new Date().getFullYear());
-
                         </script>, teamplate by Creative Tim. Design by N8 Plus Team
                     </div>
                 </div>
@@ -273,7 +272,7 @@
                             <label class="bmd-label-floating">Giới tính</label>
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label col-lg-2">
-                                    <input class="form-check-input" type="radio" name="gender" value="Nam" >
+                                    <input class="form-check-input" type="radio" name="gender" value="Nam" checked>
                                     Nam
                                     <span class="circle">
                                         <span class="check"></span>
@@ -419,7 +418,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Sửa thông tin</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Sửa thông tin học sinh XXX</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -428,55 +427,70 @@
                     <form>
                         <div class="form-group">
                             <label class="bmd-label-floating">Họ tên</label>
-                            <input class="form-control" type="text" value="Nguyễn Văn Tài">
+                            <input class="form-control" type="text" name="name" value="Nguyễn Văn Tài">
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Ngày sinh</label>
-                            <input class="form-control" type="date" value="1996-10-22">
+                            <input class="form-control" type="date" name="dob" value="1996-10-22">
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Giới tính</label>
-                            <input class="form-control" type="text" value="Nam">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label col-lg-2">
+                                    <input class="form-check-input" type="radio" name="gender" value="Nam" checked>
+                                    Nam
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                                <label class="form-check-label col-lg-2">
+                                    <input class="form-check-input" type="radio" name="gender" value="Nữ" >
+                                    Nữ
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Quê quán</label>
-                            <input class="form-control" type="text" value="Sóc Trăng">
+                            <input class="form-control" type="text" name="hometown" value="Sóc Trăng">
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Địa chỉ thường trú</label>
-                            <input class="form-control" type="text" value="Sóc Trăng">
+                            <input class="form-control" type="text" name="address" value="Sóc Trăng">
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Địa chỉ hiện nay</label>
-                            <input class="form-control" type="text" value="Cần Thơ">
+                            <input class="form-control" type="text" name="current_address" value="Cần Thơ">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Họ tên cha</label>
-                                    <input type="text" class="form-control" value="A">
+                                    <input type="text" class="form-control" name="father_name" value="A">
                                 </div>
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Nghề nghiệp cha</label>
-                                    <input type="text" class="form-control" value="A">
+                                    <input type="text" class="form-control" name="father_job" value="A">
                                 </div>
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Số điện thoại cha</label>
-                                    <input type="text" class="form-control" value="A">
+                                    <input type="text" class="form-control" name="father_phone" value="A">
                                 </div>
                             </div>
                             <div class="col-lg-6" style="border-left: 1px solid #b3b3b3">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Họ tên mẹ</label>
-                                    <input type="text" class="form-control" value="A">
+                                    <input type="text" class="form-control" name="mother_name" value="A">
                                 </div>
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Nghề nghiệp mẹ</label>
-                                    <input type="text" class="form-control" value="A">
+                                    <input type="text" class="form-control" name="mother_job" value="A">
                                 </div>
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Số điện thoại mẹ</label>
-                                    <input type="text" class="form-control" value="A">
+                                    <input type="text" class="form-control" name="mother_phone" value="A">
                                 </div>
                             </div>
                         </div>
@@ -559,7 +573,6 @@
         demo.initCharts();
 
     });
-
 </script>
 
 </html>
