@@ -1,14 +1,19 @@
 <?php
 include_once("Database.php");
 
+
+
 class Account extends Database
 {
     private $table = "account";
-
+    private $username = "user";
+    private $pwd = "user";
+    private $emp_id;
+    private $per_name;
     public function getAll()
     {
         $data = array();
-        $sql = "SELECT * FROM $this->table";
+        $sql = "SELECT * FROM $this->table" ;
         $q = $this->conn->query($sql) or die("failed!");
         while ($r = $q->fetch_assoc()) {
             array_push($data, $r);
@@ -18,20 +23,28 @@ class Account extends Database
 
     public function getOne($emp_id)
     {
-        $sql = "SELECT * FROM $this->table WHERE emp_id = $emp_id";
+        $sql = "SELECT * FROM $this->table WHERE emp_id = $emp_id"; 
         $q = $this->conn->query($sql) or die("failed!");
-        $data = $q->fetch_assoc();
+        $data[] = $q->fetch_assoc();
         return $data;
     }
-
-    public function login($username, $password)
-    {
-        $sql = "SELECT employee.*, permission.* FROM `account` " .
-            "INNER JOIN employee ON account.emp_id=employee.emp_id " .
-            "INNER JOIN permission ON permission.per_id = account.per_id " .
-            "WHERE username = '$username' AND password = '$password'";
-        $q = $this->conn->query($sql) or die("failed!");
-        $data = $q->fetch_assoc();
+    public function getAccountDetail (){
+        $data = array();
+        $sql = "SELECT employee.emp_id, employee.emp_name, username, permission.per_name 
+                FROM employee
+                LEFT JOIN account ON employee.emp_id = account.emp_id
+                LEFT JOIN permission ON account.per_id = permission.per_id";
+        $q = $this->conn->query($sql) or die ("failed!");
+        while ($r = $q->fetch_assoc()) {
+            if($r['username'] === NULL)
+            {
+                array_push($data, $r['emp_id'], $r['emp_name'],"Chưa có", "Chưa có");
+            }
+            else{
+                array_push($data, $r['emp_id'], $r['emp_name'],$r['username'],$r['per_name']);
+            }
+            
+        }
         return $data;
     }
 
@@ -51,15 +64,13 @@ class Account extends Database
         return $stmt == true;
     }
 
-    public function update($username_old, $username_new, $password, $per_id)
+    public function update($username_old, $username_new, $password,$per_id)
     {
         $query = "UPDATE $this->table SET  `username`= $username_new, `password`= $password, `per_id` = $per_id WHERE `username` = $username_old";
         $stmt = $this->conn->query($query);
         return $stmt == true;
     }
 
-
 }
-
-
+ 
 ?>

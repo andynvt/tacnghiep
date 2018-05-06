@@ -11,7 +11,7 @@ class Permission extends Database
     public function getAll()
     {
         $data = array();
-        $sql = "SELECT * FROM $this->table";
+        $sql = "SELECT * FROM $this->table" ;
         $q = $this->conn->query($sql) or die("failed!");
         while ($r = $q->fetch_assoc()) {
             array_push($data, $r);
@@ -21,12 +21,12 @@ class Permission extends Database
 
     public function getOne($per_id)
     {
-        $sql = "SELECT * FROM $this->table WHERE per_id = $per_id";
+        $sql = "SELECT * FROM $this->table WHERE per_id = $per_id"; 
         $q = $this->conn->query($sql) or die("failed!");
-        $data = $q->fetch_assoc();
+        $data[] = $q->fetch_assoc();
         return $data;
     }
-
+    
     public function delete($per_id)
     {
         $query = "DELETE FROM $this->table WHERE per_id = $per_id";
