@@ -1,46 +1,44 @@
 <?php
-class Employee{
-    private $conn;
+include_once("Database.php");
+
+class Employee extends Database
+{
     private $table_name = "employee";
-    
-    private $id;
-    private $name;
+
+    private $emp_id;
+    private $emp_name;
     private $dob;
-    private $gender;  
-    private $card;
+    private $gender;
+    private $id_card;
     private $doi;
     private $hometown;
     private $address;
     private $current_address;
-    private $telephone;
-    
-   public function __construct($db){
-        $this->conn = $db;
-   }
-    
-   function loadAll(){
-        $query = "SELECT * FROM " . $this->table_name . " ORDER BY e_name";  
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-    function loadOne($name){
-        $query = "SELECT * FROM " . $this->table_name . " WHERE e_name = "+$name;  
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-    function insert(){
-        $query = "INSERT INTO " . $this->table_name . " VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?)";  
-        
-        $stmt->bind_param("sssssssss", $name, $dob, $gender, $card, $doi, $hometown, $address, $current_address, $telephone);
-        
-        $stmt = $this->conn->prepare($query);
+    private $phone;
 
-        if($stmt->execute()){
-            return  true;
+    function getAll()
+    {
+        $query = "SELECT * FROM " . $this->table_name . " ORDER BY emp_name";
+        $stmt = $this->conn->query($query) or die("failed!");
+        while ($r = $stmt->fetch_assoc()) {
+            $data[] = $r;
         }
-        return false;
+        return $data;
+    }
+
+    function getOne($emp_id)
+    {
+        $query = "SELECT * FROM  $this->table_name WHERE e_name = $emp_id";
+        $stmt = $this->conn->query($query) or die("failed!");
+        $data = $stmt->fetch_assoc();
+        return $data;
+    }
+
+    function insert($emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone)
+    {
+        $query = "INSERT INTO  $this->table_name VALUES($emp_name, $dob,$gender, $id_card, $doi, $hometown,$address,$current_address, $phone)";
+        return $this->conn->query($query) == true;
     }
 }
+
 ?>
