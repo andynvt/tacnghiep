@@ -37,6 +37,7 @@
         var item = $(".nav").find(".nav-item");
         item.removeClass("active");
         menu = menu == undefined ? 0 : menu;
-        item.eq(menu - 1 >= 0 ? (menu - 1) : 0).addClass("active");
+        var index = menu >= 1 ? (menu - 1) : item.length - 1;
+        item.eq(index).addClass("active");
     })
 </script>

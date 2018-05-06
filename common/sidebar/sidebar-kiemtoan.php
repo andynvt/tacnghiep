@@ -1,6 +1,6 @@
 <ul class="nav" id="sidebar-kiemtoan">
     <li class="nav-item">
-        <a class="nav-link" href="../kiem-toan/index.php?menu=1">
+        <a class="nav-link" href="../kiem-toan/index.php?menu=1&page=1">
             <i class="material-icons">person</i>
             <p>Quản lý tài chính</p>
         </a>

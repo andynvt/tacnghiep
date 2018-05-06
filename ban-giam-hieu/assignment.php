@@ -2,11 +2,13 @@
 include_once("../database/model/Assignment.php");
 include_once("../database/model/PreClass.php");
 include_once("../database/model/Employee.php");
+$limit = (isset($_GET['limit'])) ? $_GET['limit'] : 10;
+$page = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
 $assignment = new Assignment();
 $lop = new PreClass();
 $employee = new Employee();
-$assign_array = $assignment->getAll();
+$assign_array = $assignment->makePagination($limit, $page);
 $class_arr = $lop->getAll();
 $emp_arr = $employee->getAll();
 ?>
@@ -47,7 +49,7 @@ $emp_arr = $employee->getAll();
                                 <tbody>
                                 <?php
                                 $i = 0;
-                                foreach ($assign_array as $value) {
+                                foreach ($assign_array->getResult() as $value) {
                                     echo "<tr>";
                                     echo "<td>" . ++$i . "</td>";
                                     echo "<td>{$value["year"]}</td>";
@@ -72,9 +74,11 @@ $emp_arr = $employee->getAll();
                                 </tbody>
                             </table>
                         </div>
+                        <?php echo $assign_array->showPagination(); ?>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <!-- Modal -->
