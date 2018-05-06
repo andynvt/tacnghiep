@@ -33,6 +33,11 @@ class Employee extends Database
         $data = $stmt->fetch_assoc();
         return $data;
     }
+    
+    function loadNameByID($id){
+        $name = $this->getOne($id)["emp_name"];
+        return $name;
+    }
 
     function insert($emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone)
     {
