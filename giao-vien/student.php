@@ -36,7 +36,7 @@ $s1524 = "SELECT *, DATEDIFF(CURDATE(),dob) as s1524 FROM student WHERE DATEDIFF
         <div class="wrapper">
             <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-4.jpg">
                 <div class="logo">
-                    <a href="../admin/index.html" class="simple-text logo-normal">
+                    <a href="../admin/index.php" class="simple-text logo-normal">
                     MẪU GIÁO MẦM XANH
                 </a>
                 </div>

@@ -10,7 +10,6 @@
         <!-- Navbar -->
         <?php include_once("../ban-giam-hieu/common/navigation.php"); ?>
         <!-- End Navbar -->
-
         <!-- Content -->
         <?php
         $menu = $_GET['menu'];
@@ -33,15 +32,14 @@
             case 5:
                 include_once("../ban-giam-hieu/audit.php");
                 break;
-            case 6:
-                include_once("../ban-giam-hieu/index.html");
-                break;
+//            case 6:
+//                include_once("../ban-giam-hieu/index.");
+//                break;
             default:
                 include_once("../ban-giam-hieu/teacher.php");
                 break;
         }
         ?>
-
         <!-- End Content -->
 
         <?php include_once("../ban-giam-hieu/common/footer.php"); ?>
