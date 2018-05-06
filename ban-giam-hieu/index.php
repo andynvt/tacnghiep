@@ -15,6 +15,7 @@
         $menu = $_GET['menu'];
         echo $menu;
         switch ($menu) {
+            default:
             case 0:
                 include_once("../ban-giam-hieu/personal.php");
                 break;
