@@ -4,9 +4,9 @@ class Lop extends Database
 {
     private $table_name = "class";
 
-    private $class_id;
-    private $class_name;
-    private $year;
+//    private $class_id;
+//    private $class_name;
+//    private $year;
 
     function getAll()
     {

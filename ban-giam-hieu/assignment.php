@@ -671,7 +671,6 @@ $emp_arr = $employee->getAll();
             var select = $("#editModal").find("select");
             var confirm = $("#editModal").find("#btn-update");
             confirm.val($(this).val());
-
             for (var i = 1; i < tdata.length - 1; i++) {
                 select.find("option").filter(function () {
                     return this.text == tdata.eq(i).text();

@@ -5,16 +5,16 @@ class Employee extends Database
 {
     private $table_name = "employee";
 
-    private $emp_id;
-    private $emp_name;
-    private $dob;
-    private $gender;
-    private $id_card;
-    private $doi;
-    private $hometown;
-    private $address;
-    private $current_address;
-    private $phone;
+//    private $emp_id;
+//    private $emp_name;
+//    private $dob;
+//    private $gender;
+//    private $id_card;
+//    private $doi;
+//    private $hometown;
+//    private $address;
+//    private $current_address;
+//    private $phone;
 
     function getAll()
     {

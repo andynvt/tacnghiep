@@ -6,8 +6,8 @@ class Assignment extends Database
     private $table = "class_employee";
 
     private $assign_id = "assign_id";
-    private $class_id;
-    private $emp_id;
+//    private $class_id;
+//    private $emp_id;
 
     public function getAll()
     {
