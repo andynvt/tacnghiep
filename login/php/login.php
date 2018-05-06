@@ -1,6 +1,6 @@
 <?php
 
-host="localhost";
+$host="localhost";
 
 $username="root";
 
@@ -28,7 +28,7 @@ if(isset($_POST['dangnhap'])){
 
     if($count>0){
 
-    echo"<script>alert('<h3> Đăng nhập thành công !</h3>')</script>"
+    echo"<script>alert('<h3> Đăng nhập thành công !</h3>')</script>";
 
     }
 
