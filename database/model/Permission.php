@@ -23,7 +23,7 @@ class Permission extends Database
     {
         $sql = "SELECT * FROM $this->table WHERE per_id = $per_id"; 
         $q = $this->conn->query($sql) or die("failed!");
-        $data[] = $r = $q->fetch_assoc();
+        $data[] = $q->fetch_assoc();
         return $data;
     }
     
