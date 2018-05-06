@@ -28,8 +28,8 @@ class Assignment extends Database
             "INNER JOIN class ON class_employee.class_id = class.class_id " .
             "INNER JOIN employee ON class_employee.emp_id=employee.emp_id " .
             "WHERE assign_id = $assign_id";
-        $q = $this->conn->query($sql) or die("failed!");
-        $data[] = $r = $q->fetch_assoc();
+        $stmt = $this->conn->query($sql) or die("failed!");
+        $data = $stmt->fetch_assoc();
         return $data;
     }
 
