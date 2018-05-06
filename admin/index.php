@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once("../admin/common/head.php"); ?>
-<body class="">
+<body >
 <div class="wrapper">
     <!--    Sidebar-->
     <?php include_once("../admin/common/sidebar.php"); ?>
