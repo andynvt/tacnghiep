@@ -24,16 +24,39 @@ $getStudent = $student->getAll();
 
                     $check = $student->insert($name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone);
                     if($check){
-                        echo "<script>alertAdd(true,'Thêm học sinh thành công!');</script>";
+                        echo "<script>alertAdd(true,'Đã thêm <b>".$name."</b> thành công!');</script>";
                     }
                     else{
-                        echo "<script>alertAdd(false,'Thêm thất bại!');</script>";
+                        echo "<script>alertAdd(false,'Thêm học sinh thất bại!');</script>";
                     }
+                }
+                if (isset($_POST["update-student"])) {
+                    $id = $_POST["id"];
+                    $name = $_POST["name"];
+                    $dob = $_POST["dob"];
+                    $gender = $_POST["gender"];
+                    $hometown = $_POST["hometown"];
+                    $address = $_POST["address"];
+                    $current_address = $_POST["current_address"];
+                    $father_name = $_POST["father_name"];
+                    $father_job = $_POST["father_job"];
+                    $father_phone = $_POST["father_phone"];
+                    $mother_name = $_POST["mother_name"];
+                    $mother_job = $_POST["mother_job"];
+                    $mother_phone = $_POST["mother_phone"];
 
+                    $check = $student->update($id, $name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone);
 
+                    if($check){
+//                        echo '<meta http-equiv="refresh" content="0;url=http://localhost/tacnghiep/ban-giam-hieu/index.php?menu=2">';
+//                        sleep(2);
+                        echo "<script>alertEdit(true,'Đã sửa <b>".$name."</b> thành công!');</script>";
+                    }
+                    else{
+                        echo "<script>alertEdit(false,'Sửa thông tin học sinh thất bại!');</script>";
+                    }
                 }
                 ?>
-                <button class="btn btn-primary" onclick="alertAdd(true,'Thêm thành công!')">Top Right Notification</button>
                 <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true"
                         data-toggle="modal" data-target="#add-student">
                     <i class="material-icons">add_circle_outline</i>
@@ -224,7 +247,7 @@ $getStudent = $student->getAll();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Chi tiết học sinh
+                    <h3 class="modal-title" id="exampleModalLabel">Thông tin
                        <b><?= $st["student_name"] ?></b>
                     </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -313,14 +336,15 @@ $getStudent = $student->getAll();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Sửa thông tin học sinh <b><?= $st["student_name"] ?></b></h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Sửa thông tin <b><?= $st["student_name"] ?></b></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post">
                         <div class="form-group">
+                            <input type="hidden" name="id" value="<?= $st["student_id"] ?>">
                             <label class="bmd-label-floating">Họ tên</label>
                             <input class="form-control" type="text" name="name" value="<?= $st["student_name"] ?>">
                         </div>
@@ -409,7 +433,7 @@ $getStudent = $student->getAll();
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                             <span></span>
-                            <button type="button" class="btn btn-primary">CẬP NHẬT</button>
+                            <button type="submit" class="btn btn-primary" name="update-student">CẬP NHẬT</button>
                         </div>
                     </form>
                 </div>
@@ -422,7 +446,7 @@ $getStudent = $student->getAll();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Xác nhận xoá học sinh <b><?= $st["student_name"] ?></b></h3>
+                    <h3 class="modal-title">Xác nhận xoá <b><?= $st["student_name"] ?></b></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

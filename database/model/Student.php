@@ -17,10 +17,27 @@ class Student extends Database {
 
     public function insert($student_name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone){
         $student_id = $this->makeStudentId();
-        $query = "INSERT INTO $this->table VALUES ($student_id, '$student_name', '$dob','$gender', '$hometown', '$address', '$current_address', '$father_name', '$father_job', '$father_phone', '$mother_name', '$mother_job', '$mother_phone')";
+        $query = "INSERT INTO $this->table VALUES ($student_id, '$student_name', '$dob','$gender', '$hometown', " .
+            " '$address', '$current_address', '$father_name', '$father_job', '$father_phone', '$mother_name', " .
+            " '$mother_job', '$mother_phone')";
         $stmt = $this->conn->query($query);
         if ($stmt == false){
             echo "<script>alert('Insert failed')</script>";
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public function update($student_id, $student_name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone)
+    {
+        $query = "UPDATE $this->table SET `student_name`='$student_name', `dob`='$dob', `gender`='$gender', " .
+            "`hometown`='$hometown', `address`='$address', `current_address`='$current_address', `father_name`='$father_name', " .
+            " `father_job`='$father_job', `father_phone`='$father_phone', `mother_name`='$mother_name', " .
+            " `mother_job`='$mother_job', `mother_phone`='$mother_phone' WHERE `student_id` = $student_id";
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) {
+            echo "<script>alert('Update failed')</script>";
             return false;
         }
         else
