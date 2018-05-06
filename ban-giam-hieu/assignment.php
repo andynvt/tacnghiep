@@ -1,6 +1,6 @@
 <?php
 include_once("../database/model/Assignment.php");
-include_once("../database/model/Lop.php");
+include_once("../database/model/PreClass.php");
 include_once("../database/model/Employee.php");
 
 $assignment = new Assignment();

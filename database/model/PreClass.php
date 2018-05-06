@@ -1,6 +1,6 @@
 <?php
 
-class Lop extends Database
+class PreClass extends Database
 {
     private $table_name = "class";
 

@@ -13,7 +13,6 @@
         <!-- Content -->
         <?php
         $menu = $_GET['menu'];
-        echo $menu;
         switch ($menu) {
             default:
             case 0:
