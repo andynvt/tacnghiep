@@ -65,7 +65,6 @@
 <script>
     var perm = "<?=$_SESSION['perm']?>";
     var menu = "<?=$_GET['menu']?>";
-
     var title_admin = ["THÔNG TIN CÁ NHÂN", "PHÂN QUYỀN", "TÀI KHOẢN"];
     var title_bangiamhieu = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ NHÂN VIÊN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ TỔ", "QUẢN LÝ LỚP HỌC", "PHÂN CÔNG GIẢNG DẠY", "QUẢN LÝ TÀI CHÍNH"];
     var title_baomau = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ HỌC SINH"];
