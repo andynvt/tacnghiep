@@ -1,3 +1,9 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "preschool");
+$student = "SELECT * FROM student 
+LEFT JOIN class_student on class_student.student_id = student.student_id
+LEFT JOIN class on class.class_id = class_student.class_id";
+?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
