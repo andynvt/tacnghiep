@@ -28,7 +28,7 @@ class Employee extends Database
 
     function getOne($emp_id)
     {
-        $query = "SELECT * FROM  $this->table_name WHERE e_name = $emp_id";
+        $query = "SELECT * FROM  $this->table_name WHERE emp_id = $emp_id";
         $stmt = $this->conn->query($query) or die("failed!");
         $data = $stmt->fetch_assoc();
         return $data;
