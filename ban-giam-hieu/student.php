@@ -56,6 +56,17 @@ $getStudent = $student->getAll();
                         echo "<script>alertEdit(false,'Sửa thông tin học sinh thất bại!');</script>";
                     }
                 }
+                if (isset($_POST["delete-student"])) {
+                    $id = $_POST["id"];
+                    $check = $student->delete($id);
+                    if($check){
+                        echo "<script>alertDelete(true,'Xoá <b>".$name."</b> thành công!');</script>";
+                    }
+                    else{
+                        echo "<script>alertDelete(false,'Xoá học sinh thất bại!');</script>";
+                    }
+                }
+
                 ?>
                 <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true"
                         data-toggle="modal" data-target="#add-student">
@@ -455,9 +466,12 @@ $getStudent = $student->getAll();
                     <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa học sinh <b><?= $st["student_name"] ?></b> ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                    <span></span>
-                    <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
+                    <form method="post">
+                        <input type="hidden" name="id" value="<?= $st["student_id"] ?>">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                        <span></span>
+                        <button type="submit" class="btn btn-primary" name="delete-student">CHẤP NHẬN</button>
+                    </form>
                 </div>
             </div>
         </div>

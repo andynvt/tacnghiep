@@ -44,8 +44,19 @@ class Student extends Database {
             return true;
     }
 
-    public function makeStudentId()
-    {
+    public function delete($student_id){
+        $qr = "DELETE FROM class_student WHERE student_id = $student_id";
+        $query = "DELETE FROM $this->table WHERE student_id = $student_id";
+        $st = $this->conn->query($qr);
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) {
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public function makeStudentId(){
         return parent::getMaxId($this->student_id, $this->table) + 1;
     }
 }
