@@ -15,23 +15,26 @@
         <?php
         $menu = $_GET['menu'];
         switch ($menu) {
-            case 1:
+            case 0:
                 include_once("../ban-giam-hieu/teacher.php");
                 break;
-            case 2:
+            case 1:
                 include_once("../ban-giam-hieu/student.php");
                 break;
-            case 3:
+            case 2:
                 include_once("../ban-giam-hieu/group.php");
                 break;
-            case 4:
+            case 3:
                 include_once("../ban-giam-hieu/class.php");
                 break;
-            case 5:
+            case 4:
                 include_once("../ban-giam-hieu/assignment.php");
                 break;
-            case 6:
+            case 5:
                 include_once("../ban-giam-hieu/audit.php");
+                break;
+            case 6:
+                include_once("../ban-giam-hieu/index.html");
                 break;
             default:
                 include_once("../ban-giam-hieu/teacher.php");

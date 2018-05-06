@@ -62,3 +62,9 @@
         </div>
     </div>
 </nav>
+<script>
+    var menu = "<?=$_GET['menu']?>";
+    var title_arr = ["QUẢN LÝ NHÂN VIÊN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ TỔ", "QUẢN LÝ LỚP HỌC", "PHÂN CÔNG GIẢNG DẠY", "QUẢN LÝ TÀI CHÍNH", "THÔNG TIN CÁ NHÂN"];
+    menu = menu == undefined ? 0 : menu;
+    $("#pablo").text(title_arr[menu]);
+</script>

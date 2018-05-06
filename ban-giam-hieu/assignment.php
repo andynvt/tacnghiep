@@ -134,7 +134,7 @@ $emp_arr = $employee->getAll();
                             <?php
                             if (isset($_POST["add-assignment"])) {
                                 $class_id = $_POST["class-name"];
-                                $emp_id = $_POST["employee-name"];
+                                $emp_id = $_POST["emp-name"];
                                 if (!empty($class_id) && !empty($emp_id)) {
                                     $assignment->insert($emp_id, $class_id);
                                 }
