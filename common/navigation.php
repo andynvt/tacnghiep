@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">NHÂN VIÊN</a>
+            <a class="navbar-brand" href="#pablo" id="title-item">NHÂN VIÊN</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
                 aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,14 +65,15 @@
 <script>
     var perm = "<?=$_SESSION['perm']?>";
     var menu = "<?=$_GET['menu']?>";
-    var title_admin = ["PHÂN QUYỀN", "TÀI KHOẢN", "THÔNG TIN CÁ NHÂN"];
-    var title_bangiamhieu = ["QUẢN LÝ NHÂN VIÊN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ TỔ", "QUẢN LÝ LỚP HỌC", "PHÂN CÔNG GIẢNG DẠY", "QUẢN LÝ TÀI CHÍNH", "THÔNG TIN CÁ NHÂN"];
-    var title_baomau = ["QUẢN LÝ HỌC SINH", "THÔNG TIN CÁ NHÂN"];
-    var title_giaovien = ["QUẢN LÝ HỌC SINH", "QUẢN LÝ LỚP HỌC", "THÔNG TIN CÁ NHÂN"];
-    var title_kiemtoan = ["QUẢN LÝ TÀI CHÍNH", "THÔNG TIN CÁ NHÂN"];
-    var title_totruong = ["QUẢN LÝ TỔ", "THÔNG TIN CÁ NHÂN"];
-    var titles = [title_admin, title_bangiamhieu, title_baomau, title_giaovien, title_kiemtoan, title_totruong];
+
+    var title_admin = ["THÔNG TIN CÁ NHÂN", "PHÂN QUYỀN", "TÀI KHOẢN"];
+    var title_bangiamhieu = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ NHÂN VIÊN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ TỔ", "QUẢN LÝ LỚP HỌC", "PHÂN CÔNG GIẢNG DẠY", "QUẢN LÝ TÀI CHÍNH"];
+    var title_baomau = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ HỌC SINH"];
+    var title_giaovien = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ LỚP HỌC"];
+    var title_kiemtoan = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ TÀI CHÍNH"];
+    var title_totruong = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ TỔ"];
+    var titles = [title_admin, title_bangiamhieu, title_totruong, title_kiemtoan, title_giaovien, title_baomau];
     var title = titles[perm];
     menu = menu == undefined ? 0 : menu;
-    $("#pablo").text(title[menu]);
+    $("#title-item").text(title[menu]);
 </script>
