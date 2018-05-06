@@ -348,9 +348,20 @@ $emp_arr = $employee->getAll();
                         <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa trường này ?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                        <span></span>
-                        <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
+                        <form method="post">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span></span>
+                            <button type="submit" name="delete-assignment" id="btn-delete" class="btn btn-primary">CHẤP NHẬN</button>
+                            <?php
+                            if (isset($_POST["delete-assignment"])) {
+                                $assign_id = $_POST["delete-assignment"];
+                                if (!empty($assign_id)) {
+                                    $assignment->delete($assign_id);
+                                }
+                            }
+                            ?>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -652,7 +663,7 @@ $emp_arr = $employee->getAll();
             $("#detailModal").modal("show");
         });
         $(".btn-danger").click(function () {
-            $("#deleteModal").find("p").attr("id", $(this).val());
+            $("#deleteModal").find("#btn-delete").val($(this).val());
             $("#deleteModal").modal("show");
         });
         $(".btn-success").click(function () {

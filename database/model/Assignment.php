@@ -33,6 +33,14 @@ class Assignment extends Database
         return $data;
     }
 
+    public function delete($assign_id)
+    {
+        $query = "DELETE FROM $this->table WHERE assign_id = $assign_id";
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) echo "<script>alert('Delete failed')</script>";
+        return $stmt == true;
+    }
+
     public function insert($emp_id, $class_id)
     {
         $assign_id = $this->makeAssignId();
