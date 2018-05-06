@@ -20,6 +20,9 @@
             case 1:
                 include_once("../admin/account.php");
                 break;
+            case 2:
+                include_once("../admin/personal.php");
+                break;
             default:
                 include_once("../admin/personal.php");
                 break;
