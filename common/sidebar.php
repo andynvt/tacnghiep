@@ -5,281 +5,38 @@
         </a>
     </div>
     <div class="sidebar-wrapper">
-        <ul class="nav" id="sidebar-admin">
-            <li class="nav-item active">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=0">
-                    <i class="material-icons">person</i>
-                    <p>Nhân Viên</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=1">
-                    <i class="material-icons">face</i>
-                    <p>Học Sinh</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=2">
-                    <i class="material-icons">group</i>
-                    <p>Tổ</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=3">
-                    <i class="material-icons">dashboard</i>
-                    <p>Lớp Học</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=4">
-                    <i class="material-icons">assignment</i>
-                    <p>Phân công giảng dạy</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=5">
-                    <i class="material-icons">attach_money</i>
-                    <p>Kiểm toán</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=6">
-                    <i class="material-icons">account_circle</i>
-                    <p>Cá Nhân</p>
-                </a>
-            </li>
-        </ul>
-        <ul class="nav" id="sidebar-bangiamhieu">
-            <li class="nav-item active">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=0">
-                    <i class="material-icons">person</i>
-                    <p>Nhân Viên</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=1">
-                    <i class="material-icons">face</i>
-                    <p>Học Sinh</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=2">
-                    <i class="material-icons">group</i>
-                    <p>Tổ</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=3">
-                    <i class="material-icons">dashboard</i>
-                    <p>Lớp Học</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=4">
-                    <i class="material-icons">assignment</i>
-                    <p>Phân công giảng dạy</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=5">
-                    <i class="material-icons">attach_money</i>
-                    <p>Kiểm toán</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=6">
-                    <i class="material-icons">account_circle</i>
-                    <p>Cá Nhân</p>
-                </a>
-            </li>
-        </ul>
-        <ul class="nav" id="sidebar-giaovien">
-            <li class="nav-item active">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=0">
-                    <i class="material-icons">person</i>
-                    <p>Nhân Viên</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=1">
-                    <i class="material-icons">face</i>
-                    <p>Học Sinh</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=2">
-                    <i class="material-icons">group</i>
-                    <p>Tổ</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=3">
-                    <i class="material-icons">dashboard</i>
-                    <p>Lớp Học</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=4">
-                    <i class="material-icons">assignment</i>
-                    <p>Phân công giảng dạy</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=5">
-                    <i class="material-icons">attach_money</i>
-                    <p>Kiểm toán</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=6">
-                    <i class="material-icons">account_circle</i>
-                    <p>Cá Nhân</p>
-                </a>
-            </li>
-        </ul>
-        <ul class="nav" id="sidebar-baomau">
-            <li class="nav-item active">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=0">
-                    <i class="material-icons">person</i>
-                    <p>Nhân Viên</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=1">
-                    <i class="material-icons">face</i>
-                    <p>Học Sinh</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=2">
-                    <i class="material-icons">group</i>
-                    <p>Tổ</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=3">
-                    <i class="material-icons">dashboard</i>
-                    <p>Lớp Học</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=4">
-                    <i class="material-icons">assignment</i>
-                    <p>Phân công giảng dạy</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=5">
-                    <i class="material-icons">attach_money</i>
-                    <p>Kiểm toán</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=6">
-                    <i class="material-icons">account_circle</i>
-                    <p>Cá Nhân</p>
-                </a>
-            </li>
-        </ul>
-        <ul class="nav" id="sidebar-kiemtoan">
-            <li class="nav-item active">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=0">
-                    <i class="material-icons">person</i>
-                    <p>Nhân Viên</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=1">
-                    <i class="material-icons">face</i>
-                    <p>Học Sinh</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=2">
-                    <i class="material-icons">group</i>
-                    <p>Tổ</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=3">
-                    <i class="material-icons">dashboard</i>
-                    <p>Lớp Học</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=4">
-                    <i class="material-icons">assignment</i>
-                    <p>Phân công giảng dạy</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=5">
-                    <i class="material-icons">attach_money</i>
-                    <p>Kiểm toán</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=6">
-                    <i class="material-icons">account_circle</i>
-                    <p>Cá Nhân</p>
-                </a>
-            </li>
-        </ul>
-        <ul class="nav" id="sidebar-totruong">
-            <li class="nav-item active">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=0">
-                    <i class="material-icons">person</i>
-                    <p>Nhân Viên</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=1">
-                    <i class="material-icons">face</i>
-                    <p>Học Sinh</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=2">
-                    <i class="material-icons">group</i>
-                    <p>Tổ</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=3">
-                    <i class="material-icons">dashboard</i>
-                    <p>Lớp Học</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=4">
-                    <i class="material-icons">assignment</i>
-                    <p>Phân công giảng dạy</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=5">
-                    <i class="material-icons">attach_money</i>
-                    <p>Kiểm toán</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro">
-                <a class="nav-link" href="../ban-giam-hieu/index.php?menu=6">
-                    <i class="material-icons">account_circle</i>
-                    <p>Cá Nhân</p>
-                </a>
-            </li>
-        </ul>
+        <?php
+        $perm = $_SESSION['perm'];
+        switch ($perm) {
+            case 0:
+                include_once("sidebar/sidebar-admin.php");
+                break;
+            case 1:
+                include_once("sidebar/sidebar-bangiamhieu.php");
+                break;
+            case 2:
+                include_once("sidebar/sidebar-totruong.php");
+                break;
+            case 3:
+                include_once("sidebar/sidebar-kiemtoan.phpp");
+                break;
+            case 4:
+                include_once("sidebar/sidebar-giaovien.php");
+                break;
+            case 5:
+                include_once("sidebar/sidebar-bao-mau.php");
+                break;
+        }
+        ?>
+
     </div>
 </div>
 <script>
-    var perm = "<?=$_GET['perm']?>";
-    var menu = "<?=$_GET['menu']?>";
-    var sidebar = $(".sidebar-wrapper").find(".nav");
-    sidebar.hide();
-    sidebar.eq(perm).show();
-    var item = sidebar.eq(perm).find(".nav-item");
-    item.removeClass("active");
-    item.eq(item.length - 1).addClass("active-pro");
-    menu = menu == undefined ? 0 : menu;
-    item.eq(menu).addClass("active");
+    $(document).ready(function () {
+        var menu = "<?=$_GET['menu']?>";
+        var item = $(".nav").find(".nav-item");
+        item.removeClass("active");
+        menu = menu == undefined ? 0 : menu;
+        item.eq(menu - 1).addClass("active");
+    })
 </script>

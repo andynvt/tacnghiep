@@ -63,7 +63,7 @@
     </div>
 </nav>
 <script>
-    var perm = "<?=$_GET['perm']?>";
+    var perm = "<?=$_SESSION['perm']?>";
     var menu = "<?=$_GET['menu']?>";
     var title_admin = ["PHÂN QUYỀN", "TÀI KHOẢN", "THÔNG TIN CÁ NHÂN"];
     var title_bangiamhieu = ["QUẢN LÝ NHÂN VIÊN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ TỔ", "QUẢN LÝ LỚP HỌC", "PHÂN CÔNG GIẢNG DẠY", "QUẢN LÝ TÀI CHÍNH", "THÔNG TIN CÁ NHÂN"];

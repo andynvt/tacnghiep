@@ -13,35 +13,32 @@
         <!-- Content -->
         <?php
         $menu = $_GET['menu'];
+        echo $menu;
         switch ($menu) {
             case 0:
-                include_once("../ban-giam-hieu/teacher.php");
+                include_once("../ban-giam-hieu/personal.php");
                 break;
             case 1:
-                include_once("../ban-giam-hieu/student.php");
+                include_once("../ban-giam-hieu/teacher.php");
                 break;
             case 2:
-                include_once("../ban-giam-hieu/group.php");
+                include_once("../ban-giam-hieu/student.php");
                 break;
             case 3:
-                include_once("../ban-giam-hieu/class.php");
+                include_once("../ban-giam-hieu/group.php");
                 break;
             case 4:
-                include_once("../ban-giam-hieu/assignment.php");
+                include_once("../ban-giam-hieu/class.php");
                 break;
             case 5:
-                include_once("../ban-giam-hieu/audit.php");
+                include_once("../ban-giam-hieu/assignment.php");
                 break;
-//            case 6:
-//                include_once("../ban-giam-hieu/index.");
-//                break;
-            default:
-                include_once("../ban-giam-hieu/teacher.php");
+            case 6:
+                include_once("../ban-giam-hieu/audit.php");
                 break;
         }
         ?>
         <!-- End Content -->
-
         <?php include_once("../common/footer.php"); ?>
     </div>
 </div>

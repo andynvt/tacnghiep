@@ -15,16 +15,14 @@
         $menu = $_GET['menu'];
         switch ($menu) {
             case 0:
-                include_once("../giao-vien/teacher.php");
+            default:
+                include_once("../giao-vien/personal.php");
                 break;
             case 1:
                 include_once("../giao-vien/student.php");
                 break;
             case 2:
-                include_once("../giao-vien/group.php");
-                break;
-            default:
-                include_once("../giao-vien/teacher.php");
+                include_once("../giao-vien/class.php");
                 break;
         }
         ?>

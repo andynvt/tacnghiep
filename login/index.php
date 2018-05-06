@@ -67,7 +67,6 @@ $acc = new Account();
                     <button class="login100-form-btn" name="dangnhap" type="submit">
                         ĐĂNG NHẬP
                     </button>
-
                     <?php
                     if (isset($_POST["dangnhap"])) {
                         $username = $_POST["username"];
@@ -76,20 +75,35 @@ $acc = new Account();
                         if ($rs != null) {
                             $perm = $rs["per_id"];
                             switch ($perm) {
+                                case 0:
+                                    session_start();
+                                    $_SESSION['perm'] = 0;
+                                    header('Location: http://localhost/tacnghiep/admin/index.php');
+                                    break;
                                 case 1:
-                                    header("");
+                                    session_start();
+                                    $_SESSION['perm'] = 1;
+                                    header('Location: http://localhost/tacnghiep/ban-giam-hieu/index.php');
                                     break;
                                 case 2:
+                                    session_start();
+                                    $_SESSION['perm'] = 2;
+                                    header('Location: http://localhost/tacnghiep/to-truong/index.php');
                                     break;
                                 case 3:
+                                    session_start();
+                                    $_SESSION['perm'] = 3;
+                                    header('Location: http://localhost/tacnghiep/kiem-toan/index.php');
                                     break;
                                 case 4:
+                                    session_start();
+                                    $_SESSION['perm'] = 4;
+                                    header('Location: http://localhost/tacnghiep/giao-vien/index.php');
                                     break;
                                 case 5:
-                                    break;
-                                case 6:
-                                    break;
-                                case 7:
+                                    session_start();
+                                    $_SESSION['perm'] = 5;
+                                    header('Location: http://localhost/tacnghiep/bao-mau/index.php');
                                     break;
                             }
                         }
