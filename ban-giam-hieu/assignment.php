@@ -4,7 +4,7 @@ include_once("../database/model/PreClass.php");
 include_once("../database/model/Employee.php");
 
 $assignment = new Assignment();
-$lop = new Lop();
+$lop = new PreClass();
 $employee = new Employee();
 $assign_array = $assignment->getAll();
 $class_arr = $lop->getAll();
