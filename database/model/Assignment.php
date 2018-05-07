@@ -6,7 +6,6 @@ include_once("Paginator.php");
 class Assignment extends Paginator
 {
     private $table = "class_employee";
-
     private $assign_id = "assign_id";
 
     public function getAll()

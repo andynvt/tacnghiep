@@ -2,13 +2,12 @@
 include_once("../database/model/Assignment.php");
 include_once("../database/model/PreClass.php");
 include_once("../database/model/Employee.php");
-$limit = (isset($_GET['limit'])) ? $_GET['limit'] : 10;
 $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
 $assignment = new Assignment();
 $lop = new PreClass();
 $employee = new Employee();
-$assign_array = $assignment->makePagination($limit, $page);
+$assign_array = $assignment->makePagination(10, $page);
 $class_arr = $lop->getAll();
 $emp_arr = $employee->getAll();
 ?>
