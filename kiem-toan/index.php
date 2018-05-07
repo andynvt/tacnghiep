@@ -20,7 +20,10 @@
                 include_once("../kiem-toan/personal.php");
                 break;
             case 1:
-                include_once("../kiem-toan/cash.php");
+                include_once("../kiem-toan/in-audit.php");
+                break;
+            case 2:
+                include_once("../kiem-toan/out-audit.php");
                 break;
         }
         ?>
