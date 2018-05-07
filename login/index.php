@@ -74,27 +74,27 @@
                             switch ($perm) {
                                 case 0:
                                     $_SESSION['perm'] = 0;
-                                    header('Location: http://localhost/tacnghiep/admin/index.php?menu=0&limit=10&links=1&page=1');
+                                    header('Location: http://localhost/tacnghiep/admin/index.php?menu=0');
                                     break;
                                 case 1:
                                     $_SESSION['perm'] = 1;
-                                    header('Location: http://localhost/tacnghiep/ban-giam-hieu/index.php?menu=0&limit=10&links=&page=2');
+                                    header('Location: http://localhost/tacnghiep/ban-giam-hieu/index.php?menu=0');
                                     break;
                                 case 2:
                                     $_SESSION['perm'] = 2;
-                                    header('Location: http://localhost/tacnghiep/to-truong/index.php?menu=0&limit=10&links=1&page=1');
+                                    header('Location: http://localhost/tacnghiep/to-truong/index.php?menu=0');
                                     break;
                                 case 3:
                                     $_SESSION['perm'] = 3;
-                                    header('Location: http://localhost/tacnghiep/kiem-toan/index.php?menu=0&limit=10&links=1&page=1');
+                                    header('Location: http://localhost/tacnghiep/kiem-toan/index.php?menu=0');
                                     break;
                                 case 4:
                                     $_SESSION['perm'] = 4;
-                                    header('Location: http://localhost/tacnghiep/giao-vien/index.php?menu=0&limit=10&links=1&page=1');
+                                    header('Location: http://localhost/tacnghiep/giao-vien/index.php?menu=0');
                                     break;
                                 case 5:
                                     $_SESSION['perm'] = 5;
-                                    header('Location: http://localhost/tacnghiep/bao-mau/index.php?menu=0&limit=10&links=1&page=1');
+                                    header('Location: http://localhost/tacnghiep/bao-mau/index.php?menu=0');
                                     break;
                             }
                         }

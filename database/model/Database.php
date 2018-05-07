@@ -2,8 +2,6 @@
 
 class Database
 {
-
-    // specify your own database credentials
     private $host = "localhost";
     private $db_name = "preschool";
     private $username = "root";
@@ -15,8 +13,6 @@ class Database
     {
         $this->connect();
     }
-
-    // get the database connection
     public function connect()
     {
         if (!isset($this->conn)) {
@@ -38,5 +34,3 @@ class Database
         return $data[$id_name];
     }
 }
-
-?>

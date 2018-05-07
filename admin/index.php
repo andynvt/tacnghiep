@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once("../common/head.php"); ?>
+<?php include_once("../common/script.php"); ?>
+
 <body>
 <div class="wrapper">
     <!--    Sidebar-->
@@ -34,6 +36,4 @@
 </body>
 <?php include_once("../common/staff.php"); ?>
 </body>
-<?php include_once("../common/script.php"); ?>
-
 </html>

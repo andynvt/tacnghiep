@@ -7,7 +7,11 @@
     <div class="sidebar-wrapper">
         <?php
         $perm = $_SESSION['perm'];
+        $perm = is_null($perm) ? -1 : $perm;
         switch ($perm) {
+            case -1:
+                echo "<script>window.location.href = 'http://localhost/tacnghiep/login';</script>";
+                break;
             case 0:
                 include_once("sidebar/sidebar-admin.php");
                 break;

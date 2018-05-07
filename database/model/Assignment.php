@@ -1,7 +1,6 @@
 <?php
 include_once("Pagination.php");
 
-
 class Assignment extends Pagination
 {
     private $table = "class_employee";
@@ -20,7 +19,7 @@ class Assignment extends Pagination
         return $data;
     }
 
-    public function makePagination($limit = 10, $current_page = 1)
+    public function pagination($limit = 10, $current_page = 1)
     {
         $sql = "SELECT assign_id, class.class_name,class.year,employee.emp_name FROM $this->table " .
             "INNER JOIN class ON class_employee.class_id = class.class_id " .
@@ -43,7 +42,6 @@ class Assignment extends Pagination
     {
         $query = "DELETE FROM $this->table WHERE assign_id = $assign_id";
         $stmt = $this->conn->query($query);
-        if ($stmt == false) echo "<script>alert('Delete failed')</script>";
         return $stmt == true;
     }
 
@@ -52,7 +50,6 @@ class Assignment extends Pagination
         $assign_id = $this->makeAssignId();
         $query = "INSERT INTO $this->table (`assign_id`, `class_id`, `emp_id`) VALUES ($assign_id, $emp_id, $class_id)";
         $stmt = $this->conn->query($query);
-        if ($stmt == false) echo "<script>alert('Insert failed')</script>";
         return $stmt == true;
     }
 
@@ -69,4 +66,3 @@ class Assignment extends Pagination
     }
 }
 
-?>
