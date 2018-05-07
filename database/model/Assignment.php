@@ -1,9 +1,8 @@
 <?php
-include_once("Database.php");
-include_once("Paginator.php");
+include_once("Pagination.php");
 
 
-class Assignment extends Paginator
+class Assignment extends Pagination
 {
     private $table = "class_employee";
     private $assign_id = "assign_id";
