@@ -1,13 +1,13 @@
 <?php
 include_once("Database.php");
+include_once("Paginator.php");
 
-class Assignment extends Database
+
+class Assignment extends Paginator
 {
     private $table = "class_employee";
 
     private $assign_id = "assign_id";
-//    private $class_id;
-//    private $emp_id;
 
     public function getAll()
     {
@@ -20,6 +20,14 @@ class Assignment extends Database
             array_push($data, $r);
         }
         return $data;
+    }
+
+    public function makePagination($limit = 10, $current_page = 1)
+    {
+        $sql = "SELECT assign_id, class.class_name,class.year,employee.emp_name FROM $this->table " .
+            "INNER JOIN class ON class_employee.class_id = class.class_id " .
+            "INNER JOIN employee ON class_employee.emp_id=employee.emp_id";
+        return parent::makePagination($sql, $limit, $current_page);
     }
 
     public function getOne($assign_id)
@@ -61,7 +69,6 @@ class Assignment extends Database
     {
         return parent::getMaxId($this->assign_id, $this->table) + 1;
     }
-
 }
 
 ?>

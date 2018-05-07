@@ -1,9 +1,3 @@
-<?php
-include_once("../database/model/Account.php");
-$acc = new Account();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,42 +62,39 @@ $acc = new Account();
                         ĐĂNG NHẬP
                     </button>
                     <?php
+                    include_once("../database/model/Account.php");
+                    $acc = new Account();
                     if (isset($_POST["dangnhap"])) {
                         $username = $_POST["username"];
                         $password = $_POST["password"];
                         $rs = $acc->login($username, $password);
                         if ($rs != null) {
                             $perm = $rs["per_id"];
+                            session_start();
                             switch ($perm) {
                                 case 0:
-                                    session_start();
                                     $_SESSION['perm'] = 0;
-                                    header('Location: http://localhost/tacnghiep/admin/index.php');
+                                    header('Location: http://localhost/tacnghiep/admin/index.php?menu=0&limit=10&links=1&page=1');
                                     break;
                                 case 1:
-                                    session_start();
                                     $_SESSION['perm'] = 1;
-                                    header('Location: http://localhost/tacnghiep/ban-giam-hieu/index.php');
+                                    header('Location: http://localhost/tacnghiep/ban-giam-hieu/index.php?menu=0&limit=10&links=&page=2');
                                     break;
                                 case 2:
-                                    session_start();
                                     $_SESSION['perm'] = 2;
-                                    header('Location: http://localhost/tacnghiep/to-truong/index.php');
+                                    header('Location: http://localhost/tacnghiep/to-truong/index.php?menu=0&limit=10&links=1&page=1');
                                     break;
                                 case 3:
-                                    session_start();
                                     $_SESSION['perm'] = 3;
-                                    header('Location: http://localhost/tacnghiep/kiem-toan/index.php');
+                                    header('Location: http://localhost/tacnghiep/kiem-toan/index.php?menu=0&limit=10&links=1&page=1');
                                     break;
                                 case 4:
-                                    session_start();
                                     $_SESSION['perm'] = 4;
-                                    header('Location: http://localhost/tacnghiep/giao-vien/index.php');
+                                    header('Location: http://localhost/tacnghiep/giao-vien/index.php?menu=0&limit=10&links=1&page=1');
                                     break;
                                 case 5:
-                                    session_start();
                                     $_SESSION['perm'] = 5;
-                                    header('Location: http://localhost/tacnghiep/bao-mau/index.php');
+                                    header('Location: http://localhost/tacnghiep/bao-mau/index.php?menu=0&limit=10&links=1&page=1');
                                     break;
                             }
                         }
