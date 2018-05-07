@@ -3,27 +3,47 @@ include_once("Database.php");
 
 class Employee extends Database
 {
-    private $table_name = "employee";
+    private $table = "employee";
+    private $emp_id = "emp_id";
 
-//    private $emp_id;
-//    private $emp_name;
-//    private $dob;
-//    private $gender;
-//    private $id_card;
-//    private $doi;
-//    private $hometown;
-//    private $address;
-//    private $current_address;
-//    private $phone;
-
-    function getAll()
-    {
-        $query = "SELECT * FROM " . $this->table_name . " ORDER BY emp_name";
+    function getAll(){
+        $data = array();
+        $query = "SELECT employee.*, class.class_name, job.job_name FROM employee " .
+            "LEFT JOIN class_employee ON class_employee.emp_id = employee.emp_id " .
+            "LEFT JOIN class ON class.class_id = class_employee.class_id " .
+            "LEFT JOIN department_employee ON department_employee.emp_id = employee.emp_id " .
+            "LEFT JOIN job ON job.job_id = department_employee.job_id";
         $stmt = $this->conn->query($query) or die("failed!");
         while ($r = $stmt->fetch_assoc()) {
-            $data[] = $r;
+            array_push($data, $r);
         }
         return $data;
+    }
+
+    function insert($emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone){
+        $emp_id = $this->makeEmpId();
+        $query = "INSERT INTO  $this->table VALUES($emp_id, '$emp_name', '$dob', '$gender', '$id_card', '$doi', " .
+            " '$hometown', '$address', '$current_address', '$phone')";
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) return false;
+        else return true;
+    }
+
+    function update($emp_id, $emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone){
+        $query = "UPDATE $this->table SET `emp_name`='$emp_name', `dob`='$dob', `gender`='$gender', " .
+            " `id_card`='$id_card', `doi`='$doi', `hometown`='$hometown', `address`='$address', " .
+            " `current_address`='$current_address', `phone`='$phone' WHERE `emp_id` = $emp_id";
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) return false;
+        else return true;
+    }
+    public function delete($emp_id){
+        $qr = "DELETE FROM department_employee WHERE emp_id = $emp_id";
+        $query = "DELETE FROM $this->table WHERE emp_id = $emp_id";
+        $st = $this->conn->query($qr);
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) return false;
+        else return true;
     }
 
     function getOne($emp_id)
@@ -39,10 +59,9 @@ class Employee extends Database
         return $name;
     }
 
-    function insert($emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone)
-    {
-        $query = "INSERT INTO  $this->table_name VALUES($emp_name, $dob,$gender, $id_card, $doi, $hometown,$address,$current_address, $phone)";
-        return $this->conn->query($query) == true;
+
+    public function makeEmpId(){
+        return parent::getMaxId($this->emp_id, $this->table) + 1;
     }
 }
 

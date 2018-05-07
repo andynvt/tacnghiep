@@ -133,16 +133,16 @@ $getStudent = $student->getAll();
                                         <?= $st["current_address"] ?>
                                     </td>
                                     <td class="td-actions text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-info btn-simple"
+                                        <button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple"
                                                 data-toggle="modal"
                                                 data-target="#detail-student-<?= $st["student_id"] ?>">
                                             <i class="material-icons">remove_red_eye</i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-success btn-simple"
+                                        <button type="button" rel="tooltip" title="Sửa thông tin" class="btn btn-success btn-simple"
                                                 data-toggle="modal" data-target="#edit-student-<?= $st["student_id"] ?>">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-danger btn-simple"
+                                        <button type="button" rel="tooltip" title="Xoá học sinh" class="btn btn-danger btn-simple"
                                                 data-toggle="modal" data-target="#delete-student-<?= $st["student_id"] ?>">
                                             <i class="material-icons">close</i>
                                         </button>
@@ -274,7 +274,7 @@ $getStudent = $student->getAll();
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Ngày sinh</label>
-                            <input class="form-control" type="text" value="<?= $st["dob"] ?>"
+                            <input class="form-control" type="date" value="<?= $st["dob"] ?>"
                                    readonly="readonly">
                         </div>
                         <div class="form-group">
@@ -361,7 +361,7 @@ $getStudent = $student->getAll();
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Ngày sinh</label>
-                            <input class="form-control" type="date" name="dob" value="<?= $st["dob"] ?>">
+                            <input class="form-control" type="date" name="dob" min="1900-01-01" max="2100-01-01" value="<?= $st["dob"] ?>">
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Giới tính</label>
