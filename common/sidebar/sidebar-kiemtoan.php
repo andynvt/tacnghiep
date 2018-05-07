@@ -1,8 +1,13 @@
 <ul class="nav" id="sidebar-kiemtoan">
     <li class="nav-item">
         <a class="nav-link" href="../kiem-toan/index.php?menu=1&page=1">
-            <i class="material-icons">person</i>
-            <p>Quản lý tài chính</p>
+            <i class="material-icons">attach_money</i>
+            <p>Quản lý phí thu</p>
+        </a>
+    </li> <li class="nav-item">
+        <a class="nav-link" href="../kiem-toan/index.php?menu=2&page=1">
+            <i class="material-icons">attach_money</i>
+            <p>Quản lý phí chi</p>
         </a>
     </li>
     <li class="nav-item active-pro">

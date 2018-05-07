@@ -29,18 +29,24 @@ class AssignmentLoader
         $this->pagination = $this->assign_array->showPagination();
         $html = '';
         foreach ($this->assign_array->getResult() as $value) {
+            $class_round = $i % 2 == 1 ? "btn-round" : "";
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td>' . $value["year"] . '</td>';
             $html .= '<td >' . $value["class_name"] . '</td>';
             $html .= '<td >' . $value["emp_name"] . '</td>';
             $html .= '<td class="td-actions text-center">';
-            $html .= '<button type="button" rel="tooltip"  role="button" aria-disabled="true"
-                data-toggle="modal" data-target="#detailModal" class="btn btn-info"><i class="material-icons">person</i></button>';
-            $html .= '<button data-target="#editModal"  role="button" aria-disabled="true"
-                data-toggle="modal" value="' . $value["assign_id"] . '" type="button" rel="tooltip" class="btn btn-success"><i class="material-icons">edit</i></button>';
-            $html .= '<button data-target="#deleteModal"  role="button" aria-disabled="true"
-                data-toggle="modal" value="' . $value["assign_id"] . '" type="button" rel="tooltip" class="btn btn-danger"><i class="material-icons">close</i></button>';
+            $html .= '<button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple"  data-toggle="modal" data-target="#detailModal">' .
+                '<i class="material-icons">remove_red_eye</i>' .
+                '</button> ';
+            $html .= '<button type="button" rel="tooltip" title="Sửa lịch dạy"  class="btn btn-success btn-simple" value="' . $value["assign_id"] .
+                '" data-toggle="modal" data-target="#editModal" >' .
+                '<i class="material-icons">edit</i>' .
+                '</button> ';
+            $html .= '<button type="button" rel="tooltip"title="Xoá lịch dạy" class="btn btn-danger btn-simple"   value="' . $value["assign_id"] .
+                '" data-toggle="modal" data-target="#deleteModal">' .
+                '<i class="material-icons">close</i>' .
+                '</button>';
             $html .= '</td>';
             $html .= '</tr>';
         }

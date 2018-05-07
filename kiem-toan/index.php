@@ -28,7 +28,6 @@
         }
         ?>
         <!-- End Content -->
-
         <?php include_once("../common/footer.php"); ?>
     </div>
 </div>

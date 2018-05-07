@@ -38,6 +38,14 @@ class Assignment extends Pagination
         return $data;
     }
 
+    public function checkDuplicate($emp_id, $class_id)
+    {
+        $sql = "SELECT count(*)  FROM $this->table  WHERE emp_id = $emp_id AND class_id = $class_id";
+        $stmt = $this->conn->query($sql) or die("failed!");
+        $data = $stmt->fetch_assoc();
+        return $data["count(*)"];
+    }
+
     public function delete($assign_id)
     {
         $query = "DELETE FROM $this->table WHERE assign_id = $assign_id";
@@ -47,10 +55,15 @@ class Assignment extends Pagination
 
     public function insert($emp_id, $class_id)
     {
-        $assign_id = $this->makeAssignId();
-        $query = "INSERT INTO $this->table (`assign_id`, `class_id`, `emp_id`) VALUES ($assign_id, $emp_id, $class_id)";
-        $stmt = $this->conn->query($query);
-        return $stmt == true;
+        $count = $this->checkDuplicate($emp_id, $class_id);
+        if ($count == 0) {
+            $assign_id = $this->makeAssignId();
+            $query = "INSERT INTO $this->table (`assign_id`, `class_id`, `emp_id`) VALUES ($assign_id, $class_id, $emp_id)";
+            $stmt = $this->conn->query($query);
+            return $stmt == true;
+        }else{
+            return false;
+        }
     }
 
     public function update($assign_id, $emp_id, $class_id)
@@ -65,4 +78,3 @@ class Assignment extends Pagination
         return parent::getMaxId($this->assign_id, $this->table) + 1;
     }
 }
-

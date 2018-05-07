@@ -22,7 +22,7 @@
                 include_once("sidebar/sidebar-totruong.php");
                 break;
             case 3:
-                include_once("sidebar/sidebar-kiemtoan.phpp");
+                include_once("sidebar/sidebar-kiemtoan.php");
                 break;
             case 4:
                 include_once("sidebar/sidebar-giaovien.php");
