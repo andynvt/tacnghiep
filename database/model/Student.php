@@ -7,7 +7,7 @@ class Student extends Database {
 
     public function getAll(){
         $data = array();
-        $sql = "SELECT * FROM $this->table LEFT JOIN class_student on class_student.student_id = student.student_id LEFT JOIN class on class.class_id = class_student.class_id";
+        $sql = "SELECT $this->table.*, class.class_name FROM $this->table LEFT JOIN class_student on class_student.student_id = student.student_id LEFT JOIN class on class.class_id = class_student.class_id";
         $q = $this->conn->query($sql) or die("failed!");
         while ($row = $q->fetch_assoc()) {
             array_push($data, $row);
