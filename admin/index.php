@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once("../common/head.php"); ?>
+<?php include_once("../common/header.php"); ?>
 <?php include_once("../common/script.php"); ?>
 
 <body>
