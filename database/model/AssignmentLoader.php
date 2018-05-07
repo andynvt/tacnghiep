@@ -36,7 +36,7 @@ class AssignmentLoader
             $html .= '<td >' . $value["emp_name"] . '</td>';
             $html .= '<td class="td-actions text-center">';
             $html .= '<button type="button" rel="tooltip"  role="button" aria-disabled="true"
-                data-toggle="modal" data-target="#addModal" class="btn btn-info"><i class="material-icons">person</i></button>';
+                data-toggle="modal" data-target="#detailModal" class="btn btn-info"><i class="material-icons">person</i></button>';
             $html .= '<button data-target="#editModal"  role="button" aria-disabled="true"
                 data-toggle="modal" value="' . $value["assign_id"] . '" type="button" rel="tooltip" class="btn btn-success"><i class="material-icons">edit</i></button>';
             $html .= '<button data-target="#deleteModal"  role="button" aria-disabled="true"
