@@ -15,6 +15,16 @@ class Student extends Database {
         return $data;
     }
 
+    function getStudent($emp){
+        $data = array();
+        $sql = "SELECT $this->table.*, DATEDIFF(CURDATE(),dob) AS grade FROM student where student_id in (SELECT student_id FROM class_student WHERE class_id in (SELECT class_id FROM class WHERE class_id in (SELECT class_id FROM class_employee WHERE emp_id = $emp)))";
+        $q = $this->conn->query($sql) or die("failed!");
+        while ($r = $q->fetch_assoc()) {
+            array_push($data, $r);
+        }
+        return $data;
+    }
+
     public function insert($student_name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone){
         $student_id = $this->makeStudentId();
         $query = "INSERT INTO $this->table VALUES ($student_id, '$student_name', '$dob','$gender', '$hometown', " .
