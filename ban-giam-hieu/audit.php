@@ -1,16 +1,11 @@
 <?php
-include_once "../database/model/Database.php";
-include_once "../database/model/Audit.php";
-include_once "../database/model/Employee.php";
+include_once("../database/model/InAuditLoader.php");
+include_once("../database/model/OutAuditLoader.php");
 
-$inAudit = new InAudit();
-$inAudit_array = $inAudit->loadAll();
-$outAudit = new OutAudit();
-$outAudit_array = $outAudit->loadAll();
-$emp = new Employee();
-$emp_name_arr = $emp->getAll();
+$page = $_GET['page'] == null ? 0 : $_GET['page'];
+$inAuditLoader = new InAuditLoader();
+$outAuditLoader = new OutAuditLoader();
 ?>
-
 
 <div class="content">
     <!-- Modal -->
@@ -93,7 +88,12 @@ $emp_name_arr = $emp->getAll();
     </div>
     <!-- End Modal -->
 
-    <div class="container-fluid">
+    <button type="button" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="btnInAudit">PHÍ THU
+    </button>
+    <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" id="btnOutAudit">PHÍ CHI
+    </button>
+
+    <div class="container-fluid" id="formInAudit">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -127,39 +127,17 @@ $emp_name_arr = $emp->getAll();
                                     Thao tác
                                 </th>
                                 </thead>
-                                <tbody>
-                                <?php
-                                $i = 0;
-                                foreach ($inAudit_array as $value) {
-                                    echo "<tr>";
-                                    echo "<td>" . ++$i . "</td>";
-                                    echo "<td>{$value["ia_desc"]}</td>";
-                                    echo "<td>{$value["money"]}</td>";
-                                    echo "<td>{$value["date"]}</td>";
-                                    echo "<td class='text-primary'>{$value["payer"]}</td>";
-                                    echo "<td class='text-primary'>{$emp->loadNameByID($value["emp_id"])}</td>";
-                                    ?>
-                                    <td class="td-actions text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal"
-                                                data-target="#detailInAuditModal">
-                                            <i class="material-icons">remove_red_eye</i>
-                                        </button>
-                                    </td>
-                                    <?php
-                                    echo "</tr>";
-                                }
-                                ?>
-
-                                </tbody>
+                                <tbody id="table-body"><?php echo $inAuditLoader->viewOnly($page); ?></tbody>
                             </table>
                         </div>
+                        <div id="pagination"><?php echo $inAuditLoader->getPagination(); ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="formOutAudit" style="display: none">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -190,30 +168,10 @@ $emp_name_arr = $emp->getAll();
                                     Thao tác
                                 </th>
                                 </thead>
-                                <tbody>
-                                <?php
-                                $i = 0;
-                                foreach ($outAudit_array as $value) {
-                                    echo "<tr>";
-                                    echo "<td>" . ++$i . "</td>";
-                                    echo "<td>{$value["oa_desc"]}</td>";
-                                    echo "<td>{$value["money"]}</td>";
-                                    echo "<td>{$value["date"]}</td>";
-                                    echo "<td class='text-primary'>{$emp->loadNameByID($value["emp_id"])}</td>";
-                                    ?>
-                                    <td class="td-actions text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal"
-                                                data-target="#detailOutAuditModal">
-                                            <i class="material-icons">remove_red_eye</i>
-                                        </button>
-                                    </td>
-                                    <?php
-                                    echo "</tr>";
-                                }
-                                ?>
-                                </tbody>
+                                <tbody id="table-body"><?php echo $outAuditLoader->viewOnly($page); ?></tbody>
                             </table>
                         </div>
+                        <div id="pagination"><?php echo $outAuditLoader->getPagination(); ?></div>
                     </div>
                 </div>
             </div>
@@ -235,21 +193,7 @@ $emp_name_arr = $emp->getAll();
     <script src="../assets/js/material-dashboard.js?v=2.0.0"></script>
     <!-- demo init -->
     <script src="../assets/js/plugins/demo.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
 
-            //init wizard
-
-            // demo.initMaterialWizard();
-
-            // Javascript method's body can be found in assets/js/demos.js
-            demo.initDashboardPageCharts();
-
-            demo.initCharts();
-
-        });
-
-    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             demo.initDashboardPageCharts();
@@ -257,6 +201,11 @@ $emp_name_arr = $emp->getAll();
         });
 
         $(window).on('load', function () {
+            if ($("#formInAudit").is(':visible')) {
+                $("#btnInAudit").trigger('click');
+            } else {
+                $("#btnOutAudit").trigger('click');
+            }
             $(".btn-info").click(function () {
                 var modal = $(this).data("target");
                 var tdata = $(this).closest("tr").find("td");
@@ -265,6 +214,20 @@ $emp_name_arr = $emp->getAll();
                     input.eq(i).val(tdata.eq(i + 1).text());
                 }
             });
+        });
+
+        $("#btnInAudit").click(function () {
+            $("#btnOutAudit").removeClass('btn-primary').addClass('btn-secondary');
+            $("#btnInAudit").removeClass('btn-secondary').addClass('btn-primary');
+            $("#formOutAudit").hide();
+            $("#formInAudit").show();
+        });
+
+        $("#btnOutAudit").click(function () {
+            $("#btnInAudit").removeClass('btn-primary').addClass('btn-secondary');
+            $("#btnOutAudit").removeClass('btn-secondary').addClass('btn-primary');
+            $("#formInAudit").hide();
+            $("#formOutAudit").show();
         });
 
     </script>
