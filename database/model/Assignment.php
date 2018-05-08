@@ -9,9 +9,10 @@ class Assignment extends Pagination
     public function getAll()
     {
         $data = array();
-        $sql = "SELECT assign_id, class.class_name,class.year,employee.emp_name FROM $this->table " .
+        $sql = "SELECT assign_id, class.class_name, grade.grade_name, class.year, employee.emp_name FROM $this->table " .
             "INNER JOIN class ON class_employee.class_id = class.class_id " .
-            "INNER JOIN employee ON class_employee.emp_id=employee.emp_id";
+            "INNER JOIN employee ON class_employee.emp_id = employee.emp_id " .
+            "INNER JOIN grade ON class.grade_id = grade.grade_id";
         $q = $this->conn->query($sql) or die("failed!");
         while ($r = $q->fetch_assoc()) {
             array_push($data, $r);
@@ -21,9 +22,10 @@ class Assignment extends Pagination
 
     public function pagination($limit = 10, $current_page = 1)
     {
-        $sql = "SELECT assign_id, class.class_name,class.year,employee.emp_name FROM $this->table " .
+        $sql = "SELECT assign_id, class.class_name, grade.grade_name, class.year, employee.emp_name FROM $this->table " .
             "INNER JOIN class ON class_employee.class_id = class.class_id " .
-            "INNER JOIN employee ON class_employee.emp_id=employee.emp_id";
+            "INNER JOIN employee ON class_employee.emp_id = employee.emp_id " .
+            "INNER JOIN grade ON class.grade_id = grade.grade_id";
         return parent::makePagination($sql, $limit, $current_page);
     }
 
@@ -61,7 +63,7 @@ class Assignment extends Pagination
             $query = "INSERT INTO $this->table (`assign_id`, `class_id`, `emp_id`) VALUES ($assign_id, $class_id, $emp_id)";
             $stmt = $this->conn->query($query);
             return $stmt == true;
-        }else{
+        } else {
             return false;
         }
     }

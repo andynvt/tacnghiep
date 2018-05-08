@@ -1,5 +1,5 @@
 <?php
-include_once("../database/model/AssignmentLoader.php");
+include_once('../database/model/AssignmentLoader.php');
 $page = $_GET['page'] == null ? 0 : $_GET['page'];
 $action = new AssignmentLoader();
 ?>
@@ -24,13 +24,13 @@ $action = new AssignmentLoader();
                                     Số thứ tự
                                 </th>
                                 <th>
-                                    Niên khóa
+                                    Giáo viên giảng dạy
                                 </th>
                                 <th>
                                     Tên lớp
                                 </th>
                                 <th>
-                                    Giáo viên giảng dạy
+                                    Niên khóa
                                 </th>
                                 <th class="text-center">
                                     Thao tác
@@ -59,22 +59,15 @@ $action = new AssignmentLoader();
                 <div class="modal-body">
                     <form method="post" id="frmAdd">
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Niên khóa</label>
-                            <select class="form-control" name="class-year-id">
-                                <?php $action->loadClassYear(); ?>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Chọn lớp học</label>
-                            <select class="form-control" name="class-id">
-                                <?php $action->loadClassName(); ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="exampleInput1" class="bmd-label-floating">Giáo viên giảng dạy</label>
                             <select class="form-control" name="emp-id">
                                 <?php $action->loadEmpName(); ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInput1" class="bmd-label-floating">Chọn lớp học</label>
+                            <select class="form-control" name="class-id">
+                                <?php $action->loadFullClassName(); ?>
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -103,17 +96,17 @@ $action = new AssignmentLoader();
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInput2" class="bmd-label-floating">Niên khóa</label>
+                            <label for="exampleInput1" class="bmd-label-floating">Giáo viên hướng dẫn</label>
                             <input class="form-control" type="text"
                                    readonly="readonly">
                         </div>
                         <div class="form-group">
                             <label for="exampleInput1" class="bmd-label-floating">Tên lớp</label>
                             <input class="form-control" type="text"
-                                   readonly="readonly">
+                            readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Giáo viên hướng dẫn</label>
+                            <label for="exampleInput2" class="bmd-label-floating">Niên khóa</label>
                             <input class="form-control" type="text"
                                    readonly="readonly">
                         </div>
@@ -139,21 +132,15 @@ $action = new AssignmentLoader();
                 <div class="modal-body">
                     <form id="frmEdit" method="post">
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Niên khóa</label>
-                            <select class="form-control" name="class-year-id">
-                                <?php $action->loadClassYear(); ?>
+                            <label for="exampleInput1" class="bmd-label-floating">Giáo viên giảng dạy</label>
+                            <select class="form-control" name="emp-id">
+                                <?php $action->loadEmpName(); ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInput1" class="bmd-label-floating">Lớp học</label>
                             <select class="form-control" name="class-id">
-                                <?php $action->loadClassName(); ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Giáo viên giảng dạy</label>
-                            <select class="form-control" name="emp-id">
-                                <?php $action->loadEmpName(); ?>
+                                <?php $action->loadFullClassName(); ?>
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -222,7 +209,7 @@ $action = new AssignmentLoader();
             var tdata = $(this).closest("tr").find("td");
             var select = $("#editModal").find("select");
             $("#editModal").find(".data-tmp").val($(this).val());
-            for (var i = 1; i < tdata.length - 1; i++) {
+            for (var i = 1; i < select.length; i++) {
                 select.find("option").filter(function () {
                     return this.text == tdata.eq(i).text();
                 }).attr('selected', true);

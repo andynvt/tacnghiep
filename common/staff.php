@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -141,7 +142,7 @@
         </div>
     </div>
 </div>
-<?php include_once(" ../login/php/logout.php "); ?>
+
 <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -153,7 +154,7 @@
             </div>
 
             <div class="modal-footer">
-                <form action="logout.php" method="get">
+                <form action="/login/php/logout.php" method="get">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                     <span></span>
                     <button type="submit" class="btn btn-primary">CHẤP NHẬN</button>

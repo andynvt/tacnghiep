@@ -1,7 +1,7 @@
 <?php
-include_once(dirname(_FILE_) . '/Assignment.php');
-include_once(dirname(_FILE_) . '/PreClass.php');
-include_once(dirname(_FILE_) . '/Employee.php');
+include_once('Assignment.php');
+include_once('PreClass.php');
+include_once('Employee.php');
 
 class AssignmentLoader
 {
@@ -32,18 +32,18 @@ class AssignmentLoader
             $class_round = $i % 2 == 1 ? "btn-round" : "";
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
-            $html .= '<td>' . $value["year"] . '</td>';
-            $html .= '<td >' . $value["class_name"] . '</td>';
             $html .= '<td >' . $value["emp_name"] . '</td>';
+            $html .= '<td >' . $value["grade_name"] . ' - ' . $value["class_name"] . '</td>';
+            $html .= '<td>' . $value["year"] . '</td>';
             $html .= '<td class="td-actions text-center">';
-            $html .= '<button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple"  data-toggle="modal" data-target="#detailModal">' .
+            $html .= '<button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple ' . $class_round . '"  data-toggle="modal" data-target="#detailModal">' .
                 '<i class="material-icons">remove_red_eye</i>' .
                 '</button> ';
-            $html .= '<button type="button" rel="tooltip" title="Sửa lịch dạy"  class="btn btn-success btn-simple" value="' . $value["assign_id"] .
+            $html .= '<button type="button" rel="tooltip" title="Sửa lịch dạy"  class="btn btn-success btn-simple ' . $class_round . '" value="' . $value["assign_id"] .
                 '" data-toggle="modal" data-target="#editModal" >' .
                 '<i class="material-icons">edit</i>' .
                 '</button> ';
-            $html .= '<button type="button" rel="tooltip"title="Xoá lịch dạy" class="btn btn-danger btn-simple"   value="' . $value["assign_id"] .
+            $html .= '<button type="button" rel="tooltip"title="Xoá lịch dạy" class="btn btn-danger btn-simple ' . $class_round . '"   value="' . $value["assign_id"] .
                 '" data-toggle="modal" data-target="#deleteModal">' .
                 '<i class="material-icons">close</i>' .
                 '</button>';
@@ -70,6 +70,14 @@ class AssignmentLoader
     {
         foreach ($this->class_arr as $value) {
             echo '<option value="' . $value["class_id"] . '">' . $value["class_name"] . '</option>';
+        }
+
+    }
+
+    public function loadFullClassName()
+    {
+        foreach ($this->class_arr as $value) {
+            echo '<option value="' . $value["class_id"] . '">'. $value["grade_name"] .' - '. $value["class_name"] . '</option>';
         }
 
     }
