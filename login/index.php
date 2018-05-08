@@ -74,26 +74,32 @@
                             switch ($perm) {
                                 case 0:
                                     $_SESSION['perm'] = 0;
+                                    $_SESSION['title'] = "Admin";
                                     header('Location: http://localhost/tacnghiep/admin/index.php?menu=0');
                                     break;
                                 case 1:
                                     $_SESSION['perm'] = 1;
+                                    $_SESSION['title'] = "Ban Giám Hiệu";
                                     header('Location: http://localhost/tacnghiep/ban-giam-hieu/index.php?menu=0');
                                     break;
                                 case 2:
                                     $_SESSION['perm'] = 2;
+                                    $_SESSION['title'] = "Tổ trưởng";
                                     header('Location: http://localhost/tacnghiep/to-truong/index.php?menu=0');
                                     break;
                                 case 3:
                                     $_SESSION['perm'] = 3;
+                                    $_SESSION['title'] = "Kiểm toán";
                                     header('Location: http://localhost/tacnghiep/kiem-toan/index.php?menu=0');
                                     break;
                                 case 4:
                                     $_SESSION['perm'] = 4;
+                                    $_SESSION['title'] = "Giáo viên";
                                     header('Location: http://localhost/tacnghiep/giao-vien/index.php?menu=0');
                                     break;
                                 case 5:
                                     $_SESSION['perm'] = 5;
+                                    $_SESSION['title'] = "Bảo mẫu";
                                     header('Location: http://localhost/tacnghiep/bao-mau/index.php?menu=0');
                                     break;
                             }

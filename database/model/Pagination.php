@@ -65,6 +65,9 @@ class Pagination extends Database
 
     public function showPagination()
     {
+        if ($this->getTotalPage() == 1) {
+            return "";
+        }
         $menu = $_GET["menu"];
         $html = "<nav aria-label='navigation'><ul class='pagination justify-content-center'>";
         if ($this->getCurrentPage() >= 1 && $this->getTotalPage() > 1) {

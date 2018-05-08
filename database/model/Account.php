@@ -69,10 +69,11 @@ class Account extends Database
 
     public function insert($username, $password, $emp_id, $per_id)
     {
-        $query = "INSERT INTO $this->table (`username`, `password`, `emp_id`, `per_id`) VALUES ($username, $password, $emp_id, $per_id)";
+        $query = "INSERT INTO `account` (`username`, `password`, `emp_id`, `per_id`) VALUES ('$username', '$password', '$emp_id', '$per_id')";
         $stmt = $this->conn->query($query);
-        if ($stmt == false) echo "<script>alert('Insert failed')</script>";
-        return $stmt == true;
+        echo "<script>alert('". $query . " " . $stmt ."')</script>";
+        if ($stmt === false) echo "<script>alert('Insert failed')</script>";
+        return $stmt === true;
     }
 
     public function update($username_old, $username_new, $password, $per_id)
@@ -81,7 +82,22 @@ class Account extends Database
         $stmt = $this->conn->query($query);
         return $stmt == true;
     }
+    public function getEmpList(){
+        $data = array();
+        $sql = "SELECT `emp_id`, `emp_name` FROM `employee` WHERE emp_id NOT IN (SELECT `emp_id` FROM `account`)";
+        $q = $this->conn->query($sql) or die("failed");
+        $data = $q->fetch_assoc();
+        while ($r = $q->fetch_assoc()) {
+           array_push($data,$r);
 
+        }
+        return $data;        
+    }
+    public function getEmp($emp_id){
+        $sql = "SELECT * FROM `employee` WHERE emp_id = $emp_id";
+        $q = $this->conn->query($sql) or die("failed!");
+        $data[] = $q->fetch_assoc();
+        return $data;
+    }
 }
-
 ?>

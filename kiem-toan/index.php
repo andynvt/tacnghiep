@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once("../common/head.php"); ?>
+<?php include_once("../common/header.php"); ?>
 <?php include_once("../common/script.php"); ?>
 <body class="">
 <div class="wrapper">
@@ -28,7 +28,6 @@
         }
         ?>
         <!-- End Content -->
-
         <?php include_once("../common/footer.php"); ?>
     </div>
 </div>
