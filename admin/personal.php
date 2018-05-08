@@ -256,30 +256,3 @@
             </div>
         </div>
     </div>
-    <!--
-<script>
-    function change() // no ';' here
-    {
-        var elem = document.getElementById("#btnupdate");
-        if (elem.value == "Cập Nhật")
-            elem.value = "Lưu Lại";
-        else elem.value = "Cập Nhật";
-
-    }
-    $(document).ready(function() {
-
-        $('#btnupdate').click(function() {
-            $("input[name='empName']").removeAttr("readonly");
-            $("input[name='dob']").removeAttr("readonly");
-            $("input[name='gender']").removeAttr("readonly");
-            $("input[name='idcard']").removeAttr("readonly");
-            $("input[name='doi']").removeAttr("readonly");
-            $("input[name='hometown']").removeAttr("readonly");
-            $("input[name='address']").removeAttr("readonly");
-            $("input[name='currAddress']").removeAttr("readonly");
-            $("input[name='phone']").removeAttr("readonly");
-        });
-
-    });
-</script>
--->
