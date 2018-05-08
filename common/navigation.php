@@ -11,12 +11,10 @@
             <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form class="navbar-form">
+            <form class="navbar-form" method="POST">
                 <div class="input-group no-border">
                     <input type="text" value="" class="form-control" placeholder="Tìm kiếm...">
-                    <button type="submit" class="btn btn-white bt
-
-                    n-round btn-just-icon">
+                    <button type="button" class="btn btn-white btn-round btn-just-icon" id="filter">
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>
                     </button>
@@ -77,4 +75,19 @@
     var title = titles[perm];
     menu = menu == undefined ? 0 : menu;
     $("#title-item").text(title[menu]);
+
+    $("#filter").on('click',function(){
+        var val = $(this).prev('input').val();
+        $.ajax({
+            url: ("../common/filter.php"),
+            type: "POST",
+            data: {request:val, menu:menu, perm:perm},
+            // beforeSend: function(){
+            //     $("#filter_tbl").html("Đang tìm kiếm...");
+            // }
+            success:function(data){
+                $("#filter_tbl").html(data);
+            }
+        });
+    });
 </script>
