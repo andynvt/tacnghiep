@@ -1,24 +1,6 @@
 <?php
-    $host = "localhost";
-    $db_name = "preschool";
-    $username = "root";
-    $password = "";
-
-
-    $table_name = "employee";
-    $conn = new mysqli($host, $username, $password, $db_name);
-    if ($conn->connect_error) {
-        die($conn->connect_error());
-    }
-    mysqli_set_charset($conn, 'utf8');
-    
-    $employee = "select emp_name,dob, gender, id_card, doi, hometown, address, current_address, phone  from employee where emp_id = 10 ";
-    
-    
+    $user = $_SESSION['user']; 
 ?>
-
-
-
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -31,92 +13,69 @@
                         <div class="card-body">
                             <div class="col-12 col-sm-10 offset-sm-1">
                                 <!-- Personal pane START -->
-                                <?php
-                                                    if($result = $conn->query($employee)){
-                                                        while($row = $result->fetch_assoc()){
-                                                
-                                                ?>
-                                    <form style="width: 45%; float: left" method="post">
 
-                                        <div class="form-group">
-                                            <label class="col-form-label">Họ Tên</label>
-                                            <input class="form-control" name="empName" type="text" value="<?php echo $row['emp_name']; ?>" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Năm Sinh</label>
-                                            <input class="form-control" type="text" name="dob" value="<?php echo $row['dob']; ?>" readonly>
+                                <form style="width: 45%; float: left" method="post">
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Giới Tính</label>
-                                            <br>
-                                            <?php
-                                            if($row['gender']=='Nam'){
+                                    <div class="form-group">
+                                        <label class="col-form-label">Họ Tên</label>
+                                        <input class="form-control" name="empName" type="text" value="<?php echo $user['emp_name']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Năm Sinh</label>
+                                        <input class="form-control" type="text" name="dob" value="<?php echo $user['dob']; ?>" readonly>
 
-                                                echo '<input type="radio" name="gender" id="male" value="male" checked/>
-                                                 <label for="male">Nam</label>';
-                                                     echo '<input style="margin-left:60px;" type="radio" name="gender" id="female" value="female" />
-                                                <label for="female" >Nữ</label>';
-                                            }
-                                            else {
-                                               echo '<input type="radio" name="gender" id="male" value="male" />
-                                                 <label for="male">Nam</label>';
-                                                     echo '<input style="margin-left:60px;" type="radio" name="gender" id="female" value="female" checked/>
-                                                <label for="female" >Nữ</label>';
-                                            }
-                                           ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Giới Tính</label>
+                                        <input class="form-control" type="text" name="dob" value="<?php echo $user['gender']; ?>" readonly/>
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">CMND</label>
-                                            <input class="form-control" type="text" name="idcard" value="<?php echo $row[ 'id_card']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">CMND</label>
+                                        <input class="form-control" type="text" name="idcard" value="<?php echo $user[ 'id_card']; ?>" readonly>
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Ngày Vào</label>
-                                            <input class="form-control" type="text" name="doi" value="<?php echo $row['doi']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Ngày Vào</label>
+                                        <input class="form-control" type="text" name="doi" value="<?php echo $user['doi']; ?>" readonly>
 
-                                        </div>
+                                    </div>
 
-                                    </form>
-                                    <form style=" width: 45%; float: right;">
+                                </form>
+                                <form style=" width: 45%; float: right;">
 
 
-                                        <div class="form-group">
-                                            <label class="col-form-label">Quê Quán</label>
-                                            <input class="form-control" type="text" name="hometown" value="<?php echo $row['hometown']; ?>" readonly>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Quê Quán</label>
+                                        <input class="form-control" type="text" name="hometown" value="<?php echo $user['hometown']; ?>" readonly>
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Địa Chỉ</label>
-                                            <input class="form-control" type="text" name="address" value="<?php echo $row['address']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Địa Chỉ</label>
+                                        <input class="form-control" type="text" name="address" value="<?php echo $user['address']; ?>" readonly>
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Địa Chỉ Hiện Tại</label>
-                                            <input class="form-control" type="text" name="currAddress" value="<?php echo $row['current_address']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Địa Chỉ Hiện Tại</label>
+                                        <input class="form-control" type="text" name="currAddress" value="<?php echo $user['current_address']; ?>" readonly>
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Điện Thoại</label>
-                                            <input class="form-control" type="text" name="phone" value="<?php echo $row['phone']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Điện Thoại</label>
+                                        <input class="form-control" type="text" name="phone" value="<?php echo $user['phone']; ?>" readonly>
 
+                                    </div>
+
+                                </form>
+                                <form style="width: 100%; float:left; padding-left: 15%;">
+                                    <div class="form-group row">
+                                        <div class="offset-xs-0 offset-sm-3 col-12 col-sm-9 mt-3">
+                                            <input id="btnupdate" name="" data-action="open" type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePersonal" value="Cập Nhật">
+                                            <input id="close" data-action="open" type="button" class="btn btn-primary" value="Thoát">
                                         </div>
 
-                                    </form>
-                                    <?php
-                                                            }
-                                                        } 
-                                                        ?>
-                                        <form style="width: 100%; float:left; padding-left: 15%;">
-                                            <div class="form-group row">
-                                                <div class="offset-xs-0 offset-sm-3 col-12 col-sm-9 mt-3">
-                                                    <input id="btnupdate" name="" data-action="open" type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePersonal" value="Cập Nhật">
-                                                    <input id="close" data-action="open" type="button" class="btn btn-primary" value="Thoát">
-                                                </div>
-
-                                            </div>
-                                        </form>
+                                    </div>
+                                </form>
 
 
                             </div>
@@ -141,87 +100,104 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <?php
-                                                    if($result = $conn->query($employee)){
-                                                        while($row = $result->fetch_assoc()){
-                                                
-                                                ?>
-                        <form method="post">
-
-                            <div class="form-group">
-                                <label class="col-form-label">Họ Tên</label>
-                                <input class="form-control" name="empName" type="text" value="<?php echo $row['emp_name']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Năm Sinh</label>
-                                <input class="form-control" type="date" name="dob" value="<?php echo $row['dob']; ?>">
-
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Giới Tính</label>
-                                <br>
-                                <?php
-                                if($row['gender']=='Nam'){
-                                    
-                                    echo '<input type="radio" name="gender" id="male" value="male" checked/>
-                                     <label for="male">Nam</label>';
-                                         echo '<input style="margin-left:60px;" type="radio" name="gender" id="female" value="female" />
-                                    <label for="female" >Nữ</label>';
+                    <form method="post" id="personal">
+                        <div class="form-group">
+                            <label class="col-form-label">Họ Tên</label>
+                            <input class="form-control" name="empName" type="text" value="<?php echo $user['emp_name']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Năm Sinh</label>
+                            <input class="form-control" type="date" name="dob" value="<?php echo $user['dob']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Giới Tính</label>
+                            <br>
+                            <?php
+                                if($user['gender']=='Nam'){
+                                    echo '<input type="radio" name="gender" value="Nam" checked/>Nam
+                                     <span class="circle">
+                                        <span class="check"></span>
+                                    </span>';
+                                    echo '<input style="margin-left:60px;" type="radio" name="gender" value="Nữ" />
+                                    Nu
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>';
                                 }
                                 else {
-                                   echo '<input type="radio" name="gender" id="male" value="male" />
-                                     <label for="male">Nam</label>';
-                                         echo '<input style="margin-left:60px;" type="radio" name="gender" id="female" value="female" checked/>
-                                    <label for="female" >Nữ</label>';
+                                    echo '<input type="radio" name="gender" value="Nam"/>Nam
+                                     <span class="circle">
+                                        <span class="check"></span>
+                                    </span>';
+                                    echo '<input style="margin-left:60px;" type="radio" name="gender" value="Nữ" checked/>
+                                    Nu
+                                    <span class="circle">
+                                        <span class="check"></span>
+                                    </span>';
                                 }
-                               ?>
+                                ?>
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">CMND</label>
-                                <input class="form-control" type="text" name="idcard" value="<?php echo $row['id_card']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">CMND</label>
+                            <input class="form-control" type="text" name="idcard" value="<?php echo $user['id_card']; ?>">
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Ngày Vào</label>
-                                <input class="form-control" type="date" name="doi" value="<?php echo $row['doi']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Ngày Vào</label>
+                            <input class="form-control" type="date" name="doi" value="<?php echo $user['doi']; ?>">
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Quê Quán</label>
-                                <input class="form-control" type="text" name="hometown" value="<?php echo $row['hometown']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Quê Quán</label>
+                            <select class="form-control" name=" hometown">
+                                 <option><?php echo $user[ 'hometown']; ?></option>
+                                  <option>Bến Tre</option>
+                                  <option>Trà Vinh</option>
+                                  <option>Kiên Giang</option>
+                                  <option>Vĩnh Long</option>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Địa Chỉ</label>
+                            <select class="form-control" name=" address">
+                                 <option><?php echo $user[ 'address']; ?></option>
+                                  <option>Bến Tre</option>
+                                  <option>Trà Vinh</option>
+                                  <option>Kiên Giang</option>
+                                  <option>Vĩnh Long</option>
+                                </select>
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Địa Chỉ</label>
-                                <input class="form-control" type="text" name="address" value="<?php echo $row['address']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Địa Chỉ Hiện Tại</label>
+                            <select class="form-control" name="currAddress">
+                                    <option>
+                                        <?php echo $user['current_address']; ?>
+                                    </option>
+                                    <option>Bến Tre</option>
+                                    <option>Trà Vinh</option>
+                                    <option>Kiên Giang</option>
+                                    <option>Vĩnh Long</option>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Điện Thoại</label>
+                            <input class="form-control" type="text" name="phone" value="<?php echo $user['phone']; ?>">
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Địa Chỉ Hiện Tại</label>
-                                <input class="form-control" type="text" name="currAddress" value="<?php echo $row['current_address']; ?>">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span></span>
+                            <button type="submit" class="btn btn-primary" id="update" name="update-student">CẬP NHẬT</button>
+                        </div>
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Điện Thoại</label>
-                                <input class="form-control" type="text" name="phone" value="<?php echo $row['phone']; ?>">
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                                <span></span>
-                                <button type="button" class="btn btn-primary">CẬP NHẬT</button>
-                            </div>
-
-                        </form>
-                        <?php
-                                                            }
-                                                        } 
-                                                        ?>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -256,30 +232,3 @@
             </div>
         </div>
     </div>
-    <!--
-<script>
-    function change() // no ';' here
-    {
-        var elem = document.getElementById("#btnupdate");
-        if (elem.value == "Cập Nhật")
-            elem.value = "Lưu Lại";
-        else elem.value = "Cập Nhật";
-
-    }
-    $(document).ready(function() {
-
-        $('#btnupdate').click(function() {
-            $("input[name='empName']").removeAttr("readonly");
-            $("input[name='dob']").removeAttr("readonly");
-            $("input[name='gender']").removeAttr("readonly");
-            $("input[name='idcard']").removeAttr("readonly");
-            $("input[name='doi']").removeAttr("readonly");
-            $("input[name='hometown']").removeAttr("readonly");
-            $("input[name='address']").removeAttr("readonly");
-            $("input[name='currAddress']").removeAttr("readonly");
-            $("input[name='phone']").removeAttr("readonly");
-        });
-
-    });
-</script>
--->

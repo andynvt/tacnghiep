@@ -1,4 +1,5 @@
 function submitInsert(url, form, tbody, pagination, success_msg, failure_msg) {
+    console.log(form.serialize());
     $.ajax({
         type: "POST",
         url: url,
