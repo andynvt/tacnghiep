@@ -1,7 +1,7 @@
 <?php
-include_once("Assignment.php");
-include_once("PreClass.php");
-include_once("Employee.php");
+include_once(dirname(_FILE_) . '/Assignment.php');
+include_once(dirname(_FILE_) . '/PreClass.php');
+include_once(dirname(_FILE_) . '/Employee.php');
 
 class AssignmentLoader
 {
