@@ -1,7 +1,7 @@
 <?php
-include_once("Database.php");
+include_once("Pagination.php");
 
-class Student extends Database {
+class Student extends Pagination {
     private $table = "student";
     private $student_id = "student_id";
 
@@ -13,6 +13,11 @@ class Student extends Database {
             array_push($data, $row);
         }
         return $data;
+    }
+
+    public function pagination($limit = 10, $current_page = 1){
+        $sql = "SELECT $this->table.*, class.class_name FROM $this->table LEFT JOIN class_student on class_student.student_id = student.student_id LEFT JOIN class on class.class_id = class_student.class_id";
+        return parent::makePagination($sql, $limit, $current_page);
     }
 
     public function insert($student_name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone){

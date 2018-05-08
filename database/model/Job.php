@@ -1,4 +1,5 @@
 <?php
+include_once("Database.php");
 
 class Job extends Database
 {
@@ -27,6 +28,13 @@ class Job extends Database
         $stmt = $this->conn->query($query) or die("failed!");
         $data = $stmt->fetch_assoc();
         return $data;
+    }
+
+    public function countJobByEmp($emp_id){
+        $query = "SELECT * FROM department_employee WHERE emp_id=$emp_id";
+        $stmt = $this->conn->query($query) or die("failed!");
+        $rowcount = mysqli_num_rows($stmt);
+        return $rowcount;
     }
 }
 
