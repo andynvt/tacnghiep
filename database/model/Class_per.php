@@ -1,18 +1,33 @@
 <?php
 
-include_once("Database.php");
+include_once("Pagination.php");
 
-class Class_per extends Database
+class Class_per extends Pagination
 {
     private $table_name = "class_employee";
 
     private $table = "student";
 
-    private $student_id = "student_id";
+   
 
     function getAll(){
         $data = array();
-        $sql = "SELECT assign_id,class_employee.class_id,class_employee.emp_id,class.class_name,class.year,employee.emp_name,employee.gender FROM $this->table_name INNER JOIN class ON class_employee.class_id = class.class_id INNER JOIN employee ON class_employee.emp_id = employee.emp_id GROUP BY class_employee.class_id";
+        $sql = "SELECT class.class_id, class_employee.emp_id, class.class_name, class.year,employee.emp_name,employee.gender FROM class LEFT JOIN class_employee ON class_employee.class_id = class.class_id LEFT JOIN employee ON class_employee.emp_id = employee.emp_id GROUP BY class.class_id";
+        $q = $this->conn->query($sql) or die("failed!");
+        while ($r = $q->fetch_assoc()) {
+            array_push($data, $r);
+        }
+        return $data;
+    }
+    public function pagination($limit = 10, $current_page = 1)
+    {
+        $sql = "SELECT class.class_id, class_employee.emp_id, class.class_name, class.year,employee.emp_name,employee.gender FROM class LEFT JOIN class_employee ON class_employee.class_id = class.class_id LEFT JOIN employee ON class_employee.emp_id = employee.emp_id GROUP BY class.class_id";
+        return parent::makePagination($sql, $limit, $current_page);
+    }
+
+    function getClass(){
+        $data = array();
+        $sql = "SELECT * FROM class GROUP BY class_id";
         $q = $this->conn->query($sql) or die("failed!");
         while ($r = $q->fetch_assoc()) {
             array_push($data, $r);
@@ -60,34 +75,34 @@ class Class_per extends Database
         return $count;
     }
 
-    public function insert($student_name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone){
-        $student_id = $this->makeStudentId();
-        $query = "INSERT INTO $this->table VALUES ($student_id, '$student_name', '$dob','$gender', '$hometown', " .
-            " '$address', '$current_address', '$father_name', '$father_job', '$father_phone', '$mother_name', " .
-            " '$mother_job', '$mother_phone')";
+    public function insert($idclass, $checkBox){
+        $query = "INSERT INTO class_student(class_id, student_id) VALUES ('$idclass','$checkBox')";
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) return false;
+        else return true;
+    }    
+
+    public function delete($idclass_del, $checkBox_del){
+        $query = "DELETE FROM class_student WHERE class_student.student_id = '$checkBox_del' and class_student.class_id = '$idclass_del' ";
         $stmt = $this->conn->query($query);
         if ($stmt == false) return false;
         else return true;
     }
 
-    public function update($student_id, $student_name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone){
-        $query = "UPDATE $this->table SET `student_name`='$student_name', `dob`='$dob', `gender`='$gender', " .
-            " `hometown`='$hometown', `address`='$address', `current_address`='$current_address', `father_name`='$father_name', " .
-            " `father_job`='$father_job', `father_phone`='$father_phone', `mother_name`='$mother_name', " .
-            " `mother_job`='$mother_job', `mother_phone`='$mother_phone' WHERE `student_id` = $student_id";
-        $stmt = $this->conn->query($query);
-        if ($stmt == false) return false;
-        else return true;
-    }
+   
+    public function delete_class($idclass_delete){
+        $query0 = "DELETE FROM class_employee WHERE class_employee.class_id = '$idclass_delete'";
+        $query1 = "DELETE FROM class_student WHERE class_student.class_id = '$idclass_delete'";
+        $query2 = "DELETE FROM class WHERE class.class_id = '$idclass_delete'";
+        
 
-    public function delete($student_id){
-        $qr = "DELETE FROM class_student WHERE student_id = $student_id";
-        $query = "DELETE FROM $this->table WHERE student_id = $student_id";
-        $st = $this->conn->query($qr);
-        $stmt = $this->conn->query($query);
-        if ($stmt == false) return false;
+        $que0 = $this->conn->query($query0);
+        $que1 = $this->conn->query($query1);
+        $que2 = $this->conn->query($query2);
+        if ($que0 == false && $que1 == false && $que2 == false ) return false;
         else return true;
     }
+        
 }
 
 ?>
