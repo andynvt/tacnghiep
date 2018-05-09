@@ -1,7 +1,7 @@
 <?php
 include_once("../database/model/Student.php");
 $student = new Student();
-$getStudent = $student->getAll();
+$getStudent = $student->pagination(10,$_GET['page']);
 ?>
 <div class="content">
     <div class="container-fluid">
@@ -109,7 +109,7 @@ $getStudent = $student->getAll();
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($getStudent as $st) {
+                                foreach ($getStudent->getResult() as $st) {
                                 ?>
                                 <tr>
                                     <td>
@@ -154,6 +154,7 @@ $getStudent = $student->getAll();
                                 </tbody>
                             </table>
                         </div>
+                        <div id="pagination"><?= $getStudent->showPagination() ?></div>
                     </div>
                 </div>
             </div>
@@ -251,7 +252,7 @@ $getStudent = $student->getAll();
         </div>
     </div>
     <?php
-    foreach ($getStudent as $st) {
+    foreach ($getStudent->getResult() as $st) {
     ?>
     <div class="modal fade" id="detail-student-<?= $st["student_id"] ?>" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">

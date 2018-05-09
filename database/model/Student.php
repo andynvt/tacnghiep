@@ -1,7 +1,7 @@
 <?php
-include_once("Database.php");
+include_once("Pagination.php");
 
-class Student extends Database {
+class Student extends Pagination {
     private $table = "student";
     private $student_id = "student_id";
 
@@ -15,6 +15,10 @@ class Student extends Database {
         return $data;
     }
 
+    public function pagination($limit = 10, $current_page = 1){
+        $sql = "SELECT $this->table.*, class.class_name FROM $this->table LEFT JOIN class_student on class_student.student_id = student.student_id LEFT JOIN class on class.class_id = class_student.class_id";
+        return parent::makePagination($sql, $limit, $current_page);
+    }
     function getStudent($emp){
         $data = array();
         $sql = "SELECT $this->table.*, DATEDIFF(CURDATE(),dob) AS grade FROM student where student_id in (SELECT student_id FROM class_student WHERE class_id in (SELECT class_id FROM class WHERE class_id in (SELECT class_id FROM class_employee WHERE emp_id = $emp)))";

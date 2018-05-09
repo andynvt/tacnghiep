@@ -1,12 +1,17 @@
 <?php
 include_once("../database/model/Employee.php");
+include_once("../database/model/DepartmentEmployee.php");
 include_once("../database/model/Job.php");
+include_once("../database/model/Department.php");
 $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
 $emp = new Employee();
 $job = new Job();
-$getEmp = $emp->getAll();
+$dep = new Department();
+$dep_emp = new DepartmentEmployee();
+$getEmp = $emp->pagination(10,$_GET['page']);
 $getJob = $job->getAll();
+$getDep = $dep->getAll();
 ?>
 <div class="content">
     <div class="container-fluid">
@@ -59,16 +64,32 @@ $getJob = $job->getAll();
                         echo "<script>alertDelete(false,'Xoá nhân viên thất bại!');</script>";
                     }
                 }
-                if (isset($_POST["job-emp"])) {
-                    $id = $_POST["id"];
-                    $job_id = $_POST["job_id"];
-                    $class_id = $_POST["class_id"];
 
-                    $check = $emp->update_jc($id, $job_id, $class_id);
-                    if ($check) {
-                        echo "<script>alertEdit(true,'Cập nhật chức vụ của <b>" . $name . "</b> thành công!');</script>";
+                if (isset($_POST["job-emp"])) {
+                    $emp_id = $_POST["id"];
+                    $job_id = $_POST["job_id"];
+                    $dep_id = $_POST["dep_id"];
+                    $old_job = $_POST["old_job"];
+                    $name = $_POST["name"];
+
+                    $no = $job->countJobByEmp($emp_id);
+                    if ($no != 0) {
+                        $old_dep_emp = $dep_emp->findDepEmpByEJ($emp_id, $old_job);
+                        $dep_emp_id = $old_dep_emp[0]["dep_emp_id"];
+
+                        $check = $dep_emp->update_de($dep_emp_id, $dep_id, $job_id);
+                        if ($check) {
+                            echo "<script>alertEdit(true,'Cập nhật chức vụ của <b>" . $name . "</b> thành công!');</script>";
+                        } else {
+                            echo "<script>alertEdit(false,'Cập nhật chức vụ thất bại!');</script>";
+                        }
                     } else {
-                        echo "<script>alertEdit(false,'Cập nhật chức vụ thất bại!');</script>";
+                        $check = $dep_emp->insert_de($dep_id, $emp_id, $job_id);
+                        if ($check) {
+                            echo "<script>alertAdd(true,'Thêm chức vụ của <b>" . $name . "</b> thành công!');</script>";
+                        } else {
+                            echo "<script>alertAdd(false,'Thêm chức vụ thất bại!');</script>";
+                        }
                     }
                 }
 
@@ -110,7 +131,7 @@ $getJob = $job->getAll();
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($getEmp as $e) {
+                                foreach ($getEmp->getResult() as $e) {
                                     ?>
                                     <tr>
                                         <td>
@@ -163,6 +184,7 @@ $getJob = $job->getAll();
                                 </tbody>
                             </table>
                         </div>
+                        <div id="pagination"><?= $getEmp->showPagination()?> </div>
                     </div>
                 </div>
             </div>
@@ -244,7 +266,8 @@ $getJob = $job->getAll();
         </div>
     </div>
     <?php
-    foreach ($getEmp as $e) {
+    foreach ($getEmp->getResult() as $e) {
+        $getDepByEmp = $dep->getDepByEmp($e["emp_id"]);
         $getJobByEmp = $job->getJobByEmp($e["emp_id"]);
         ?>
         <div class="modal fade" id="job-emp-<?= $e["emp_id"] ?>" tabindex="-1" role="dialog"
@@ -262,9 +285,11 @@ $getJob = $job->getAll();
                         <form method="post">
                             <div class="form-group">
                                 <input type="hidden" name="id" value="<?= $e["emp_id"] ?>">
+                                <input type="hidden" name="name" value="<?= $e["emp_name"] ?>">
+                                <input type="hidden" name="old_job" value="<?= $getJobByEmp["job_id"] ?>">
                                 <label class="bmd-label-floating">Chọn chức vụ</label>
                                 <select class="form-control" name="job_id">
-                                    <option> --- Chọn chức vụ --- </option>
+                                    <option> --- Chọn chức vụ ---</option>
                                     <?php
                                     foreach ($getJob as $j) {
                                         if ($j["job_id"] == $getJobByEmp["job_id"]) {
@@ -275,6 +300,26 @@ $getJob = $job->getAll();
                                         } else {
                                             ?>
                                             <option value="<?= $j["job_id"] ?>"><?= $j["job_name"] ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Chọn tổ</label>
+                                <select class="form-control" name="dep_id">
+                                    <option> --- Chọn tổ ---</option>
+                                    <?php
+                                    foreach ($getDep as $d) {
+                                        if ($d["dep_id"] == $getDepByEmp["dep_id"]) {
+                                            ?>
+                                            <option value="<?= $getDepByEmp["dep_id"] ?>"
+                                                    selected><?= $getDepByEmp["dep_name"] ?></option>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <option value="<?= $d["dep_id"] ?>"><?= $d["dep_name"] ?></option>
                                             <?php
                                         }
                                     }

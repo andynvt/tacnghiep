@@ -1,7 +1,7 @@
 <?php
-include_once("Database.php");
+include_once("Pagination.php");
 
-class Employee extends Database
+class Employee extends Pagination
 {
     private $table = "employee";
     private $emp_id = "emp_id";
@@ -19,7 +19,14 @@ class Employee extends Database
         }
         return $data;
     }
-
+    public function pagination($limit = 10, $current_page = 1){
+        $sql = "SELECT employee.*, class.class_name, job.job_name, job.job_id FROM employee " .
+            "LEFT JOIN class_employee ON class_employee.emp_id = employee.emp_id " .
+            "LEFT JOIN class ON class.class_id = class_employee.class_id " .
+            "LEFT JOIN department_employee ON department_employee.emp_id = employee.emp_id " .
+            "LEFT JOIN job ON job.job_id = department_employee.job_id";
+        return parent::makePagination($sql, $limit, $current_page);
+    }
     public function insert($emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone){
         $emp_id = $this->makeEmpId();
         $query = "INSERT INTO  $this->table VALUES($emp_id, '$emp_name', '$dob', '$gender', '$id_card', '$doi', " .
@@ -44,10 +51,6 @@ class Employee extends Database
         $stmt = $this->conn->query($query);
         if ($stmt == false) return false;
         else return true;
-    }
-
-    public function update_jc($id, $job_id, $class_id){
-        $update_job = "UPDATE job SET ";
     }
 
     function getOne($emp_id)

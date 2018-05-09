@@ -23,7 +23,7 @@ include_once("../database/model/Teacher.php");
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form action="" method="post">
-                                    <table class="table table-hover">
+                                    <table class="table table-hover" id="filter_tbl">
                                         <thead class=" text-primary">
                                             <th>
                                                 Mã học sinh

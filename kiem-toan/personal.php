@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <?php
     $user = $_SESSION['user']; 
 ?>
@@ -233,3 +235,4 @@
             </div>
         </div>
     </div>
+>>>>>>> 72990df8965bce5ef083a2c80d306964750b8afa
