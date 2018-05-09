@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Đăng nhập</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -27,41 +28,42 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
 </head>
+
 <body>
-<div class="limiter">
-    <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-        <div class="wrap-login100">
-            <form class="login100-form validate-form" method="POST">
-					<span class="login100-form-logo">
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="POST">
+                    <span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
 
-                <span class="login100-form-title p-b-34 p-t-27">
+                    <span class="login100-form-title p-b-34 p-t-27">
 						MẪU GIÁO MẦM XANH
 					</span>
 
-                <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập tài khoản !">
-                    <input class="input100" type="text" name="username" placeholder="Tài khoản">
-                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
-                </div>
+                    <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập tài khoản !">
+                        <input class="input100" type="text" name="username" placeholder="Tài khoản">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập mật khẩu !">
-                    <input class="input100" type="password" name="password" placeholder="Mật khẩu">
-                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
-                </div>
+                    <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập mật khẩu !">
+                        <input class="input100" type="password" name="password" placeholder="Mật khẩu">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
 
-                <div class="contact100-form-checkbox">
-                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                    <label class="label-checkbox100" for="ckb1">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
                         Nhớ mật khẩu
                     </label>
-                </div>
+                    </div>
 
-                <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" name="dangnhap" type="submit">
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" name="dangnhap" type="submit">
                         ĐĂNG NHẬP
                     </button>
-                    <?php
+                        <?php
                     include_once("../database/model/Account.php");
                     $acc = new Account();
                     if (isset($_POST["dangnhap"])) {
@@ -74,31 +76,37 @@
                             switch ($perm) {
                                 case 0:
                                     $_SESSION['perm'] = 0;
+                                    $_SESSION['user'] = $rs;
                                     $_SESSION['title'] = "Admin";
                                     header('Location: http://localhost/tacnghiep/admin/index.php?menu=0');
                                     break;
                                 case 1:
                                     $_SESSION['perm'] = 1;
+                                    $_SESSION['user'] = $rs;
                                     $_SESSION['title'] = "Ban Giám Hiệu";
                                     header('Location: http://localhost/tacnghiep/ban-giam-hieu/index.php?menu=0');
                                     break;
                                 case 2:
                                     $_SESSION['perm'] = 2;
+                                    $_SESSION['user'] = $rs;
                                     $_SESSION['title'] = "Tổ trưởng";
                                     header('Location: http://localhost/tacnghiep/to-truong/index.php?menu=0');
                                     break;
                                 case 3:
                                     $_SESSION['perm'] = 3;
+                                    $_SESSION['user'] = $rs;
                                     $_SESSION['title'] = "Kiểm toán";
                                     header('Location: http://localhost/tacnghiep/kiem-toan/index.php?menu=0');
                                     break;
                                 case 4:
                                     $_SESSION['perm'] = 4;
+                                    $_SESSION['user'] = $rs;
                                     $_SESSION['title'] = "Giáo viên";
                                     header('Location: http://localhost/tacnghiep/giao-vien/index.php?menu=0');
                                     break;
                                 case 5:
                                     $_SESSION['perm'] = 5;
+                                    $_SESSION['user'] = $rs;
                                     $_SESSION['title'] = "Bảo mẫu";
                                     header('Location: http://localhost/tacnghiep/bao-mau/index.php?menu=0');
                                     break;
@@ -106,37 +114,38 @@
                         }
                     }
                     ?>
-                </div>
+                    </div>
 
-                <div class="text-center p-t-90">
-                    <a class="txt1" href="#">
+                    <div class="text-center p-t-90">
+                        <a class="txt1" href="#">
                         Quên mật khẩu ?
                     </a>
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 
-<div id="dropDownSelect1"></div>
+    <div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/daterangepicker/moment.min.js"></script>
-<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-<script src="js/main.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 
 </body>
+
 </html>

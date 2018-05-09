@@ -1,5 +1,5 @@
 <?php
-    $user = $_SESSION['user']; 
+    $user = $_SESSION['user'];
 ?>
     <div class="content">
         <div class="container-fluid">
@@ -18,16 +18,16 @@
 
                                     <div class="form-group">
                                         <label class="col-form-label">Họ Tên</label>
-                                        <input class="form-control" name="empName" type="text" value="<?php echo $user['emp_name']; ?>" readonly>
+                                        <input class="form-control" type="text" value="<?php echo $user['emp_name']; ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Năm Sinh</label>
-                                        <input class="form-control" type="text" name="dob" value="<?php echo $user['dob']; ?>" readonly>
+                                        <input class="form-control" type="text" value="<?php echo $user['dob']; ?>" readonly>
 
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Giới Tính</label>
-                                        <input class="form-control" type="text" name="dob" value="<?php echo $user['gender']; ?>" readonly/>
+                                        <input class="form-control" type="text" value="<?php echo $user['gender']; ?>" readonly/>
 
                                     </div>
                                     <div class="form-group">
@@ -89,7 +89,40 @@
             </div>
         </div>
     </div>
+<?php
+    $host = "localhost";
+    $db_name = "preschool";
+    $username = "root";
+    $password = "";
+    $table_name = "employee";
+    $conn = new mysqli($host, $username, $password, $db_name);
+    if ($conn->connect_error) {
+        die($conn->connect_error());
+    }
+    mysqli_set_charset($conn, 'utf8');
 
+    if (isset($_POST["update"])) {
+        $id = $user['emp_id'];
+        $emp_name = $_POST["empName"];
+        $dob = $_POST["dob"];
+        $gender = $_POST["gender"];
+        $id_card = $_POST["id_card"];
+        $doi = $_POST["doi"];
+        $hometown = $_POST["hometown"];
+        $address = $_POST["address"];
+        $current_address = $_POST["current_address"];
+        $phone = $_POST["phone"];
+
+        $query = "UPDATE employee SET `emp_name`='$emp_name', `dob`='$dob', `gender`='$gender',`id_card`='$id_card', `doi`='$doi', `hometown`='$hometown', `address`='$address',`current_address`='$current_address', `phone`='$phone' WHERE `emp_id` = $id";
+        if ($conn->query($query)===true) {
+                echo "<script>alertEdit(true,'Đã sửa <b>" . $emp_name . "</b> thành công!');</script>";
+            }
+            else {
+            echo "<script>alertEdit(false,'Sửa thông tin nhân viên thất bại!');</script>";
+        }
+    }
+
+?>
     <div class="modal fade" id="changePersonal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -119,7 +152,7 @@
                                         <span class="check"></span>
                                     </span>';
                                     echo '<input style="margin-left:60px;" type="radio" name="gender" value="Nữ" />
-                                    Nu
+                                    Nữ
                                     <span class="circle">
                                         <span class="check"></span>
                                     </span>';
@@ -130,7 +163,7 @@
                                         <span class="check"></span>
                                     </span>';
                                     echo '<input style="margin-left:60px;" type="radio" name="gender" value="Nữ" checked/>
-                                    Nu
+                                    Nữ
                                     <span class="circle">
                                         <span class="check"></span>
                                     </span>';
@@ -140,7 +173,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">CMND</label>
-                            <input class="form-control" type="text" name="idcard" value="<?php echo $user['id_card']; ?>">
+                            <input class="form-control" type="text" name="id_card" value="<?php echo $user['id_card']; ?>">
 
                         </div>
                         <div class="form-group">
@@ -171,7 +204,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Địa Chỉ Hiện Tại</label>
-                            <select class="form-control" name="currAddress">
+                            <select class="form-control" name="current_address">
                                     <option>
                                         <?php echo $user['current_address']; ?>
                                     </option>
@@ -189,7 +222,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                             <span></span>
-                            <button type="submit" class="btn btn-primary" id="update" name="update-student">CẬP NHẬT</button>
+                            <button type="submit" class="btn btn-primary" id="update" name="update">CẬP NHẬT</button>
                         </div>
 
                     </form>
