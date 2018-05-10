@@ -46,7 +46,7 @@ class Account extends Database
 
     public function login($username, $password)
     {
-        $sql = "SELECT employee.*, permission.* FROM `account` " .
+        $sql = "SELECT employee.*, permission.*, account.* FROM `account` " .
             "INNER JOIN employee ON account.emp_id=employee.emp_id " .
             "INNER JOIN permission ON permission.per_id = account.per_id " .
             "WHERE username = '$username' AND password = '$password'";

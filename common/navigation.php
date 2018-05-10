@@ -52,7 +52,7 @@
                         <i class="material-icons">person</i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href="index.html">Thông tin tài khoản</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePass" >Thông tin tài khoản</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logout">Đăng
                             xuất</a>
 
