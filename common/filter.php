@@ -9,64 +9,65 @@ include_once("../database/model/InAuditLoader.php");
 	if($_POST['request']){
 		$perm = $_POST['perm'];
 		$menu = $_POST['menu'];
+		$page = $_POST['page'];
 		$val = $_POST['request'];
+		echo $page;
+		
 		switch ($perm) {
 			case 3:
-				FilterAudit($menu,$val);
-				break;
-			case 4:
-				FilterTeacher($menu,$val);
-				break;
-
-			default: break;
-		}
-	}
-
-	function FilterTeacher($menu,$val){
-		switch ($menu) {
-			case 1:
-				$html = "";
-			 	$class_name = $_SESSION['class'];
-    			$idgv = $class_name['emp_id'];
-				$student = new Controlfilter();
-    			$filterStudent = $student->filterStudent($idgv, $val);
-    			$html .= '<thead class=" text-primary">';
-                $html .= '<th>Mã học sinh</th>';
-                $html .= '<th>Tên học sinh</th>';
-                $html .= '<th>Ngày sinh</th>';
-                $html .= '<th>Giới tính</th>';
-                $html .= '<th>Địa chỉ thường trú</th>';
-                $html .= '<th class="text-center">Chuyển lớp</th>';
-                $html .= '</thead>';
-                $html .= '<tbody>';
-                foreach ($filterStudent as $st) {
-	                $html .= '<tr class="class-style" data-toggle="modal" data-target="#stu_'.$st["student_id"].'" style="cursor: pointer">';
-	                $html .= '<td>'.$st["student_id"].'</td>';
-	                $html .= '<td>'.$st["student_name"].'</td>';
-	                $html .= '<td>'.$st["dob"].'</td>';
-	                $html .= '<td>'.$st["gender"].'</td>';
-	                $html .= '<td>'.$st["current_address"].'</td>';
-	                $html .= '<td class="td-actions text-center">';
-	                $html .= '<button type="submit" rel="tooltip" class="btn btn-success btn-simple" value="chuyển">';
-	            	$html .= '<i class="material-icons">check</i>';
-	                $html .= '</button>';
-	                $html .= '</td>';
-	                $html .= '</tr>';
-            	}
-            	$html .= '</tbody>';
-				echo $html;
-				break;
-			
-			default: break;
-		}
-	}
-
-	function FilterAudit($menu, $val){
-		switch ($menu) {
-			case 1:
-				$page = $_GET['page'] == null ? 0 : $_GET['page'];
 				$action = new InAuditLoader();
+				FilterAudit($page, $menu,$val);
+				break;
+			// case 4:
+			// 	FilterTeacher($menu,$val);
+			// 	break;
 
+			default: break;
+		}
+	}
+
+	// function FilterTeacher($menu,$val){
+	// 	switch ($menu) {
+	// 		case 1:
+	// 			$html = "";
+	// 		 	$class_name = $_SESSION['class'];
+ //    			$idgv = $class_name['emp_id'];
+	// 			$student = new Controlfilter();
+ //    			$filterStudent = $student->filterStudent($idgv, $val);
+ //    			$html .= '<thead class=" text-primary">';
+ //                $html .= '<th>Mã học sinh</th>';
+ //                $html .= '<th>Tên học sinh</th>';
+ //                $html .= '<th>Ngày sinh</th>';
+ //                $html .= '<th>Giới tính</th>';
+ //                $html .= '<th>Địa chỉ thường trú</th>';
+ //                $html .= '<th class="text-center">Chuyển lớp</th>';
+ //                $html .= '</thead>';
+ //                $html .= '<tbody>';
+ //                foreach ($filterStudent as $st) {
+	//                 $html .= '<tr class="class-style" data-toggle="modal" data-target="#stu_'.$st["student_id"].'" style="cursor: pointer">';
+	//                 $html .= '<td>'.$st["student_id"].'</td>';
+	//                 $html .= '<td>'.$st["student_name"].'</td>';
+	//                 $html .= '<td>'.$st["dob"].'</td>';
+	//                 $html .= '<td>'.$st["gender"].'</td>';
+	//                 $html .= '<td>'.$st["current_address"].'</td>';
+	//                 $html .= '<td class="td-actions text-center">';
+	//                 $html .= '<button type="submit" rel="tooltip" class="btn btn-success btn-simple" value="chuyển">';
+	//             	$html .= '<i class="material-icons">check</i>';
+	//                 $html .= '</button>';
+	//                 $html .= '</td>';
+	//                 $html .= '</tr>';
+ //            	}
+ //            	$html .= '</tbody>';
+	// 			echo $html;
+	// 			break;
+			
+	// 		default: break;
+	// 	}
+	// }
+
+	function FilterAudit($page, $menu, $val){
+		switch ($menu) {
+			case 1:
 				$html = "";
 				$inaudit = new Controlfilter();
     			$filterInAudit = $inaudit->filterInAudit($val);
@@ -88,7 +89,7 @@ include_once("../database/model/InAuditLoader.php");
 	               //  foreach ($filterInAudit as $value) {
 	               //      $html .= '<tr>';
 	               //      $html .= '<td>' . ++$i . '</td>';
-	               //      $html .= '<td>' .$value["ia_desc"]. '</td>';
+	                    // $html .= '<td>' .$value["ia_desc"]. '</td>';
 	               //      $html .= '<td>' .$value["money"]. '</td>';
 	               //      $html .= '<td>' .$value["date"]. '</td>';
 	               //      $html .= '<td class="text-primary">' .$value["payer"]. '</td>';
