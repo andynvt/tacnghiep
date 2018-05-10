@@ -17,17 +17,17 @@ $account = $_SESSION['user'];
                 <!-- End Navbar -->
                 <!-- Content -->
                 <?php
-        $menu = $_GET['menu'];
-        switch ($menu) {
-            case 0:
-            default:
-                include_once("../ban-giam-hieu/personal.php");
-                break;
-            case 1:
-                include_once("../ban-giam-hieu/group.php");
-                break;
-        }
-        ?>
+                    $menu = $_GET['menu'];
+                    switch ($menu) {
+                        case 0:
+                        default:
+                            include_once("../ban-giam-hieu/personal.php");
+                            break;
+                        case 1:
+                            include_once("../ban-giam-hieu/group.php");
+                            break;
+                    }
+                    ?>
                     <!-- End Content -->
 
                     <?php include_once("../common/footer.php"); ?>
@@ -35,7 +35,7 @@ $account = $_SESSION['user'];
         </div>
         <?php include_once("../common/staff.php"); ?>
         <?php
-        if(isset($_POST['chane']) )
+        if(isset($_POST['chane']))
         {
             session_start();
             $con=mysqli_connect("localhost","root","","preschool");

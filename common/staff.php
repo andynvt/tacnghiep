@@ -194,7 +194,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                         <span></span>
-                        <button type="submit" name="chane" class="btn btn-primary">Lưu Lại</button>
+                        <button type="submit" name="chane" class="btn btn-primary">LƯU LẠI</button>
                     </div>
                 </form>
 
@@ -215,7 +215,7 @@
             </div>
             <div class="modal-footer">
                 <form action="../login/php/logout.php" method="post">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐỂ SAU</button>
                     <span></span>
                     <button type="submit" name="confirm" class="btn btn-primary">CHẤP NHẬN</button>
                 </form>
