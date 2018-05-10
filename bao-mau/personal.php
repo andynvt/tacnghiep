@@ -108,7 +108,7 @@ if(isset($_POST["update-emp"])) {
     if($check){
         header("refresh: 0;");
         echo "<script>alertEdit(true,'Đã sửa <b>".$emp_name."</b> thành công!');</script>";
-        echo("<meta http-equiv='refresh' content='3.5'>");
+        echo("<meta http-equiv='refresh' content='1.0'>");
     }
     else{
         print_r($check);

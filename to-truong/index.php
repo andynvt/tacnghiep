@@ -90,16 +90,16 @@ if(isset($_POST['chane']) )
     $row = mysqli_fetch_array($sql);
     if(mysqli_num_rows($result) == 0)
     {
-        echo "<script>alertAdd(false,'Ban nhap sai mat khau!');</script>";
+        echo "<script>alertAdd(false,'Bạn đã nhập sai mật khẩu !');</script>";
     }
     else if($newPass!=$passwordconfirm){
         echo "<script>alertAdd(false,'Sai mật khẩu xác nhận!');</script>";
     }
     else{
         $sql=mysqli_query($con,"UPDATE account SET password='$newPass' where username='$username'");
-        echo "<script>alertAdd(true,'Đổi mật khẩu thành công ! Vui lòng đăng nhập lại ahihi !');</script>";
+        echo "<script>alertAdd(true,'Đổi mật khẩu thành công ! Hệ thống sẽ tự đông đăng xuất ! Vui lòng đăng nhập lại !');</script>";
         session_destroy();
-        echo("<meta http-equiv='refresh' content='0.5'>");
+        echo("<meta http-equiv='refresh' content='2.5'>");
         header('Location: http://localhost/tacnghiep/login');
 
     }
