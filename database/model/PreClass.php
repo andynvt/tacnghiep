@@ -26,6 +26,7 @@ class PreClass extends Database
         $data = $stmt->fetch_assoc();
         return $data;
     }
+
 }
 
 ?>

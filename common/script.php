@@ -35,10 +35,9 @@
 
     }
 
-    var oTable;
 
     function filterTable() {
-        oTable = $('#filter_tbl').DataTable({
+        var oTable = $('#filter_tbl').DataTable({
             language: {
                 "lengthMenu": "Hiển thị _MENU_",
                 "zeroRecords": "Xin lỗi - Không có nội dung để hiển thị",

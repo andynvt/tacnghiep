@@ -13,7 +13,11 @@
     <li class="nav-item active-pro">
         <a class="nav-link" href="../kiem-toan/index.php?menu=0">
             <i class="material-icons">account_circle</i>
-            <p>Cá Nhân</p>
+            <?php
+            $user = $_SESSION["user"];
+            $username = $user["emp_name"]
+            ?>
+            <p><?= $username ?></p>
         </a>
     </li>
 </ul>

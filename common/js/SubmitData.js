@@ -17,11 +17,13 @@ function submitInsert(url, form, tbody, success_msg, failure_msg) {
 }
 
 function submitEdit(url, form, tbody, success_msg, failure_msg) {
+    // console.log(form.serialize());
     $.ajax({
         type: "POST",
         url: url,
         data: form.serialize(),
         success: function (data) {
+            console.log(data);
             data = JSON.parse(data);
             if (data["success"]) {
                 alertEdit(true, success_msg);

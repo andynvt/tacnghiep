@@ -1044,7 +1044,7 @@ window.Modernizr = (function( window, document, undefined ) {
             supportsHtml5Styles = ('hidden' in a);
 
             supportsUnknownElements = a.childNodes.length == 1 || (function() {
-              // assign a false positive if unable to shiv
+              // student a false positive if unable to shiv
               (document.createElement)('a');
               var frag = document.createDocumentFragment();
               return (
@@ -1054,7 +1054,7 @@ window.Modernizr = (function( window, document, undefined ) {
               );
             }());
           } catch(e) {
-            // assign a false positive if detection fails => unable to shiv
+            // student a false positive if detection fails => unable to shiv
             supportsHtml5Styles = true;
             supportsUnknownElements = true;
           }

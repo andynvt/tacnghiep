@@ -37,11 +37,11 @@ class AssignmentLoader
             $html .= '<button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple "  data-toggle="modal" data-target="#detailModal">' .
                 '<i class="material-icons">remove_red_eye</i>' .
                 '</button> ';
-            $html .= '<button type="button" rel="tooltip" title="Sửa lịch dạy"  class="btn btn-success btn-simple " value="' . $value["assign_id"] .
+            $html .= '<button type="button" rel="tooltip" title="Sửa lịch dạy"  class="btn btn-success btn-simple " value="' . $value["student_id"] .
                 '" data-toggle="modal" data-target="#editModal" >' .
                 '<i class="material-icons">edit</i>' .
                 '</button> ';
-            $html .= '<button type="button" rel="tooltip"title="Xoá lịch dạy" class="btn btn-danger btn-simple "   value="' . $value["assign_id"] .
+            $html .= '<button type="button" rel="tooltip"title="Xoá lịch dạy" class="btn btn-danger btn-simple "   value="' . $value["student_id"] .
                 '" data-toggle="modal" data-target="#deleteModal">' .
                 '<i class="material-icons">close</i>' .
                 '</button>';

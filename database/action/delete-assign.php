@@ -3,7 +3,7 @@
 require_once("../model/Assignment.php");
 require_once("../model/AssignmentLoader.php");
 
-$assign_id = $_POST["assign-id"];
+$assign_id = $_POST["student-id"];
 
 if (!empty($assign_id)) {
     $assign = new Assignment();
