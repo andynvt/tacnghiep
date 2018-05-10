@@ -190,7 +190,7 @@
                                 <th>Họ tên phụ huynh</th>
                                 <th>SĐT phụ huynh</th>
                                 <th>Địa chỉ</th>
-                                <th class="td-actions text-cente check-add" style="padding: 0px 8px 21px 0px">
+                                <th class="td-actions text-center check-add" style="padding: 0px 8px 21px 0px">
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label ">
                                             <input class="form-check-input" type="checkbox" name="checkall" id="checkAll<?= $st["class_id"] ?>" value="option1">

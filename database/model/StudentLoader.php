@@ -45,12 +45,43 @@ class StudentLoader
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td>' . $st["student_name"] . '</td>';
             $html .= '<td>' . $st["dob"] . '</td>';
+            $html .= '<td>' . $st["gender"] . '</td>';
             $html .= '<td class="td-actions text-center">';
-            $html .= '<input type="checkbox" class="checkbox"/>';
+            $html .= '<div class="form-check form-check-inline">';
+            $html .= '<label class="form-check-label ">';
+            $html .= '<input class="form-check-input" type="checkbox">';
+            $html .= '<span class="form-check-sign">';
+            $html .= '<span class="check"></span>';
+            $html .= '</span>';
+            $html .= '</label>';
+            $html .= '</div>';
             $html .= '</td>';
             $html .= '</tr>';
         }
         return $html;
+    }
+
+    public function makeNamhoc($year)
+    {
+        $bits = explode('-', $year);
+        $begin = $bits[0];
+        $end = $bits[1];
+        $html = "";
+        if (date("Y") >= $begin && date("Y") <= $end) {
+            for ($i = 0; $i < 9; $i++) {
+                if ($i <= 3) {
+                    $m = ($i + 9) >=10 ? ($i + 9) : "0" . ($i + 9);
+                    $html .= "<option value='$i'>" . $m . "/" . $begin . "</option>";
+                } else {
+                    $m = ($i - 3) > 10 ? ($i - 3) : "0" . ($i - 3);
+                    $html .= "<option value='$i'>" . $m . "/" . $end . "</option>";
+                }
+
+
+            }
+        }
+        return $html;
+
     }
 
     public function moveClass($dob, $class, $student_id)
@@ -104,3 +135,7 @@ class StudentLoader
         return round($age / 30.4167);
     }
 }
+
+//$m = new StudentLoader();
+//$str = $m->makeNamhoc("2017-2018");
+//echo $str;

@@ -4,12 +4,12 @@ include_once("Pagination.php");
 class Assignment extends Pagination
 {
     private $table = "class_employee";
-    private $assign_id = "student_id";
+    private $assign_id = "assign_id";
 
     public function getAll()
     {
         $data = array();
-        $sql = "SELECT student_id, class.class_name, grade.grade_name, class.year, employee.emp_name FROM $this->table " .
+        $sql = "SELECT assign_id, class.class_name, grade.grade_name, class.year, employee.emp_name FROM $this->table " .
             "INNER JOIN class ON class_employee.class_id = class.class_id " .
             "INNER JOIN employee ON class_employee.emp_id = employee.emp_id " .
             "INNER JOIN grade ON class.grade_id = grade.grade_id";
@@ -22,7 +22,7 @@ class Assignment extends Pagination
 
     public function pagination($limit = 10, $current_page = 1)
     {
-        $sql = "SELECT student_id, class.class_name, grade.grade_name, class.year, employee.emp_name FROM $this->table " .
+        $sql = "SELECT assign_id, class.class_name, grade.grade_name, class.year, employee.emp_name FROM $this->table " .
             "INNER JOIN class ON class_employee.class_id = class.class_id " .
             "INNER JOIN employee ON class_employee.emp_id = employee.emp_id " .
             "INNER JOIN grade ON class.grade_id = grade.grade_id";
@@ -31,10 +31,10 @@ class Assignment extends Pagination
 
     public function getOne($assign_id)
     {
-        $sql = "SELECT student_id, class.class_name, class.year, employee.emp_name FROM $this->table " .
+        $sql = "SELECT assign_id, class.class_name, class.year, employee.emp_name FROM $this->table " .
             "INNER JOIN class ON class_employee.class_id = class.class_id " .
             "INNER JOIN employee ON class_employee.emp_id=employee.emp_id " .
-            "WHERE student_id = $assign_id";
+            "WHERE assign_id = $assign_id";
         $stmt = $this->conn->query($sql) or die("failed!");
         $data = $stmt->fetch_assoc();
         return $data;
@@ -50,7 +50,7 @@ class Assignment extends Pagination
 
     public function delete($assign_id)
     {
-        $query = "DELETE FROM $this->table WHERE student_id = $assign_id";
+        $query = "DELETE FROM $this->table WHERE assign_id = $assign_id";
         $stmt = $this->conn->query($query);
         return $stmt == true;
     }
@@ -60,7 +60,7 @@ class Assignment extends Pagination
         $count = $this->checkDuplicate($emp_id, $class_id);
         if ($count == 0) {
             $assign_id = $this->makeAssignId();
-            $query = "INSERT INTO $this->table (`student_id`, `class_id`, `emp_id`) VALUES ($assign_id, $class_id, $emp_id)";
+            $query = "INSERT INTO $this->table (`assign_id`, `class_id`, `emp_id`) VALUES ($assign_id, $class_id, $emp_id)";
             $stmt = $this->conn->query($query);
             return $stmt == true;
         } else {
@@ -70,7 +70,7 @@ class Assignment extends Pagination
 
     public function update($assign_id, $emp_id, $class_id)
     {
-        $query = "UPDATE $this->table SET  `emp_id`= $emp_id, `class_id`= $class_id WHERE `student_id` = $assign_id";
+        $query = "UPDATE $this->table SET  `emp_id`= $emp_id, `class_id`= $class_id WHERE `assign_id` = $assign_id";
         $stmt = $this->conn->query($query);
         return $stmt == true;
     }
