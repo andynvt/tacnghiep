@@ -80,33 +80,33 @@ $user = $_SESSION['user'];
     </div>
 
     <?php
-        if(isset($_POST["update-emp"])) {
-            $emp_id= $user['emp_id'];
-            $emp_name = $_POST["empname"];
-            $dob = $_POST["dob"];
-            $gender = $_POST["gender"];
-            $doi = $_POST["doi"];
-            $id_card = $_POST["idcard"];
-            $hometown = $_POST["hometown"];
-            $address = $_POST["address"];
-            $current_address = $_POST["currentaddress"];
-            $phone = $_POST["phone"];
+if(isset($_POST["update-emp"])) {
+    $emp_id= $user['emp_id'];
+    $emp_name = $_POST["empname"];
+    $dob = $_POST["dob"];
+    $gender = $_POST["gender"];
+    $doi = $_POST["doi"];
+    $id_card = $_POST["idcard"];
+    $hometown = $_POST["hometown"];
+    $address = $_POST["address"];
+    $current_address = $_POST["currentaddress"];
+    $phone = $_POST["phone"];
 
 
-            $check = $employee->update($emp_id, $emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone);
+    $check = $employee->update($emp_id, $emp_name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone);
 
-            if($check){
-                header("refresh: 0;");
-                echo "<script>alertEdit(true,'Đã sửa <b>".$emp_name."</b> thành công!');</script>";
-                echo("<meta http-equiv='refresh' content='1.0'>");
-            }
-            else{
-                print_r($check);
-                echo "<script>alertEdit(false,'Sửa thông tin học sinh thất bại!');</script>";
-            }
-        }
+    if($check){
+        header("refresh: 0;");
+        echo "<script>alertEdit(true,'Đã sửa <b>".$emp_name."</b> thành công!');</script>";
+        echo("<meta http-equiv='refresh' content='1.0'>");
+    }
+    else{
+        print_r($check);
+        echo "<script>alertEdit(false,'Sửa thông tin học sinh thất bại!');</script>";
+    }
+}
 
-    ?>
+?>
         <div class="modal fade" id="changePersonal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
