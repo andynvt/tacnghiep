@@ -2,9 +2,6 @@
 <html lang="en">
 <?php include_once("../common/header.php"); ?>
 <?php include_once("../common/script.php"); ?>
-<?php
-$account = $_SESSION['user'];
-?>
 
     <body>
         <div class="wrapper">
