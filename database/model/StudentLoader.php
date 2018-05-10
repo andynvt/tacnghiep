@@ -56,7 +56,6 @@ class StudentLoader
             $html .= '<td class="td-actions text-center">';
             $html .= '<div class="form-check form-check-inline">';
             $html .= '<label class="form-check-label">';
-            $html .= "<input type='hidden' name='id[]' " . $checked . "/>";
             $html .= "<input class='form-check-input check-box' type='checkbox' name='id[]' value='" . $stud_id . "'" . $checked . "/>";
             $html .= '<span class="form-check-sign">';
             $html .= '<span class="check"></span>';

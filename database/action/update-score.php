@@ -9,8 +9,7 @@ $score = true;
 $long = $split[1] . "-" . $split[0] . "-01";
 $student = new Student();
 foreach ($_POST["id"] as $value) {
-    $split = explode(" - ", $value);
-    $rs = $student->addScore($split[0], $long, $split[1], $class_id);
+    $rs = $student->addScore($value, $long, $score, $class_id);
 }
 $result = array("success" => $rs);
 echo json_encode($result);
