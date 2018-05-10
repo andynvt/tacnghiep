@@ -70,7 +70,7 @@ $getDep = $dep->getAll();
                                         <td class="text-center">
                                             <button type="button" rel="tooltip" title="Thêm nhân viên vào tổ"
                                                     class="btn btn-success btn-simple"
-                                                    data-toggle="modal" data-target="#add-member">
+                                                    data-toggle="modal" data-target="#add-dep-<?= $gd["dep_id"] ?>">
                                                 <i class="material-icons">add</i>
                                             </button>
                                             <button type="button" rel="tooltip" title="Chi tiết tổ"
@@ -129,8 +129,88 @@ $getDep = $dep->getAll();
 </div>
 <?php
 foreach ($getDep as $gd) {
-    $getEmp = $emp->getEmpByDepId($gd["dep_id"]);
+    $getEmpNoDep = $emp->getEmpNoDep($gd["dep_id"]);
     ?>
+    <div class="modal fade" id="add-dep-<?= $gd["dep_id"] ?>" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm nhân viên vào tổ <?= $gd["dep_name"] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead class=" text-primary">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Tên
+                        </th>
+                        <th>
+                            Giới tính
+                        </th>
+                        <th>
+                            SĐT
+                        </th>
+
+                        <th class="td-actions text-center check-add" style="padding: 0px 8px 21px 0px">
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label ">
+                                    <input class="form-check-input" type="checkbox" name="checkall"
+                                           id="checkAll<?= $gd["dep_id"] ?>" value="option1">
+                                    <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </th>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($getEmpNoDep as $ge) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <?= $ge["emp_id"] ?>
+                                </td>
+                                <td>
+                                    <?= $ge["emp_name"] ?>
+                                </td>
+                                <td>
+                                    <?= $ge["gender"] ?>
+                                </td>
+                                <td>
+                                    <?= $ge["phone"] ?>
+                                </td>
+                                <td class="td-actions text-right">
+                                    <div class="form-check ">
+                                        <label class="form-check-label check-add">
+                                            <input class="form-check-input" type="checkbox" name="ID[]" id="checkItem"
+                                                   value="<?= $gd["dep_id"] ?>">
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                                </span>
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="detail-dep-<?= $gd["dep_id"] ?>" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -210,7 +290,6 @@ foreach ($getDep as $gd) {
             </div>
         </div>
     </div>
-
 
     <div class="modal fade" id="delete-dep-<?= $gd["dep_id"] ?>" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel"
