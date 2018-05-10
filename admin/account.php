@@ -99,8 +99,7 @@ $emp_arr = $account->getEmpList();
                     <form method="post" action="#">
                         <div class="form-group">
                             <label for="emp" class="bmd-label-floating">Nhân Viên</label>
-                            <select class="form-control" id="emp" name="emp">
-                                <option value=""> </option>
+                            <select class="form-control" id="emp" name="emp" required>
                                 <?php
                                 foreach ($emp_arr as $value) {
                                     echo '<option value="'.$value["emp_id"].'">'. $value["emp_name"].'</option>';
@@ -111,17 +110,16 @@ $emp_arr = $account->getEmpList();
                         
                         <div class="form-group">
                             <label for="Account" class="bmd-label-floating">Tài Khoản</label>
-                            <input type ="text" class="form-control" id="username" name="username" value="" placeholder="Tên Tài Khoản">
+                            <input type ="text" class="form-control" id="username" name="username" value="" placeholder="Tên Tài Khoản" required>
                         </div>
                         <div class="form-group">
                             <label for="pwd" class="bmd-label-floating">Mật Khẩu</label>
-                            <input type ="password" class="form-control" id="pwd" name="pwd" value="" placeholder="Mật Khẩu">
-                            <i class="glyphicon glyphicon-eye-open form-control-feedback"></i>
+                            <input type ="password" class="form-control" id="pwd" name="pwd" value="" placeholder="Mật Khẩu" required>
+                            
                         </div>
                         <div class="form-group">
                             <label for="per" class="bmd-label-floating">Quyền Hạn</label>
-                            <select class="form-control" id="per" name="per_id">
-                                <option value=""> </option>
+                            <select class="form-control" id="per" name="per_id" required>
                                 <?php
                                 foreach ($per_arr as $value) {
                                     echo '<option value="'.$value["per_id"].'">'. $value["per_name"].'</option>';
@@ -169,7 +167,7 @@ $emp_arr = $account->getEmpList();
                                    readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Chức Vụ</label>
+                            <label for="exampleInput1" class="bmd-label-floating">Quyền Hạn</label>
                             <input class="form-control" type="text"
                                    readonly="readonly">
                         </div>
@@ -246,15 +244,15 @@ $emp_arr = $account->getEmpList();
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Tên Tài Khoản</label>
-                            <input class="form-control" type="text" name="update_username"value="<?= $acc["username"] ?>">
+                            <input class="form-control" type="text" name="update_username"value="<?= $acc["username"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Mật Khẩu</label>
-                            <input class="form-control" type="password" name="update_pwd" value="<?= $acc["password"] ?>">
+                            <input class="form-control" type="password" name="update_pwd" value="<?= $acc["password"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="per" class="bmd-label-floating">Quyền Hạn</label>
-                            <select class="form-control" id="per" name="update_per_id">
+                            <select class="form-control" id="per" name="update_per_id" required>
                                 <option value=""> </option>
                                 <?php
                                 foreach ($per_arr as $value) {
@@ -296,7 +294,7 @@ $emp_arr = $account->getEmpList();
                 </div>
                 <div class="modal-footer">
                     <form method="post">
-                        <input type="hidden" name="delete_username" value="<?= $acc["emp_id"] ?>">
+                        <input type="hidden" name="delete_username" value="<?= $acc["username"] ?>">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                         <span></span>
                         <button type="submit" class="btn btn-primary" name="delete-account">CHẤP NHẬN</button>
@@ -317,7 +315,6 @@ $emp_arr = $account->getEmpList();
         $password = $_POST["pwd"];
         $per_id = $_POST["per_id"];
         // echo "<script>alert('". $emp_id . " " . $account_name ." " . $password. " ". $per_id ."')</script>";
-        if (!empty($account) && !empty($emp_id) && !empty($password) && !empty($per_id)) {
             if($account->insert($account_name,$password,$emp_id,$per_id)){
                 echo("<meta http-equiv='refresh' content='3.5'>");
                 echo "<script>alertAdd(true,'Đã thêm tài khoản thành công!');</script>";
@@ -325,33 +322,29 @@ $emp_arr = $account->getEmpList();
             else{
                 echo "<script>alertAdd(false,'Thêm tài khoản không thành công!');</script>";
             }
-        }
-        else echo "<script>alertAdd(false,'Thêm tài khoản không thành công!');</script>";
     }
     if (isset($_POST["update-account"])){
         $emp_id = $_POST["update_manv"];
         $account_name = $_POST["update_username"];
         $password = $_POST["update_pwd"];
         $per_id = $_POST["update_per_id"];
-        if (!empty($account_name) && !empty($emp_id) && !empty($password) && !empty($per_id)) {
-            if($account->update($emp_id,$account_name,$password,$per_id)){
-                echo("<meta http-equiv='refresh' content='3.5'>");
-                echo "<script>alertAdd(true,'Đã chỉnh sửa tài khoản thành công!');</script>";
-            }
-            else{
-                echo "<script>alertAdd(false,'Chỉnh sửa tài khoản không thành công!');</script>";
-            }
+        if($account->update($emp_id,$account_name,$password,$per_id)){
+            echo("<meta http-equiv='refresh' content='3.5'>");
+            echo "<script>alertEdit(true,'Đã chỉnh sửa tài khoản thành công!');</script>";
         }
-        else echo "<script>alertAdd(false,'Chỉnh sửa tài khoản không thành công!');</script>";
+        else{
+            echo "<script>alertEdit(false,'Chỉnh sửa tài khoản không thành công!');</script>";
+        }
     }
     if (isset($_POST["delete-account"])){
-        $emp_id = $_POST["emp_id"];
-            if($account->delete($emp_id)){
+        $username = $_POST["delete_username"];
+        $check = $account->delete($username);
+            if($check){
                 echo("<meta http-equiv='refresh' content='3.5'>");
-                echo "<script>alertAdd(true,'Đã xóa tài khoản thành công!');</script>";
+                echo "<script>alertDelete(true,'Đã xóa tài khoản thành công!');</script>";
             }
             else{
-                echo "<script>alertAdd(false,'Xóa tài khoản không thành công!');</script>";
+                echo "<script>alertDelete(false,'Xóa tài khoản không thành công!');</script>";
             }
 }
 
