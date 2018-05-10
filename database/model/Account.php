@@ -99,5 +99,11 @@ class Account extends Database
         $data[] = $q->fetch_assoc();
         return $data;
     }
+    public function changePassword($password, $username)
+    {
+        $query = "UPDATE $this->table SET  `username`= $username_new, `password`= $password, `per_id` = $per_id WHERE `username` = $username_old";
+        $stmt = $this->conn->query($query);
+        return $stmt == true;
+    }
 }
 ?>
