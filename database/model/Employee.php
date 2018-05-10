@@ -68,6 +68,17 @@ class Employee extends Pagination
         return $name;
     }
 
+    public function getEmpByDepId($dep_id){
+        $data = array();
+        $query = "SELECT * FROM employee WHERE employee.emp_id in (SELECT department_employee.emp_id " .
+            "FROM department_employee WHERE department_employee.dep_id = $dep_id)";
+        $stmt = $this->conn->query($query) or die("failed!!!!!!");
+        while ($r = $stmt->fetch_assoc()) {
+            array_push($data, $r);
+        }
+        return $data;
+    }
+
 
     public function makeEmpId(){
         return parent::getMaxId($this->emp_id, $this->table) + 1;
