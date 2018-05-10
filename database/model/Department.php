@@ -102,8 +102,9 @@ class Department extends Pagination
         else return true;
     }
     public function add_tea($checkBox_del ,$idclass_del){
-        $query = "INSERT INTO department_employee(emp_id, dep_id) VALUES ('$checkBox_del','$idclass_del')";
+        $query = "INSERT INTO department_employee(emp_id, dep_id, job_id) VALUES ('$checkBox_del','$idclass_del',5)";
         $stmt = $this->conn->query($query);
+        echo $stmt;
         if ($stmt == false) return false;
         else return true;
      
