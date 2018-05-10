@@ -110,11 +110,11 @@ $emp_arr = $account->getEmpList();
                         
                         <div class="form-group">
                             <label for="Account" class="bmd-label-floating">Tài Khoản</label>
-                            <input type ="text" class="form-control" id="username" name="username" value="" placeholder="Tên Tài Khoản" required>
+                            <input type ="text" class="form-control" id="username" name="username" value="" required>
                         </div>
                         <div class="form-group">
                             <label for="pwd" class="bmd-label-floating">Mật Khẩu</label>
-                            <input type ="password" class="form-control" id="pwd" name="pwd" value="" placeholder="Mật Khẩu" required>
+                            <input type ="password" class="form-control" id="pwd" name="pwd" value="" required>
                             
                         </div>
                         <div class="form-group">
