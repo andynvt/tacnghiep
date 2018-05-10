@@ -36,7 +36,7 @@ $empLoader = new EmployeeLoader();
             </div>
             <div class="modal-body">
                 <form method="post" id="personal">
-                    <input value="<?php echo $user['emp_id']; ?>" type="hidden " name="empId">
+                    <input value="<?php echo $user['emp_id']; ?>" id="id" hidden name="empId">
                     <div class="form-group">
                         <label class="col-form-label">Họ Tên</label>
                         <input class="form-control" name="empName" type="text" value="<?php echo $user['emp_name']; ?>">
@@ -85,9 +85,10 @@ $empLoader = new EmployeeLoader();
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Quê Quán</label>
-                        <select class="form-control" name=" hometown">
+                        <select class="form-control" name=" address">
                             <option><?php echo $user['hometown']; ?></option>
                             <option>Bến Tre</option>
+                            <option>Cần Thơ</option>
                             <option>Trà Vinh</option>
                             <option>Kiên Giang</option>
                             <option>Vĩnh Long</option>
@@ -98,6 +99,7 @@ $empLoader = new EmployeeLoader();
                         <select class="form-control" name=" address">
                             <option><?php echo $user['address']; ?></option>
                             <option>Bến Tre</option>
+                            <option>Cần Thơ</option>
                             <option>Trà Vinh</option>
                             <option>Kiên Giang</option>
                             <option>Vĩnh Long</option>
@@ -111,6 +113,7 @@ $empLoader = new EmployeeLoader();
                                 <?php echo $user['current_address']; ?>
                             </option>
                             <option>Bến Tre</option>
+                            <option>Cần Thơ</option>
                             <option>Trà Vinh</option>
                             <option>Kiên Giang</option>
                             <option>Vĩnh Long</option>
@@ -119,7 +122,6 @@ $empLoader = new EmployeeLoader();
                     <div class="form-group">
                         <label class="col-form-label">Điện Thoại</label>
                         <input class="form-control" type="text" name="phone" value="<?php echo $user['phone']; ?>">
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
@@ -127,9 +129,7 @@ $empLoader = new EmployeeLoader();
                         <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-update-info"
                                 name="update">CẬP NHẬT
                         </button>
-
                     </div>
-
                 </form>
             </div>
         </div>
