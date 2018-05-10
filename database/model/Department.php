@@ -85,14 +85,14 @@ class Department extends Pagination
     }
 
 
-    public function delete_tea($idclass_del, $checkBox_del){
-        $query = "DELETE FROM department_employee WHERE  department_employee.emp_id = '$idclass_del' and department_employee.dep_id = '$checkBox_del'  ";
+    public function delete_tea( $checkBox_del, $idclass_del){
+        $query = "DELETE FROM department_employee WHERE  department_employee.emp_id = '$checkBox_del' and department_employee.dep_id = '$idclass_del'  ";
         $stmt = $this->conn->query($query);
         if ($stmt == false) return false;
         else return true;
     }
-    public function add_tea($idclass_del, $checkBox_del){
-        $query = "INSERT INTO department_employee(emp_id, dep_id) VALUES ('$idclass_del','$checkBox_del')";
+    public function add_tea($checkBox_del ,$idclass_del){
+        $query = "INSERT INTO department_employee(emp_id, dep_id) VALUES ('$checkBox_del','$idclass_del')";
         $stmt = $this->conn->query($query);
         if ($stmt == false) return false;
         else return true;

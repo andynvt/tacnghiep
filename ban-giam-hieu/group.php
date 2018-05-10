@@ -28,19 +28,19 @@ $getDep = $dep->getAll();
                         echo "<script>alertAdd(true,'Đã thêm <b>" . $name . "</b> thành công!');</script>";
                         echo("<meta http-equiv='refresh' content='3.5'>");
                     } else {
-                        echo "<script>alertAdd(false,'Thêm nhân viên thất bại!');</script>";
+                        echo "<script>alertAdd(false,'Thêm tổ thất bại!');</script>";
                     }
                 }
                 if (isset($_POST["delete-dep"])) {
                     $dep_id = $_POST["id"];
                     $dep_name = $_POST["name"];
 
-                    $check = $dep->delete($id);
+                    $check = $dep->delete($dep_id);
                     if ($check) {
-                        echo "<script>alertAdd(true,'Đã thêm <b>" . $name . "</b> thành công!');</script>";
+                        echo "<script>alertAdd(true,'Đã xoá <b>" . $dep_name . "</b> thành công!');</script>";
                         echo("<meta http-equiv='refresh' content='3.5'>");
                     } else {
-                        echo "<script>alertAdd(false,'Thêm nhân viên thất bại!');</script>";
+                        echo "<script>alertAdd(false,'Xoá tổ thất bại!');</script>";
                     }
                 }
 
@@ -210,12 +210,11 @@ foreach ($getDep as $gd) {
                                     <div class="form-check ">
                                         <label class="form-check-label check-add">
                                             <input class="form-check-input" type="checkbox" name="ID[]" id="checkItem"
-                                                   value="<?= $gd["dep_id"] ?>">
+                                                   value="<?= $ge["emp_id"] ?>">
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                                 </span>
                                         </label>
-                                        <input hidden  name="id_del[]" value="<?= $ge["emp_id"] ?>" >
                                     </div>
                                 </td>
 
@@ -225,6 +224,8 @@ foreach ($getDep as $gd) {
                         ?>
                         </tbody>
                     </table>
+                    <input hidden  name="id_del" value="<?= $gd["dep_id"] ?>" >
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
@@ -299,12 +300,12 @@ foreach ($getDep as $gd) {
 
                                         <label class="form-check-label check-add">
                                             <input class="form-check-input" type="checkbox" name="IDDE[]" id="checkItem"
-                                                   value="<?= $gd["dep_id"]?>">
+                                                   value="<?= $ge["emp_id"]?>">
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                                 </span>
                                         </label>
-                                        <input hidden  name="idclass_del[]" value="<?= $ge["emp_id"] ?>" >
+                                        <input hidden  name="idclass_del" value="<?= $gd["dep_id"] ?>" >
 
                                     </div>
                                 </td>
@@ -366,25 +367,25 @@ foreach ($getDep as $gd) {
 
 <?php 
 if(isset($_POST['add-tea']))
-{   
+{
     $checkBox_del = implode(',', $_POST['ID']);
-    $idclass_del = implode(',', $_POST['id_del']);              
+    $idclass_del = $_POST['id_del'];
+
     $pops = explode(',', $checkBox_del);
-    $idclass_del1 = explode(',', $idclass_del);
-    // print_r($checkBox_del);
+    echo $idclass_del;
     foreach ($pops as $pop ){
-        foreach ($idclass_del1 as $popl ){
-        $check_del = $dep->add_tea($popl, $pop);   
-        }
+
+        $check_del = $dep->add_tea($pop,$idclass_del );
+
     }
     if($check_del){
-            // echo("<meta http-equiv='refresh' content='1.5'>");
-            echo "<script>alertAdd(true,'Đã xóa thành công!');</script>";
-            // header("refresh: 0;");
+             echo("<meta http-equiv='refresh' content='1.5'>");
+            echo "<script>alertAdd(true,'Đã thêm thành công!');</script>";
+             header("refresh: 0;");
         }
         else{
             // echo("<meta http-equiv='refresh' content='1.5'>");
-            echo "<script>alertAdd(false,'Xóa học sinh thất bại!');</script>";
+            echo "<script>alertAdd(false,'Thêm học sinh thất bại!');</script>";
             // header("refresh: 0;");
         }
 }
@@ -394,19 +395,16 @@ if(isset($_POST['add-tea']))
 if(isset($_POST['del-tea']))
 {   
     $checkBox_del = implode(',', $_POST['IDDE']);
-    $idclass_del = implode(',', $_POST['idclass_del']);              
+    $idclass_del = $_POST['idclass_del'];
     $pops = explode(',', $checkBox_del);
-    $idclass_del1 = explode(',', $idclass_del);
-    // print_r($checkBox_del);
     foreach ($pops as $pop ){
-        foreach ($idclass_del1 as $popl ){
-        $check_del = $dep->delete_tea($popl, $pop);   
-        }
+        $check_del = $dep->delete_tea( $pop,$idclass_del);
+
     }
     if($check_del){
-            // echo("<meta http-equiv='refresh' content='1.5'>");
+             echo("<meta http-equiv='refresh' content='1.5'>");
             echo "<script>alertAdd(true,'Đã xóa thành công!');</script>";
-            // header("refresh: 0;");
+             header("refresh: 0;");
         }
         else{
             // echo("<meta http-equiv='refresh' content='1.5'>");
