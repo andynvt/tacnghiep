@@ -1,10 +1,10 @@
 <?php
-    include_once("Database.php");
+include_once("Database.php");
 class Account extends Database
 {
     private $table = "account";
-    private $username = "user";
-    private $pwd = "user";
+    private $username;
+    private $pwd;
     private $emp_id;
     private $per_name;
     public function getAll()
@@ -27,16 +27,13 @@ class Account extends Database
     public function getAccountDetail()
     {
         $data = array();
-        $sql = "SELECT employee.emp_id, employee.emp_name, username, permission.per_name 
+        $sql = "SELECT employee.emp_id, employee.emp_name, username, password, permission.per_name 
                 FROM employee
-                LEFT JOIN account ON employee.emp_id = account.emp_id
-                LEFT JOIN permission ON account.per_id = permission.per_id";
+                JOIN account ON employee.emp_id = account.emp_id
+                JOIN permission ON account.per_id = permission.per_id";
         $q = $this->conn->query($sql) or die ("failed!");
         while ($r = $q->fetch_assoc()) {
-            if ($r['username'] === NULL) {
-                array_push($data, $r['emp_id'], $r['emp_name'], "Chưa có", "Chưa có");
-            } else {
-                array_push($data, $r['emp_id'], $r['emp_name'], $r['username'], $r['per_name']);
+            array_push($data, $r);
             }
         }
         return $data;
@@ -53,7 +50,7 @@ class Account extends Database
     }
     public function delete($username)
     {
-        $query = "DELETE FROM $this->table WHERE username = $username";
+        $query = "DELETE FROM $this->table WHERE username = '$username'";
         $stmt = $this->conn->query($query);
         if ($stmt == false) echo "<script>alert('Delete failed')</script>";
         return $stmt == true;
@@ -62,13 +59,13 @@ class Account extends Database
     {
         $query = "INSERT INTO `account` (`username`, `password`, `emp_id`, `per_id`) VALUES ('$username', '$password', '$emp_id', '$per_id')";
         $stmt = $this->conn->query($query);
-        echo "<script>alert('". $query . " " . $stmt ."')</script>";
+        // echo "<script>alert('". $query . " " . $stmt ."')</script>";
         if ($stmt === false) echo "<script>alert('Insert failed')</script>";
         return $stmt === true;
     }
-    public function update($username_old, $username_new, $password, $per_id)
+    public function update($emp_id, $username, $password, $per_id)
     {
-        $query = "UPDATE $this->table SET  `username`= $username_new, `password`= $password, `per_id` = $per_id WHERE `username` = $username_old";
+        $query = "UPDATE $this->table SET  `username`= '$username', `password`= '$password', `per_id` = $per_id WHERE `emp_id` = '$emp_id'";
         $stmt = $this->conn->query($query);
         return $stmt == true;
     }
