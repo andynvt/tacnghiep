@@ -19,7 +19,19 @@ class Employee extends Pagination
         }
         return $data;
     }
-
+    function getOne_emp(){
+        $data = array();
+        $query = "SELECT employee.*, class.class_name, job.job_name, job.job_id FROM employee " .
+            "LEFT JOIN class_employee ON class_employee.emp_id = employee.emp_id " .
+            "LEFT JOIN class ON class.class_id = class_employee.class_id " .
+            "LEFT JOIN department_employee ON department_employee.emp_id = employee.emp_id " .
+            "LEFT JOIN job ON job.job_id = department_employee.job_id ";
+        $stmt = $this->conn->query($query) or die("failed!");
+        while ($r = $stmt->fetch_assoc()) {
+            array_push($data, $r);
+        }
+        return $data;
+    }
     public function pagination($limit = 10, $current_page = 1){
         $sql = "SELECT employee.*, class.class_name, job.job_name, job.job_id FROM employee " .
             "LEFT JOIN class_employee ON class_employee.emp_id = employee.emp_id " .
