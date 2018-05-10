@@ -154,7 +154,7 @@
             </div>
 
             <div class="modal-footer">
-                <form action="../login/php/logout.php" method="get">
+                <form action="logout.php" method="post">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                     <span></span>
                     <button type="submit" class="btn btn-primary">CHẤP NHẬN</button>

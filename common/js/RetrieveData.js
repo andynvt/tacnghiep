@@ -1,11 +1,11 @@
-function retrieve(data) {
+function retrieve(data, url, callback) {
+    console.log(data);
     $.ajax({
         type: "POST",
-        url: "../php/retrieve.php",
-        dataType: "json",
-        data: {data: data},
+        url: url,
+        data: data,
         success: function (data) {
-            return JSON.parse(data);
+            callback(JSON.parse(data)) ;
         }
     });
 }

@@ -20,7 +20,7 @@ $action = new InAuditLoader();
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="filter_tbl">
                                 <thead class=" text-primary">
                                 <th>
                                     Số thứ tự

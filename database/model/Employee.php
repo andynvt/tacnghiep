@@ -19,6 +19,7 @@ class Employee extends Pagination
         }
         return $data;
     }
+
     public function pagination($limit = 10, $current_page = 1){
         $sql = "SELECT employee.*, class.class_name, job.job_name, job.job_id FROM employee " .
             "LEFT JOIN class_employee ON class_employee.emp_id = employee.emp_id " .
@@ -44,6 +45,7 @@ class Employee extends Pagination
         if ($stmt == false) return false;
         else return true;
     }
+
     public function delete($emp_id){
         $qr = "DELETE FROM department_employee WHERE emp_id = $emp_id";
         $query = "DELETE FROM $this->table WHERE emp_id = $emp_id";

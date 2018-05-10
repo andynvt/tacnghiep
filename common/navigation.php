@@ -55,6 +55,7 @@
                         <a class="dropdown-item" href="index.html">Thông tin tài khoản</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logout">Đăng
                             xuất</a>
+
                     </div>
                 </li>
             </ul>
@@ -64,10 +65,12 @@
 <script>
     var perm = "<?=$_SESSION['perm']?>";
     var menu = "<?=$_GET['menu']?>";
+    var page = "<?=$_GET['page'] == null ? 0 : $_GET['page']?>";
+
     var title_admin = ["THÔNG TIN CÁ NHÂN", "PHÂN QUYỀN", "TÀI KHOẢN"];
     var title_bangiamhieu = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ NHÂN VIÊN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ TỔ", "QUẢN LÝ LỚP HỌC", "PHÂN CÔNG GIẢNG DẠY", "QUẢN LÝ TÀI CHÍNH"];
     var title_baomau = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ HỌC SINH"];
-    var title_giaovien = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ HỌC SINH"];
+    var title_giaovien = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ LỚP HỌC"];
     var title_kiemtoan = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ TÀI CHÍNH"];
     var title_totruong = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ TỔ"];
     var titles = [title_admin, title_bangiamhieu, title_totruong, title_kiemtoan, title_giaovien, title_baomau];
@@ -75,16 +78,16 @@
     menu = menu == undefined ? 0 : menu;
     $("#title-item").text(title[menu]);
 
-    $("#filter").on('click', function () {
+    $("#filter").on('click',function(){
         var val = $(this).prev('input').val();
         $.ajax({
             url: ("../common/filter.php"),
             type: "POST",
-            data: {request: val, menu: menu, perm: perm},
+            data: {request:val, menu:menu, perm:perm, page:page},
             // beforeSend: function(){
             //     $("#filter_tbl").html("Đang tìm kiếm...");
             // }
-            success: function (data) {
+            success:function(data){
                 $("#filter_tbl").html(data);
             }
         });
