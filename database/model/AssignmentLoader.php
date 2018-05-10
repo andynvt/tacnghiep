@@ -77,7 +77,7 @@ class AssignmentLoader
     public function loadFullClassName()
     {
         foreach ($this->class_arr as $value) {
-            echo '<option value="' . $value["class_id"] . '">'. $value["grade_name"] .' - '. $value["class_name"] . '</option>';
+            echo '<option value="' . $value["class_id"] . '">' . $value["grade_name"] . ' (' . $value["class_name"] . ') -  Niên Khóa: ' . $value["year"] . '</option>';
         }
 
     }

@@ -48,8 +48,6 @@ $getStudent = $student->pagination(10,$_GET['page']);
                     $check = $student->update($id, $name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone);
 
                     if($check){
-//                        echo '<meta http-equiv="refresh" content="0;url=http://localhost/tacnghiep/ban-giam-hieu/index.php?menu=2">';
-//                        sleep(2);
                         echo "<script>alertEdit(true,'Đã sửa <b>".$name."</b> thành công!');</script>";
                     }
                     else{
