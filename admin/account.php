@@ -24,11 +24,10 @@ $emp_arr = $account->getEmpList();
                 <div class="card">
                     <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #ab47bc, #8e24aa)">
                         <h4 class="card-title ">Danh sách tài khoản</h4>
-                        <!--                                    <p class="card-category"> Here is a subtitle for this table</p>-->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="filter_tbl">
                                 <thead class=" text-primary">
                                 <th>
                                     Mã Nhân Viên

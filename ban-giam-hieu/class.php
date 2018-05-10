@@ -9,7 +9,7 @@
 
     include_once("../database/model/Class_per.php");
     $class_per = new Class_per();    
-    $getClass = $class_per->pagination(10,$_GET['page']);
+    $getClass = $class_per->getAll();
     $getEmp_name = $class_per->getEMP_Name();
     $getStudent_Name = $class_per->getStudent_Name();
     $getStudent_all = $class_per->getStudent_all();
@@ -27,7 +27,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="filter_tbl">
                                 <thead class=" text-primary">
                                 <th>
                                     STT
@@ -55,7 +55,7 @@
                                     
                                     <?php
                                         $i=0;
-                                        foreach ($getClass->getResult()  as $st) {
+                                        foreach ($getClass as $st) {
                                     ?>
                                 <tr>
                                     <td>
@@ -108,7 +108,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?=$getClass->showPagination()?></div>
                     </div>
                 </div>
             </div>
@@ -165,7 +164,7 @@
 </div>
 
 <?php
-    foreach ($getClass->getResult() as $st) {
+    foreach ($getClass as $st) {
 ?>
 
 <div class="modal fade" id="add-class-<?= $st["class_id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -373,8 +372,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                <span></span>
-                <!-- <button type="submit" class="btn btn-danger" name="Delete-class">CHẤP NHẬN</button> -->
             </div>
             <?php
             }else{?>
@@ -388,7 +385,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                 <span></span>
-                <button type="submit" class="btn btn-danger" name="Delete-class">CHẤP NHẬN</button>
+                <button type="submit" class="btn btn-primary" name="Delete-class">CHẤP NHẬN</button>
             </div>
            <?php 
             }
@@ -419,9 +416,7 @@
                     echo "<script>alertAdd(true,'Đã thêm thành công!');</script>";   
                 }
                 else{
-                    // echo("<meta http-equiv='refresh' content='2.5'>");
                     echo "<script>alertAdd(false,'Thêm học sinh thất bại!');</script>";
-                    // header("refresh: 0;");
                 }
         }
     ?>
@@ -432,7 +427,6 @@
             $checkBox_del = implode(',', $_POST['IDDEL']);
             $idclass_del = $_POST['idclass_del'];               
             $pops = explode(',', $checkBox_del);
-            // print_r($checkBox_del);
             foreach ($pops as $pop )
             {
                 $check_del = $class_per->delete($idclass_del, $pop);   
@@ -443,9 +437,7 @@
                     header("refresh: 0;");
                 }
                 else{
-                    // echo("<meta http-equiv='refresh' content='1.5'>");
                     echo "<script>alertAdd(false,'Xóa học sinh thất bại!');</script>";
-                    // header("refresh: 0;");
                 }
         }
     ?>
@@ -462,9 +454,7 @@
                     header("refresh: 0;");
                 }
                 else{
-                    // echo("<meta http-equiv='refresh' content='1.5'>");
                     echo "<script>alertAdd(false,'Xóa học sinh thất bại!');</script>";
-                    // header("refresh: 0;");
                 }
         }
     ?>
@@ -472,7 +462,7 @@
 <!--    End Modal-->
 <script>
     <?php
-        foreach ($getClass->getResult() as $st) {
+        foreach ($getClass as $st) {
     ?>
     $("#checkAll<?= $st["class_id"] ?>").click(function () {
         $('input:checkbox').not(this).prop('checked', this.checked);
@@ -484,7 +474,7 @@
 
 <script>
     <?php
-        foreach ($getClass->getResult() as $st) {
+        foreach ($getClass as $st) {
     ?>
     $("#checkAll_del<?= $st["class_id"] ?>").click(function () {
         $('input:checkbox').not(this).prop('checked', this.checked);

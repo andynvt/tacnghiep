@@ -9,7 +9,7 @@ $emp = new Employee();
 $job = new Job();
 $dep = new Department();
 $dep_emp = new DepartmentEmployee();
-$getEmp = $emp->pagination(10,$_GET['page']);
+$getEmp = $emp->getAll();
 $getJob = $job->getAll();
 $getDep = $dep->getAll();
 ?>
@@ -115,7 +115,7 @@ $getDep = $dep->getAll();
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover" id="tb-emp">
+                            <table class="table table-hover" id="filter_tbl">
                                 <thead class=" text-primary">
                                 <th>
                                     ID
@@ -138,7 +138,7 @@ $getDep = $dep->getAll();
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($getEmp->getResult() as $e) {
+                                foreach ($getEmp as $e) {
                                     ?>
                                     <tr>
                                         <td>
@@ -191,7 +191,6 @@ $getDep = $dep->getAll();
                                 </tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?= $getEmp->showPagination()?> </div>
                     </div>
                 </div>
             </div>
@@ -273,7 +272,7 @@ $getDep = $dep->getAll();
         </div>
     </div>
     <?php
-    foreach ($getEmp->getResult() as $e) {
+    foreach ($getEmp as $e) {
         $getDepByEmp = $dep->getDepByEmp($e["emp_id"]);
         $getJobByEmp = $job->getJobByEmp($e["emp_id"]);
         ?>

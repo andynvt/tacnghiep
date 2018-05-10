@@ -6,7 +6,6 @@ $page = $_GET['page'] == null ? 0 : $_GET['page'];
 $dep = new Department();
 $emp = new Employee();
 $depEmp = new DepartmentEmployee();
-//$getDep = $department->pagination(10,$_GET['page']);
 $getDep = $dep->getAll();
 ?>
 
@@ -52,7 +51,7 @@ $getDep = $dep->getAll();
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="filter_tbl">
                                 <thead class="text-primary">
                                 <th>
                                     ID
@@ -162,7 +161,7 @@ foreach ($getDep as $gd) {
                 </div>
                 <form method="post">
                 <div class="modal-body">
-                    <table class="table">
+                    <table class="table" id="filter_tbl">
                         <thead class=" text-primary">
                         <th>
                             ID
@@ -342,18 +341,43 @@ foreach ($getDep as $gd) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form method="post">
+
                 <div class="modal-body">
-                    <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xoá tổ <b><?= $gd["dep_name"] ?></b> ?</p>
-                </div>
-                <div class="modal-footer">
-                    <form method="post">
-                        <input type="hidden" name="id" value="<?= $gd["dep_id"] ?>">
-                        <input type="hidden" name="name" value="<?= $gd["dep_name"] ?>">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                        <span></span>
-                        <button type="submit" class="btn btn-primary" name="delete-dep">CHẤP NHẬN</button>
-                    </form>
-                </div>
+                    <?php
+                    if( $depEmp->countEmpByDepId($gd["dep_id"])!= 0){?>
+                        <div class="modal-body">
+                            <p>Thao tác này không thể thực hiện !!!<br>Lớp học còn <b><?=$depEmp->countEmpByDepId($gd["dep_id"])?></b> học sinh !!!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" value="<?= $gd["dep_id"] ?>">
+                            <input type="hidden" name="name" value="<?= $gd["dep_name"] ?>">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span></span>
+<!--                            <button type="submit" class="btn btn-primary" name="delete-dep">CHẤP NHẬN</button>-->
+                        </div>
+                        <?php
+                    }else{?>
+                        <div class="modal-body">
+
+
+                            <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa trường này ?</p>
+<!--                            <input hidden  name="idclass_delete" value="--><?//= $st["class_id"] ?><!--" >-->
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" value="<?= $gd["dep_id"] ?>">
+                            <input type="hidden" name="name" value="<?= $gd["dep_name"] ?>">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
+                            <span></span>
+                            <button type="submit" class="btn btn-primary" name="delete-dep">CHẤP NHẬN</button>
+                        </div>
+                        <?php
+                    }
+                    ?>                </div>
+
+                </form>
+
             </div>
         </div>
     </div>
