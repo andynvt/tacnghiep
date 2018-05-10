@@ -62,7 +62,7 @@ class Employee extends Pagination
         $data = $stmt->fetch_assoc();
         return $data;
     }
-    
+
     function loadNameByID($id){
         $name = $this->getOne($id)["emp_name"];
         return $name;

@@ -55,12 +55,13 @@ class Account extends Database
         return $data;
     }
 
-    public function delete($emp_id)
+    public function delete($username)
     {
-        $query = "DELETE FROM $this->table WHERE `emp_id` = '$emp_id'";
+        $query = "DELETE FROM $this->table WHERE `username` = '$username'";
         $stmt = $this->conn->query($query);
-        if ($stmt == false) echo "<script>alert('Delete failed')</script>";
-        return $stmt == true;
+        echo "<script>$query</script>";
+        if ($stmt === false) echo "<script>alert('Delete failed')</script>";
+        return $stmt === true;
     }
 
     public function insert($username, $password, $emp_id, $per_id)
@@ -76,7 +77,7 @@ class Account extends Database
     {
         $query = "UPDATE $this->table SET  `username`= '$username', `password`= '$password', `per_id` = '$per_id' WHERE `emp_id` = '$emp_id'";
         $stmt = $this->conn->query($query);
-        return $stmt == true;
+        return $stmt === true;
     }
     public function getEmpList(){
         $data = array();

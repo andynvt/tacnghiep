@@ -18,7 +18,7 @@ include_once("../database/model/Teacher.php");
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #ab47bc, #8e24aa)">
-                            <h4 class="card-title ">Bảng quản lý học sinh lớp <?= $class; ?></h4>
+                            <h4 class="card-title ">Danh sách học sinh lớp <?= $class; ?></h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -40,15 +40,10 @@ include_once("../database/model/Teacher.php");
                                             <th>
                                                 Địa chỉ thường trú
                                             </th>
-                                            <th class="text-center">
-                                                Chuyển lớp
-                                            </th>
                                         </thead>
                                         <tbody>
                                             <?php
                                                 foreach ($getStudent as $st) {
-                                                    // if($st["days"] >= 420 and $st["days"] <= 720){
-                                                    // }
                                             ?>
                                             <tr class="class-style" data-toggle="modal" data-target='#stu_<?= $st["student_id"]; ?>' style="cursor: pointer">
                                                 <td>
@@ -65,9 +60,6 @@ include_once("../database/model/Teacher.php");
                                                 </td>
                                                 <td>
                                                     <?= $st["current_address"]; ?>
-                                                </td>
-                                                <td class="td-actions text-center">
-                                                    <button type="submit" rel="tooltip" class="btn btn-success btn-simple" value="chuyển"><i class="material-icons">check</i></button>
                                                 </td>
                                             </tr>
                                             <?php }?>
@@ -95,70 +87,67 @@ include_once("../database/model/Teacher.php");
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Mã học sinh</label>
-                            <input class="form-control" type="text" value="<?= $st['student_id']; ?>" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput2" class="bmd-label-floating">Tên học sinh</label>
-                            <input class="form-control" type="text" value="<?= $st['student_name']; ?>" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Ngày sinh</label>
-                            <input class="form-control" type="date" value="<?= $st['dob']; ?>" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Giới tính</label>
-                            <input class="form-control" type="text" value="<?= $st['gender']; ?>" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Quê quán</label>
-                            <input class="form-control" type="text" value="<?= $st['hometown']; ?>" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Địa chỉ</label>
-                            <input class="form-control" type="text" value="<?= $st['address']; ?>" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Địa chỉ thường trú</label>
-                            <input class="form-control" type="text" value="<?= $st['current_address']; ?>" readonly="readonly">
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="exampleInput1" class="bmd-label-floating">Tên cha</label>
-                                    <input class="form-control" type="text" value="<?= $st['father_name']; ?>" readonly="readonly">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInput1" class="bmd-label-floating">Nghề của cha</label>
-                                    <input class="form-control" type="text" value="<?= $st['father_job']; ?>" readonly="readonly">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInput1" class="bmd-label-floating">Số điện thoại cha</label>
-                                    <input class="form-control" type="number" value="<?= $st['father_phone']; ?>" readonly="readonly">
-                                </div>
+                    <div class="form-group">
+                        <label for="exampleInput1" class="bmd-label-floating">Mã học sinh</label>
+                        <input class="form-control" type="text" value="<?= $st['student_id']; ?>" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInput2" class="bmd-label-floating">Tên học sinh</label>
+                        <input class="form-control" type="text" value="<?= $st['student_name']; ?>" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Ngày sinh</label>
+                        <input class="form-control" type="date" value="<?= $st['dob']; ?>" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInput1" class="bmd-label-floating">Giới tính</label>
+                        <input class="form-control" type="text" value="<?= $st['gender']; ?>" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInput1" class="bmd-label-floating">Quê quán</label>
+                        <input class="form-control" type="text" value="<?= $st['hometown']; ?>" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInput1" class="bmd-label-floating">Địa chỉ</label>
+                        <input class="form-control" type="text" value="<?= $st['address']; ?>" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInput1" class="bmd-label-floating">Địa chỉ thường trú</label>
+                        <input class="form-control" type="text" value="<?= $st['current_address']; ?>" readonly="readonly">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleInput1" class="bmd-label-floating">Tên cha</label>
+                                <input class="form-control" type="text" value="<?= $st['father_name']; ?>" readonly="readonly">
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="exampleInput1" class="bmd-label-floating">Tên mẹ</label>
-                                    <input class="form-control" type="text" value="<?= $st['mother_name']; ?>" readonly="readonly">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInput1" class="bmd-label-floating">Nghề của mẹ</label>
-                                    <input class="form-control" type="text" value="<?= $st['mother_job']; ?>" readonly="readonly">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInput1" class="bmd-label-floating">Số điện thoại mẹ</label>
-                                    <input class="form-control" type="number" value="<?= $st['mother_phone']; ?>" readonly="readonly">
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInput1" class="bmd-label-floating">Nghề của cha</label>
+                                <input class="form-control" type="text" value="<?= $st['father_job']; ?>" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput1" class="bmd-label-floating">Số điện thoại cha</label>
+                                <input class="form-control" type="number" value="<?= $st['father_phone']; ?>" readonly="readonly">
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
-                            <button type="button" class="btn btn-success">Chuyển lớp</button>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleInput1" class="bmd-label-floating">Tên mẹ</label>
+                                <input class="form-control" type="text" value="<?= $st['mother_name']; ?>" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput1" class="bmd-label-floating">Nghề của mẹ</label>
+                                <input class="form-control" type="text" value="<?= $st['mother_job']; ?>" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput1" class="bmd-label-floating">Số điện thoại mẹ</label>
+                                <input class="form-control" type="number" value="<?= $st['mother_phone']; ?>" readonly="readonly">
+                            </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -35,10 +35,9 @@ class Permission extends Database
         return $stmt == true;
     }
 
-    public function insert($per_name, $description)
+    public function insert($per_id, $per_name, $description)
     {
-        $per_id = $this->makePerID();
-        $query = "INSERT INTO $this->table (`per_id`, `per_name`, `description`) VALUES ($per_id, $per_name, $description)";
+        $query = "INSERT INTO $this->table (`per_id`, `per_name`, `description`) VALUES ('$per_id', '$per_name', '$description')";
         $stmt = $this->conn->query($query);
         if ($stmt == false) echo "<script>alert('Insert failed')</script>";
         return $stmt == true;
@@ -46,17 +45,19 @@ class Permission extends Database
 
     public function update($per_id, $per_name, $description)
     {
-        $query = "UPDATE $this->table SET `per_name`= $per_name, `description` = $description WHERE `per_id` = $per_id";
+        $query = "UPDATE $this->table SET `per_name`= '$per_name', `description` = '$description' WHERE `per_id` = $per_id";
         $stmt = $this->conn->query($query);
         return $stmt == true;
     }
 
     public function makePerID()
     {
-        return parent::getMaxId($this->per_id, $this->table) + 1;
+        $query = "select max(per_id) from permission";
+        $stmt = $this->conn->query($query) or die("faild!");
+        $data = $stmt->fetch_assoc();
+        return $data;
     }
 
 
 }
-
 ?>

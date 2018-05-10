@@ -31,6 +31,7 @@ $getDep = $dep->getAll();
                     $check = $emp->insert($name, $dob, $gender, $id_card, $doi, $hometown, $address, $current_address, $phone);
                     if ($check) {
                         echo "<script>alertAdd(true,'Đã thêm <b>" . $name . "</b> thành công!');</script>";
+                        echo("<meta http-equiv='refresh' content='3.5'>");
                     } else {
                         echo "<script>alertAdd(false,'Thêm nhân viên thất bại!');</script>";
                     }
@@ -51,15 +52,18 @@ $getDep = $dep->getAll();
 
                     if ($check) {
                         echo "<script>alertEdit(true,'Đã sửa <b>" . $name . "</b> thành công!');</script>";
+                        echo("<meta http-equiv='refresh' content='3.5'>");
                     } else {
                         echo "<script>alertEdit(false,'Sửa thông tin nhân viên thất bại!');</script>";
                     }
                 }
                 if (isset($_POST["delete-emp"])) {
                     $id = $_POST["id"];
+                    $name = $_POST["name"];
                     $check = $emp->delete($id);
                     if ($check) {
                         echo "<script>alertDelete(true,'Xoá <b>" . $name . "</b> thành công!');</script>";
+                        echo("<meta http-equiv='refresh' content='3.5'>");
                     } else {
                         echo "<script>alertDelete(false,'Xoá nhân viên thất bại!');</script>";
                     }
@@ -80,6 +84,7 @@ $getDep = $dep->getAll();
                         $check = $dep_emp->update_de($dep_emp_id, $dep_id, $job_id);
                         if ($check) {
                             echo "<script>alertEdit(true,'Cập nhật chức vụ của <b>" . $name . "</b> thành công!');</script>";
+                            echo("<meta http-equiv='refresh' content='3.5'>");
                         } else {
                             echo "<script>alertEdit(false,'Cập nhật chức vụ thất bại!');</script>";
                         }
@@ -87,6 +92,7 @@ $getDep = $dep->getAll();
                         $check = $dep_emp->insert_de($dep_id, $emp_id, $job_id);
                         if ($check) {
                             echo "<script>alertAdd(true,'Thêm chức vụ của <b>" . $name . "</b> thành công!');</script>";
+                            echo("<meta http-equiv='refresh' content='3.5'>");
                         } else {
                             echo "<script>alertAdd(false,'Thêm chức vụ thất bại!');</script>";
                         }
@@ -94,6 +100,7 @@ $getDep = $dep->getAll();
                 }
 
                 ?>
+
                 <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true"
                         data-toggle="modal" data-target="#add-emp">
                     <i class="material-icons">add_circle_outline</i>
@@ -108,7 +115,7 @@ $getDep = $dep->getAll();
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="tb-emp">
                                 <thead class=" text-primary">
                                 <th>
                                     ID
@@ -351,6 +358,7 @@ $getDep = $dep->getAll();
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
+                                <input type="hidden" name="name" value="<?= $e["emp_name"] ?>">
                                 <label class="bmd-label-floating">Họ tên</label>
                                 <input class="form-control disable-modal" type="text"
                                        value="<?= $e["emp_name"] ?>" readonly="readonly">
@@ -403,7 +411,6 @@ $getDep = $dep->getAll();
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="edit-emp-<?= $e["emp_id"] ?>" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalLabel"
              aria-hidden="true">
@@ -419,6 +426,7 @@ $getDep = $dep->getAll();
                         <form method="post">
                             <div class="form-group">
                                 <input type="hidden" name="id" value="<?= $e["emp_id"] ?>">
+                                <input type="hidden" name="name" value="<?= $e["emp_name"] ?>">
                                 <label class="bmd-label-floating">Họ tên</label>
                                 <input class="form-control" type="text" name="name" value="<?= $e["emp_name"] ?>">
                             </div>
@@ -520,6 +528,7 @@ $getDep = $dep->getAll();
                     <div class="modal-footer">
                         <form method="post">
                             <input type="hidden" name="id" value="<?= $e["emp_id"] ?>">
+                            <input type="hidden" name="name" value="<?= $e["emp_name"] ?>">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                             <span></span>
                             <button type="submit" class="btn btn-primary" name="delete-emp">CHẤP NHẬN</button>
@@ -532,23 +541,4 @@ $getDep = $dep->getAll();
         <?php
     }
     ?>
-    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Bạn có muốn đăng xuất?</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                    <span></span>
-                    <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

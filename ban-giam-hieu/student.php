@@ -25,6 +25,7 @@ $getStudent = $student->pagination(10,$_GET['page']);
                     $check = $student->insert($name, $dob, $gender, $hometown, $address, $current_address, $father_name, $father_job, $father_phone, $mother_name, $mother_job, $mother_phone);
                     if($check){
                         echo "<script>alertAdd(true,'Đã thêm <b>".$name."</b> thành công!');</script>";
+                        echo("<meta http-equiv='refresh' content='3.5'>");
                     }
                     else{
                         echo "<script>alertAdd(false,'Thêm học sinh thất bại!');</script>";
@@ -49,6 +50,7 @@ $getStudent = $student->pagination(10,$_GET['page']);
 
                     if($check){
                         echo "<script>alertEdit(true,'Đã sửa <b>".$name."</b> thành công!');</script>";
+                        echo("<meta http-equiv='refresh' content='3.5'>");
                     }
                     else{
                         echo "<script>alertEdit(false,'Sửa thông tin học sinh thất bại!');</script>";
@@ -57,8 +59,10 @@ $getStudent = $student->pagination(10,$_GET['page']);
                 if (isset($_POST["delete-student"])) {
                     $id = $_POST["id"];
                     $check = $student->delete($id);
+                    $name = $_POST["name"];
                     if($check){
                         echo "<script>alertDelete(true,'Xoá <b>".$name."</b> thành công!');</script>";
+                        echo("<meta http-equiv='refresh' content='3.5'>");
                     }
                     else{
                         echo "<script>alertDelete(false,'Xoá học sinh thất bại!');</script>";
@@ -355,6 +359,7 @@ $getStudent = $student->pagination(10,$_GET['page']);
                     <form method="post">
                         <div class="form-group">
                             <input type="hidden" name="id" value="<?= $st["student_id"] ?>">
+                            <input type="hidden" name="name" value="<?= $st["student_name"] ?>">
                             <label class="bmd-label-floating">Họ tên</label>
                             <input class="form-control" type="text" name="name" value="<?= $st["student_name"] ?>">
                         </div>
@@ -467,6 +472,8 @@ $getStudent = $student->pagination(10,$_GET['page']);
                 <div class="modal-footer">
                     <form method="post">
                         <input type="hidden" name="id" value="<?= $st["student_id"] ?>">
+                        <input type="hidden" name="name" value="<?= $st["student_name"] ?>">
+
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                         <span></span>
                         <button type="submit" class="btn btn-primary" name="delete-student">CHẤP NHẬN</button>
@@ -478,25 +485,6 @@ $getStudent = $student->pagination(10,$_GET['page']);
     <?php
     }
     ?>
-    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Bạn có muốn đăng xuất?</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                    <span></span>
-                    <button type="button" class="btn btn-primary">CHẤP NHẬN</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 
