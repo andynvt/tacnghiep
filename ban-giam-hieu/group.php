@@ -84,7 +84,7 @@ $getDep = $dep->getAll();
                                                 echo $no;
                                             ?>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="td-actions text-center">
                                             <button type="button" rel="tooltip" title="Thêm nhân viên vào tổ"
                                                     class="btn btn-success btn-simple"
                                                     data-toggle="modal" data-target="#add-dep-<?= $gd["dep_id"] ?>">
@@ -155,7 +155,7 @@ foreach ($getDep as $gd) {
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thêm nhân viên vào tổ <?= $gd["dep_name"] ?></h5>
+                    <h3 class="modal-title" id="exampleModalLabel">Thêm nhân viên vào tổ <?= $gd["dep_name"] ?></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -243,7 +243,7 @@ foreach ($getDep as $gd) {
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết tổ <?= $gd["dep_name"] ?></h5>
+                    <h3 class="modal-title" id="exampleModalLabel">Chi tiết tổ <?= $gd["dep_name"] ?></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
