@@ -14,21 +14,11 @@
     $getStudent_Name = $class_per->getStudent_Name();
     $getStudent_all = $class_per->getStudent_all();
     $getClass_name = $class_per->getClass();
-
-
-    
 ?>
 <div class="content">
     <link rel="stylesheet" href="../ban-giam-hieu/css/modal.css">
     <div class="container-fluid">
         <div class="row">
-            <!-- <div class="col-md-12">
-                <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true"
-                        data-toggle="modal" data-target="#addModal-class">
-                    <i class="material-icons">add_circle_outline</i>
-                    Thêm lớp mới
-                </button>
-            </div> -->
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary"
@@ -40,7 +30,7 @@
                             <table class="table table-hover">
                                 <thead class=" text-primary">
                                 <th>
-                                    ID
+                                    STT
                                 </th>
 
                                 <th>
@@ -56,9 +46,7 @@
                                     Số lượng
                                 </th>
                                 
-                                <!-- <th class="text-center">
-                                    Phòng
-                                </th> -->
+                               
                                 <th class="text-center">
                                     Thao tác
                                 </th>
@@ -66,11 +54,12 @@
                                 <tbody>
                                     
                                     <?php
-                                    foreach ($getClass->getResult()  as $st) {
+                                        $i=0;
+                                        foreach ($getClass->getResult()  as $st) {
                                     ?>
                                 <tr>
                                     <td>
-                                        <?= $st["class_id"] ?>
+                                        <?= ++$i ?>
                                     </td>
 
                                     <td class="text-primary">
@@ -96,9 +85,7 @@
                                         ?>
                                     </td>
                                     
-                                    <!-- <td class="text-center">
-                                        12B1
-                                    </td> -->
+                                   
                                     <td class="td-actions text-center">
                                         <button type="button" rel="tooltip" title="Thêm học sinh" class="btn btn-success btn-simple"
                                                 data-toggle="modal" data-target="#add-class-<?= $st["class_id"] ?>">
@@ -108,10 +95,7 @@
                                                 data-toggle="modal" data-target="#detail-class-<?= $st["class_id"] ?>">
                                             <i class="material-icons">remove_red_eye</i>
                                         </button>
-                                        <!-- <button type="button" rel="tooltip" class="btn btn-success btn-simple"
-                                                data-toggle="modal" data-target="#edit-class-<?= $st["class_id"] ?>">
-                                            <i class="material-icons">edit</i>
-                                        </button> -->
+                                    
                                         <button type="button" rel="tooltip" title="Xóa lớp" class="btn btn-danger btn-simple"
                                                 data-toggle="modal" data-target="#delete-class-<?= $st["class_id"] ?>">
                                             <i class="material-icons">close</i>
@@ -123,8 +107,6 @@
                                 ?>
                                 </tbody>
                             </table>
-
-                           
                         </div>
                         <div id="pagination"><?=$getClass->showPagination()?></div>
                     </div>
@@ -163,47 +145,12 @@
                                 ?>
                       </select>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="exampleFormControlSelect1">Giới tính</label>
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="form-check form-check-radio">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="nam" >
-                                        Nam
-                                        <span class="circle">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="form-check form-check-radio">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="nu" checked>
-                                        Nữ
-                                        <span class="circle">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> -->
+                   
                     <div class="form-group">
                         <label for="exampleInput1" class="bmd-label-floating">Năm học</label>
                         <input type="text" name="#" class="form-control" id="exampleInput1">
                     </div>
-                   <!--  <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Số lượng học sinh</label>
-                        <input type="number" name="#" class="form-control" id="exampleInput1">
-                    </div>
- -->
-                    <!-- <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Phòng</label>
-                        <input type="text" name="#" class="form-control" id="exampleInput1">
-                    </div> -->
+                  
 
                 
             </div>
@@ -237,7 +184,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
+                                <th class="text-center">STT</th>
                                 <th>Họ và Tên</th>
                                 <th>Năm sinh</th>
                                 <th>Giới tính</th>
@@ -258,10 +205,11 @@
                             </thead>
                             <tbody>
                                 <?php
+                                    $i=0;
                                     foreach ($getStudent_all as $s) {
                                 ?>
                             <tr>
-                                <td class="text-center"><?= $s["student_id"] ?></td>
+                                <td class="text-center"><?= ++$i ?></td>
                                 <td><?= $s["student_name"] ?></td>
                                 <td><?= $s["dob"] ?></td>
                                 <td><?= $s["gender"] ?></td>
@@ -338,16 +286,13 @@
                                         ?>" readonly="readonly">
                     </div>
 
-                   <!--  <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Phòng</label>
-                        <input class="form-control" type="text" value="12B1" readonly="readonly">
-                    </div> -->
+                 
                     <div class="form-group">
                         <label for="exampleInput1" class="bmd-label-floating">Danh sách học sinh</label>
                         <table class="table">
                             <thead>
                             <tr>
-                                <th class="text-center">#</th>
+                                <th class="text-center">STT</th>
                                 <th>Họ và Tên</th>
                                 <th>Năm Sinh</th>
                                 <th>Giớ Tính</th>
@@ -373,7 +318,7 @@
                                         if($st["class_id"] == $stu["class_id"])
                                     {?>
                             <tr>
-                                <td class="text-center"><?= $stu["student_id"] ?></td>
+                                <td class="text-center"><?= ++$i ?></td>
                                 <td><?= $stu["student_name"] ?></td>
                                 <td><?= $stu["dob"] ?></td>
                                 <td><?= $stu["gender"] ?></td>
@@ -424,7 +369,7 @@
             <?php
             if($class_per->getCount_student($st["class_id"])!= 0){?>
             <div class="modal-body">    
-                <p>Thao tác này không thể thực hiện !!!<br>Lớp học còn học sinh !!!</p>
+                <p>Thao tác này không thể thực hiện !!!<br>Lớp học còn <b><?=$class_per->getCount_student($st["class_id"])?></b> học sinh !!!</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
@@ -474,9 +419,9 @@
                     echo "<script>alertAdd(true,'Đã thêm thành công!');</script>";   
                 }
                 else{
-                    echo("<meta http-equiv='refresh' content='2.5'>");
+                    // echo("<meta http-equiv='refresh' content='2.5'>");
                     echo "<script>alertAdd(false,'Thêm học sinh thất bại!');</script>";
-                    header("refresh: 0;");
+                    // header("refresh: 0;");
                 }
         }
     ?>
@@ -493,14 +438,14 @@
                 $check_del = $class_per->delete($idclass_del, $pop);   
             }
             if($check_del){
-                    echo("<meta http-equiv='refresh' content='1'>");
+                    echo("<meta http-equiv='refresh' content='1.5'>");
                     echo "<script>alertAdd(true,'Đã xóa thành công!');</script>";
                     header("refresh: 0;");
                 }
                 else{
-                    echo("<meta http-equiv='refresh' content='1'>");
+                    // echo("<meta http-equiv='refresh' content='1.5'>");
                     echo "<script>alertAdd(false,'Xóa học sinh thất bại!');</script>";
-                    header("refresh: 0;");
+                    // header("refresh: 0;");
                 }
         }
     ?>
@@ -512,14 +457,14 @@
             $check_del = $class_per->delete_class($idclass_delete); 
 
             if($check_del){
-                    echo("<meta http-equiv='refresh' content='1'>");
+                    echo("<meta http-equiv='refresh' content='1.5'>");
                     echo "<script>alertAdd(true,'Đã xóa thành công!');</script>";
                     header("refresh: 0;");
                 }
                 else{
-                    echo("<meta http-equiv='refresh' content='1'>");
+                    // echo("<meta http-equiv='refresh' content='1.5'>");
                     echo "<script>alertAdd(false,'Xóa học sinh thất bại!');</script>";
-                    header("refresh: 0;");
+                    // header("refresh: 0;");
                 }
         }
     ?>
@@ -548,4 +493,9 @@
     }
 ?>
 </script>
+
+
+
+
+
 
