@@ -6,6 +6,10 @@ class Department extends Pagination
 {
     private $table = "department";
     private $dep_id = "dep_id";
+    private $pwd = "user";
+    private $emp_id;
+    private $per_name;
+
     public function getAll(){
         $data = array();
         $query = "SELECT * FROM $this->table";
@@ -66,6 +70,7 @@ class Department extends Pagination
             } else {
                 array_push($data, $r['emp_id'], $r['emp_name'], $r['username'], $r['per_name']);
             }
+
         }
         return $data;
     }
@@ -77,6 +82,21 @@ class Department extends Pagination
 
         if ($stmt == false || $stmt2 == false) return false;
         else return true;
+    }
+
+
+    public function delete_tea($idclass_del, $checkBox_del){
+        $query = "DELETE FROM department_employee WHERE  department_employee.emp_id = '$idclass_del' and department_employee.dep_id = '$checkBox_del'  ";
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) return false;
+        else return true;
+    }
+    public function add_tea($idclass_del, $checkBox_del){
+        $query = "INSERT INTO department_employee(emp_id, dep_id) VALUES ('$idclass_del','$checkBox_del')";
+        $stmt = $this->conn->query($query);
+        if ($stmt == false) return false;
+        else return true;
+     
     }
 
     public function insert($name){

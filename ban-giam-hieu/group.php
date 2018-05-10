@@ -4,8 +4,8 @@ include_once("../database/model/Employee.php");
 include_once("../database/model/DepartmentEmployee.php");
 $page = $_GET['page'] == null ? 0 : $_GET['page'];
 $dep = new Department();
-$depEmp = new DepartmentEmployee();
 $emp = new Employee();
+$depEmp = new DepartmentEmployee();
 //$getDep = $department->pagination(10,$_GET['page']);
 $getDep = $dep->getAll();
 ?>
@@ -35,9 +35,9 @@ $getDep = $dep->getAll();
                     $dep_id = $_POST["id"];
                     $dep_name = $_POST["name"];
 
-                    $check = $dep->delete($dep_id);
+                    $check = $dep->delete($id);
                     if ($check) {
-                        echo "<script>alertAdd(true,'Đã thêm <b>" . $dep_name . "</b> thành công!');</script>";
+                        echo "<script>alertAdd(true,'Đã thêm <b>" . $name . "</b> thành công!');</script>";
                         echo("<meta http-equiv='refresh' content='3.5'>");
                     } else {
                         echo "<script>alertAdd(false,'Thêm nhân viên thất bại!');</script>";
@@ -61,7 +61,7 @@ $getDep = $dep->getAll();
                                     Tên Tổ
                                 </th>
                                 <th>
-                                    Số lượng thành viên
+                                    Số lượng
                                 </th>
                                 <th class="text-center">
                                     Thao tác
@@ -160,6 +160,7 @@ foreach ($getDep as $gd) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form method="post">
                 <div class="modal-body">
                     <table class="table">
                         <thead class=" text-primary">
@@ -214,6 +215,7 @@ foreach ($getDep as $gd) {
                                                 <span class="check"></span>
                                                 </span>
                                         </label>
+                                        <input hidden  name="id_del[]" value="<?= $ge["emp_id"] ?>" >
                                     </div>
                                 </td>
 
@@ -224,7 +226,12 @@ foreach ($getDep as $gd) {
                         </tbody>
                     </table>
                 </div>
-
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                    <span></span>
+                    <button type="submit" class="btn btn-primary" name="add-tea">Thêm giáo viên</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -240,7 +247,9 @@ foreach ($getDep as $gd) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form method="POST">
                 <div class="modal-body">
+
                     <table class="table">
                         <thead class=" text-primary">
                         <th>
@@ -287,27 +296,39 @@ foreach ($getDep as $gd) {
                                 </td>
                                 <td class="td-actions text-right">
                                     <div class="form-check ">
+
                                         <label class="form-check-label check-add">
-                                            <input class="form-check-input" type="checkbox" name="ID[]" id="checkItem"
-                                                   value="<?= $gd["dep_id"] ?>1">
+                                            <input class="form-check-input" type="checkbox" name="IDDE[]" id="checkItem"
+                                                   value="<?= $gd["dep_id"]?>">
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                                 </span>
                                         </label>
+                                        <input hidden  name="idclass_del[]" value="<?= $ge["emp_id"] ?>" >
+
                                     </div>
                                 </td>
 
                             </tr>
+                            
+
                             <?php
                         }
                         ?>
                         </tbody>
                     </table>
                 </div>
-
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                    <span></span>
+                    <button type="submit" class="btn btn-primary" name="del-tea">Xóa học sinh</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
+
+
 
     <div class="modal fade" id="delete-dep-<?= $gd["dep_id"] ?>" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel"
@@ -335,7 +356,67 @@ foreach ($getDep as $gd) {
             </div>
         </div>
     </div>
-    <script>
+
+
+
+   
+    <?php
+}
+?>
+
+<?php 
+if(isset($_POST['add-tea']))
+{   
+    $checkBox_del = implode(',', $_POST['ID']);
+    $idclass_del = implode(',', $_POST['id_del']);              
+    $pops = explode(',', $checkBox_del);
+    $idclass_del1 = explode(',', $idclass_del);
+    // print_r($checkBox_del);
+    foreach ($pops as $pop ){
+        foreach ($idclass_del1 as $popl ){
+        $check_del = $dep->add_tea($popl, $pop);   
+        }
+    }
+    if($check_del){
+            // echo("<meta http-equiv='refresh' content='1.5'>");
+            echo "<script>alertAdd(true,'Đã xóa thành công!');</script>";
+            // header("refresh: 0;");
+        }
+        else{
+            // echo("<meta http-equiv='refresh' content='1.5'>");
+            echo "<script>alertAdd(false,'Xóa học sinh thất bại!');</script>";
+            // header("refresh: 0;");
+        }
+}
+?>
+
+<?php 
+if(isset($_POST['del-tea']))
+{   
+    $checkBox_del = implode(',', $_POST['IDDE']);
+    $idclass_del = implode(',', $_POST['idclass_del']);              
+    $pops = explode(',', $checkBox_del);
+    $idclass_del1 = explode(',', $idclass_del);
+    // print_r($checkBox_del);
+    foreach ($pops as $pop ){
+        foreach ($idclass_del1 as $popl ){
+        $check_del = $dep->delete_tea($popl, $pop);   
+        }
+    }
+    if($check_del){
+            // echo("<meta http-equiv='refresh' content='1.5'>");
+            echo "<script>alertAdd(true,'Đã xóa thành công!');</script>";
+            // header("refresh: 0;");
+        }
+        else{
+            // echo("<meta http-equiv='refresh' content='1.5'>");
+            echo "<script>alertAdd(false,'Xóa học sinh thất bại!');</script>";
+            // header("refresh: 0;");
+        }
+}
+?>
+
+ <script>
         <?php
         foreach ($getDep as $st) {
         ?>
@@ -356,9 +437,6 @@ foreach ($getDep as $gd) {
         }
         ?>
     </script>
-    <?php
-}
-?>
 
 <!--    End Modal-->
 </div>
