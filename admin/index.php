@@ -36,4 +36,5 @@
 </body>
 <?php include_once("../common/staff.php"); ?>
 </body>
+<?php include_once("../common/core-js.php"); ?>
 </html>

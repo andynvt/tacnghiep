@@ -23,7 +23,7 @@ $emp_arr = $account->getEmpList();
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #ab47bc, #8e24aa)">
-                        <h4 class="card-title ">Bảng quản lý nhân viên</h4>
+                        <h4 class="card-title ">Danh sách tài khoản</h4>
                         <!--                                    <p class="card-category"> Here is a subtitle for this table</p>-->
                     </div>
                     <div class="card-body">
@@ -48,22 +48,26 @@ $emp_arr = $account->getEmpList();
                                 </thead>
                                 <tbody>
                                 <?php
-                                for ($i = 0; $i< count($account_detail_array); $i = $i+4){
+                                foreach ($account_detail_array as $account_info){
                                     echo "<tr>";
-                                    echo "<td>{$account_detail_array[$i]}</td>";
-                                    echo "<td>{$account_detail_array[$i+1]}</td>";
-                                    echo "<td>{$account_detail_array[$i+2]}</td>";
-                                    echo "<td>{$account_detail_array[$i+3]}</td>";
+                                    echo "<td>{$account_info["emp_id"]}</td>";
+                                    echo "<td>{$account_info["emp_name"]}</td>";
+                                    echo "<td>{$account_info["username"]}</td>";
+                                    echo "<td>{$account_info["per_name"]}</td>";
                                     ?>
                                     <td class="td-actions text-center">
-                                        <button type="button" rel="tooltip"
-                                                class="btn btn-info"><i class="material-icons">person</i>
+                                    <button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple"
+                                                data-toggle="modal"
+                                                data-target="#detail-account-<?= $account_info["emp_id"] ?>">
+                                            <i class="material-icons">remove_red_eye</i>
                                         </button>
-                                        <button value="<?= $value["assign_id"] ?>" type="button" rel="tooltip"
-                                                class="btn btn-success"><i class="material-icons">edit</i>
+                                        <button type="button" rel="tooltip" title="Sửa thông tin" class="btn btn-success btn-simple"
+                                                data-toggle="modal" data-target="#edit-account-<?= $account_info["emp_id"] ?>">
+                                            <i class="material-icons">edit</i>
                                         </button>
-                                        <button value="<?= $value["assign_id"] ?>" type="button" rel="tooltip"
-                                                class="btn btn-danger"><i class="material-icons">close</i>
+                                        <button type="button" rel="tooltip" title="Xoá tài khoản" class="btn btn-danger btn-simple"
+                                                data-toggle="modal" data-target="#delete-account<?= $account_info["emp_id"] ?>">
+                                            <i class="material-icons">close</i>
                                         </button>
                                     </td>
                                     <?php
@@ -107,7 +111,7 @@ $emp_arr = $account->getEmpList();
                         
                         <div class="form-group">
                             <label for="Account" class="bmd-label-floating">Tài Khoản</label>
-                            <input type ="text" class="form-control" id="account" name="account" value="" placeholder="Tên Tài Khoản">
+                            <input type ="text" class="form-control" id="username" name="username" value="" placeholder="Tên Tài Khoản">
                         </div>
                         <div class="form-group">
                             <label for="pwd" class="bmd-label-floating">Mật Khẩu</label>
@@ -129,33 +133,20 @@ $emp_arr = $account->getEmpList();
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                             <span></span>
                             <button type="submit" class="btn btn-primary" name="add-account">LƯU LẠI</button>
-                            <?php
-                            if (isset($_POST["add-account"])) {
-                                $emp_id = $_POST["emp"];
-                                $account_name = $_POST["account"];
-                                $password = $_POST["pwd"];
-                                $per_id = $_POST["per_id"];
-                                // echo "<script>alert('". $emp_id . " " . $account_name ." " . $password. " ". $per_id ."')</script>";
-                                if (!empty($account) && !empty($emp_id) && !empty($password) && !empty($per_id)) {
-                                    if($account->insert($account_name,$password,$emp_id,$per_id)){
-                                        echo "<script>alert('test2')</script>";
-                                    }
-                                }
-                            }
-                            ?>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ </div>
+ 
+ <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết cơ sở vật chất</h5>
+                    <h5 class="modal-title" id="account_detail">Chi tiết tài khoản</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -163,17 +154,22 @@ $emp_arr = $account->getEmpList();
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInput2" class="bmd-label-floating">Niên khóa</label>
+                            <label for="exampleInput2" class="bmd-label-floating">Mã Nhân Viên</label>
                             <input class="form-control" type="text"
                                    readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Tên lớp</label>
+                            <label for="exampleInput1" class="bmd-label-floating">Tên Nhân Viên</label>
                             <input class="form-control" type="text"
                                    readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Giáo viên hướng dẫn</label>
+                            <label for="exampleInput1" class="bmd-label-floating">Tên Tài Khoản</label>
+                            <input class="form-control" type="text"
+                                   readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInput1" class="bmd-label-floating">Chức Vụ</label>
                             <input class="form-control" type="text"
                                    readonly="readonly">
                         </div>
@@ -185,13 +181,59 @@ $emp_arr = $account->getEmpList();
             </div>
         </div>
     </div>
+</div>
+<?php
+    foreach ($account_detail_array as $acc) {
+    ?>
+    <div class="modal fade" id="detail-account-<?= $acc["emp_id"] ?>" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Thông tin
+                       <b><?= $acc["emp_name"] ?></b>
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Mã Nhân Viên</label>
+                            <input class="form-control disable-modal" type="text"
+                                   value="<?= $acc["emp_id"] ?>" readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Tên Nhân Viên</label>
+                            <input class="form-control" type="text" value="<?= $acc["emp_name"] ?>"
+                                   readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Tài Khoản</label>
+                            <input class="form-control" type="text" value="<?= $acc["username"] ?>"
+                                   readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Quyền</label>
+                            <input class="form-control" type="text" value="<?= $acc["per_name"] ?>"
+                                   readonly="readonly">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">ĐÓNG</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="edit-account-<?= $acc["emp_id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin</h5>
+                    <h3 class="modal-title" id="exampleModalLabel">Sửa thông tin <b><?= $acc["emp_name"] ?></b></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -199,37 +241,31 @@ $emp_arr = $account->getEmpList();
                 <div class="modal-body">
                     <form method="post">
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Niên khóa</label>
-                            <select class="form-control" name="class-year">
-                                <?php
-                                foreach ($class_arr as $value) {
-                                    ?>
-                                    <option value="<?= $value["year"] ?>"><?= $value["year"] ?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
+                        <label class="bmd-label-floating">Mã Nhân Viên</label>
+                            <input class="form-control" type="text" name="update_manv"value="<?= $acc["emp_id"] ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Lớp học</label>
-                            <select class="form-control" name="class-name">
-                                <?php
-                                foreach ($class_arr as $value) {
-                                    ?>
-                                    <option value="<?= $value["class_id"] ?>"><?= $value["class_name"] ?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
+                            <label class="bmd-label-floating">Tên Tài Khoản</label>
+                            <input class="form-control" type="text" name="update_username"value="<?= $acc["username"] ?>">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInput1" class="bmd-label-floating">Giáo viên giảng dạy</label>
-                            <select class="form-control" name="emp-name">
+                            <label class="bmd-label-floating">Mật Khẩu</label>
+                            <input class="form-control" type="password" name="update_pwd" value="<?= $acc["password"] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="per" class="bmd-label-floating">Quyền Hạn</label>
+                            <select class="form-control" id="per" name="update_per_id">
+                                <option value=""> </option>
                                 <?php
-                                foreach ($emp_arr as $value) {
-                                    ?>
-                                    <option value="<?= $value["emp_id"] ?>"><?= $value["emp_name"] ?></option>
-                                    <?php
+                                foreach ($per_arr as $value) {
+                                    if ($value["per_id"] == $acc["per_id"])
+                                    {
+                                        echo '<option selected value="'.$value["per_id"].'">'. $value["per_name"].'</option>';    
+                                    }
+                                    else{
+                                        echo '<option value="'.$value["per_id"].'">'. $value["per_name"].'</option>';
+                                    }
+                                    // echo '<option value="'.$value["per_id"].'">'. $value["per_name"].'</option>';
                                 }
                                 ?>
                             </select>
@@ -237,19 +273,7 @@ $emp_arr = $account->getEmpList();
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                             <span></span>
-                            <button name="update-assignment" id="btn-update" type="submit" class="btn btn-primary">
-                                LƯU LẠI
-                            </button>
-                            <?php
-                            if (isset($_POST["update-assignment"])) {
-                                $assign_id = $_POST["update-assignment"];
-                                $class_id = $_POST["class-name"];
-                                $emp_id = $_POST["emp-name"];
-                                if (!empty($assign_id) && !empty($class_id) && !empty($emp_id)) {
-                                    $assignment->update($assign_id, $emp_id, $class_id);
-                                }
-                            }
-                            ?>
+                            <button type="submit" class="btn btn-primary" name="update-account">CẬP NHẬT</button>
                         </div>
                     </form>
                 </div>
@@ -257,41 +281,81 @@ $emp_arr = $account->getEmpList();
         </div>
     </div>
 
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="delete-account<?= $acc["emp_id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Xác nhận xóa</h5>
+                    <h3 class="modal-title">Xác nhận xoá <b><?= $acc["username"] ?></b></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa trường này ?</p>
+                    <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa tài khoản <b><?= $acc["username"] ?></b> ?</p>
                 </div>
                 <div class="modal-footer">
                     <form method="post">
+                        <input type="hidden" name="delete_username" value="<?= $acc["emp_id"] ?>">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                         <span></span>
-                        <button type="submit" name="delete-assignment" id="btn-delete" class="btn btn-primary">CHẤP
-                            NHẬN
-                        </button>
-                        <?php
-                        if (isset($_POST["delete-assignment"])) {
-                            $assign_id = $_POST["delete-assignment"];
-                            if (!empty($assign_id)) {
-                                $assignment->delete($assign_id);
-                            }
-                        }
-                        ?>
+                        <button type="submit" class="btn btn-primary" name="delete-account">CHẤP NHẬN</button>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
+    <?php
+    }
+    ?>
     <!-- End Model -->
+<!-- php -->
+<?php
+    if (isset($_POST["add-account"])) {
+        $emp_id = $_POST["emp"];
+        $account_name = $_POST["username"];
+        $password = $_POST["pwd"];
+        $per_id = $_POST["per_id"];
+        // echo "<script>alert('". $emp_id . " " . $account_name ." " . $password. " ". $per_id ."')</script>";
+        if (!empty($account) && !empty($emp_id) && !empty($password) && !empty($per_id)) {
+            if($account->insert($account_name,$password,$emp_id,$per_id)){
+                echo("<meta http-equiv='refresh' content='3.5'>");
+                echo "<script>alertAdd(true,'Đã thêm tài khoản thành công!');</script>";
+            }
+            else{
+                echo "<script>alertAdd(false,'Thêm tài khoản không thành công!');</script>";
+            }
+        }
+        else echo "<script>alertAdd(false,'Thêm tài khoản không thành công!');</script>";
+    }
+    if (isset($_POST["update-account"])){
+        $emp_id = $_POST["update_manv"];
+        $account_name = $_POST["update_username"];
+        $password = $_POST["update_pwd"];
+        $per_id = $_POST["update_per_id"];
+        if (!empty($account_name) && !empty($emp_id) && !empty($password) && !empty($per_id)) {
+            if($account->update($emp_id,$account_name,$password,$per_id)){
+                echo("<meta http-equiv='refresh' content='3.5'>");
+                echo "<script>alertAdd(true,'Đã chỉnh sửa tài khoản thành công!');</script>";
+            }
+            else{
+                echo "<script>alertAdd(false,'Chỉnh sửa tài khoản không thành công!');</script>";
+            }
+        }
+        else echo "<script>alertAdd(false,'Chỉnh sửa tài khoản không thành công!');</script>";
+    }
+    if (isset($_POST["delete-account"])){
+        $emp_id = $_POST["emp_id"];
+            if($account->delete($emp_id)){
+                echo("<meta http-equiv='refresh' content='3.5'>");
+                echo "<script>alertAdd(true,'Đã xóa tài khoản thành công!');</script>";
+            }
+            else{
+                echo "<script>alertAdd(false,'Xóa tài khoản không thành công!');</script>";
+            }
+}
+
+?>    
 <div class="modal fade" id="changeInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
