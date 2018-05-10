@@ -21,6 +21,7 @@ session_start();
     <!-- Documentation extras -->
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/assets-for-demo/demo.css" rel="stylesheet"/>
+    <link href="http://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
     <!-- iframe removal -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 
@@ -41,5 +42,6 @@ session_start();
     <script src="../assets/js/material-dashboard.js?v=2.0.0"></script>
     <!-- demo init -->
     <script src="../assets/js/plugins/demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 </head>
 

@@ -1,4 +1,4 @@
-function submitInsert(url, form, tbody, pagination, success_msg, failure_msg) {
+function submitInsert(url, form, tbody, success_msg, failure_msg) {
     console.log(form.serialize());
     $.ajax({
         type: "POST",
@@ -12,12 +12,11 @@ function submitInsert(url, form, tbody, pagination, success_msg, failure_msg) {
                 alertAdd(false, failure_msg);
             }
             tbody.html(data['content']);
-            pagination.html(data['pagination']);
         }
     });
 }
 
-function submitEdit(url, form, tbody, pagination, success_msg, failure_msg) {
+function submitEdit(url, form, tbody, success_msg, failure_msg) {
     $.ajax({
         type: "POST",
         url: url,
@@ -30,12 +29,11 @@ function submitEdit(url, form, tbody, pagination, success_msg, failure_msg) {
                 alertEdit(false, failure_msg);
             }
             tbody.html(data['content']);
-            pagination.html(data['pagination']);
         }
     });
 }
 
-function submitDelete(url, form, tbody, pagination, success_msg, failure_msg) {
+function submitDelete(url, form, tbody, success_msg, failure_msg) {
     $.ajax({
         type: "POST",
         url: url,
@@ -48,7 +46,6 @@ function submitDelete(url, form, tbody, pagination, success_msg, failure_msg) {
                 alertDelete(false, failure_msg);
             }
             tbody.html(data['content']);
-            pagination.html(data['pagination']);
         }
     });
 }

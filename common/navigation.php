@@ -11,9 +11,11 @@
             <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form class="navbar-form" method="POST">
+            <form class="navbar-form">
                 <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Tìm kiếm...">
+
+                    <input id="tbl_filter" type="text" value="" class="form-control dataTables_filter"
+                           placeholder="Tìm kiếm...">
                     <button type="button" class="btn btn-white btn-round btn-just-icon" id="filter">
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>
@@ -62,6 +64,46 @@
         </div>
     </div>
 </nav>
+<style>
+    .dataTables_info {
+        float: left;
+    }
+
+    .select-change {
+        border-radius: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        line-height: 20px;
+        height: 36px;
+        text-align: center;
+        background: none;
+        color: #ffffff !important;
+        width: 40px;
+    }
+
+    .select-change option {
+        color: #2e3233;
+    }
+
+    .card-header {
+        padding-bottom: 8px !important;
+    }
+
+    .card-title {
+        float: left;
+
+    }
+
+    #filter_tbl_length {
+        float: right;
+    }
+
+    #filter_tbl_length > label {
+        color: #ffffff !important;
+        font-size: 1rem;
+
+    }
+</style>
 <script>
     var perm = "<?=$_SESSION['perm']?>";
     var menu = "<?=$_GET['menu']?>";
@@ -78,18 +120,8 @@
     menu = menu == undefined ? 0 : menu;
     $("#title-item").text(title[menu]);
 
-    $("#filter").on('click',function(){
-        var val = $(this).prev('input').val();
-        $.ajax({
-            url: ("../common/filter.php"),
-            type: "POST",
-            data: {request:val, menu:menu, perm:perm, page:page},
-            // beforeSend: function(){
-            //     $("#filter_tbl").html("Đang tìm kiếm...");
-            // }
-            success:function(data){
-                $("#filter_tbl").html(data);
-            }
-        });
+    $(window).on("load", function () {
+        filterTable();
     });
+
 </script>

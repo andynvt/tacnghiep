@@ -22,28 +22,26 @@ class AssignmentLoader
         $this->emp_arr = $this->employee->getAll();
     }
 
-    public function display($page)
+    public function display()
     {
         $i = 0;
-        $this->assign_array = $this->assignment->pagination(10, $page);
-        $this->pagination = $this->assign_array->showPagination();
+        $this->assign_array = $this->assignment->getAll();
         $html = '';
-        foreach ($this->assign_array->getResult() as $value) {
-            $class_round = $i % 2 == 1 ? "btn-round" : "";
+        foreach ($this->assign_array as $value) {
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td >' . $value["emp_name"] . '</td>';
             $html .= '<td >' . $value["grade_name"] . ' - ' . $value["class_name"] . '</td>';
             $html .= '<td>' . $value["year"] . '</td>';
             $html .= '<td class="td-actions text-center">';
-            $html .= '<button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple ' . $class_round . '"  data-toggle="modal" data-target="#detailModal">' .
+            $html .= '<button type="button" rel="tooltip" title="Xem chi tiết" class="btn btn-info btn-simple "  data-toggle="modal" data-target="#detailModal">' .
                 '<i class="material-icons">remove_red_eye</i>' .
                 '</button> ';
-            $html .= '<button type="button" rel="tooltip" title="Sửa lịch dạy"  class="btn btn-success btn-simple ' . $class_round . '" value="' . $value["assign_id"] .
+            $html .= '<button type="button" rel="tooltip" title="Sửa lịch dạy"  class="btn btn-success btn-simple " value="' . $value["assign_id"] .
                 '" data-toggle="modal" data-target="#editModal" >' .
                 '<i class="material-icons">edit</i>' .
                 '</button> ';
-            $html .= '<button type="button" rel="tooltip"title="Xoá lịch dạy" class="btn btn-danger btn-simple ' . $class_round . '"   value="' . $value["assign_id"] .
+            $html .= '<button type="button" rel="tooltip"title="Xoá lịch dạy" class="btn btn-danger btn-simple "   value="' . $value["assign_id"] .
                 '" data-toggle="modal" data-target="#deleteModal">' .
                 '<i class="material-icons">close</i>' .
                 '</button>';

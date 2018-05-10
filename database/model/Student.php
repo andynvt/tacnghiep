@@ -19,9 +19,9 @@ class Student extends Pagination {
         $sql = "SELECT $this->table.*, class.class_name FROM $this->table LEFT JOIN class_student on class_student.student_id = student.student_id LEFT JOIN class on class.class_id = class_student.class_id";
         return parent::makePagination($sql, $limit, $current_page);
     }
-    function getStudent($emp){
+    function getStudent($emp_gv){
         $data = array();
-        $sql = "SELECT $this->table.*, DATEDIFF(CURDATE(),dob) AS grade FROM student where student_id in (SELECT student_id FROM class_student WHERE class_id in (SELECT class_id FROM class WHERE class_id in (SELECT class_id FROM class_employee WHERE emp_id = $emp)))";
+        $sql = "SELECT $this->table.*, DATEDIFF(CURDATE(),dob) AS grade FROM student where student_id in (SELECT student_id FROM class_student WHERE class_id in (SELECT class_id FROM class WHERE class_id in (SELECT class_id FROM class_employee WHERE emp_id = $emp_gv)))";
         $q = $this->conn->query($sql) or die("failed!");
         while ($r = $q->fetch_assoc()) {
             array_push($data, $r);

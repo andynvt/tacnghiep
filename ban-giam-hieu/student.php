@@ -1,7 +1,7 @@
 <?php
 include_once("../database/model/Student.php");
 $student = new Student();
-$getStudent = $student->pagination(10,$_GET['page']);
+$getStudent = $student->getAll();
 ?>
 <div class="content">
     <div class="container-fluid">
@@ -85,7 +85,7 @@ $getStudent = $student->pagination(10,$_GET['page']);
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="filter_tbl">
                                 <thead class=" text-primary">
                                 <th>
                                     ID
@@ -111,7 +111,7 @@ $getStudent = $student->pagination(10,$_GET['page']);
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($getStudent->getResult() as $st) {
+                                foreach ($getStudent as $st) {
                                 ?>
                                 <tr>
                                     <td>
@@ -156,7 +156,6 @@ $getStudent = $student->pagination(10,$_GET['page']);
                                 </tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?= $getStudent->showPagination() ?></div>
                     </div>
                 </div>
             </div>
@@ -254,7 +253,7 @@ $getStudent = $student->pagination(10,$_GET['page']);
         </div>
     </div>
     <?php
-    foreach ($getStudent->getResult() as $st) {
+    foreach ($getStudent as $st) {
     ?>
     <div class="modal fade" id="detail-student-<?= $st["student_id"] ?>" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">

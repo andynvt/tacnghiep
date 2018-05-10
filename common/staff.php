@@ -152,9 +152,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
             <div class="modal-footer">
-                <form action="logout.php" method="post">
+                <form action="../login/php/logout.php" method="post">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                     <span></span>
                     <button type="submit" class="btn btn-primary">CHẤP NHẬN</button>

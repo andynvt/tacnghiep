@@ -10,9 +10,8 @@ if (!empty($assign_id)) {
     $rs = $assign->delete($assign_id);
 
     $ass = new AssignmentLoader();
-    $tbody = $ass->display($_GET["page"]);
-    $pagination = $ass->getPagination();
+    $tbody = $ass->display();
 
-    $result = array("success" => $rs, "content" => $tbody, "pagination" => $pagination);
+    $result = array("success" => $rs, "content" => $tbody);
     echo json_encode($result);
 }

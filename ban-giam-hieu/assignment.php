@@ -18,7 +18,7 @@ $action = new AssignmentLoader();
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="filter_tbl">
                                 <thead class=" text-primary">
                                 <th>
                                     Số thứ tự
@@ -39,7 +39,8 @@ $action = new AssignmentLoader();
                                 <tbody id="table-body"><?php echo $action->display($page); ?></tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?php echo $action->getPagination(); ?></div>
+                        <!--                        <div id="pagination">-->
+                        <?php //echo $action->getPagination(); ?><!--</div>-->
                     </div>
                 </div>
             </div>
@@ -103,7 +104,7 @@ $action = new AssignmentLoader();
                         <div class="form-group">
                             <label for="exampleInput1" class="bmd-label-floating">Tên lớp</label>
                             <input class="form-control" type="text"
-                            readonly="readonly">
+                                   readonly="readonly">
                         </div>
                         <div class="form-group">
                             <label for="exampleInput2" class="bmd-label-floating">Niên khóa</label>
@@ -223,21 +224,21 @@ $action = new AssignmentLoader();
         var messInsert_fl = "Thêm lịch giảng dạy thất bại";
 
         $("#add-assignment").on("click", function () {
-            submitInsert(urlInsert, $("#frmAdd"), $("#table-body"), $("#pagination"), messInsert_sc, messInsert_fl);
+            submitInsert(urlInsert, $("#frmAdd"), $("#table-body"), messInsert_sc, messInsert_fl);
         });
 
         var urlEdit = "../database/action/update-assign.php?menu=<?=$_GET['menu']?>&page=<?=$page?>";
         var messEdit_sc = "Cập nhật lịch giảng dạy thành công";
         var messEdit_fl = "Cập nhật lịch giảng dạy thất bại";
         $("#btn-edit").on("click", function () {
-            submitEdit(urlEdit, $("#frmEdit"), $("#table-body"), $("#pagination"), messEdit_sc, messEdit_fl);
+            submitEdit(urlEdit, $("#frmEdit"), $("#table-body"), messEdit_sc, messEdit_fl);
         });
 
         var urlDelete = "../database/action/delete-assign.php?menu=<?=$_GET['menu']?>&page=<?=$page?>";
         var messDel_sc = "Xóa lịch giảng dạy thành công";
         var messDel_fl = "Xóa lịch giảng dạy thất bại";
         $("#btn-delete").on("click", function () {
-            submitDelete(urlDelete, $("#frmDelete"), $("#table-body"), $("#pagination"), messDel_sc, messDel_fl);
+            submitDelete(urlDelete, $("#frmDelete"), $("#table-body"), messDel_sc, messDel_fl);
         });
     }
 
