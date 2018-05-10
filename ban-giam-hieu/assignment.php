@@ -1,5 +1,6 @@
 <?php
 include_once('../database/model/AssignmentLoader.php');
+include_once("../common/staff.php");
 $page = $_GET['page'] == null ? 0 : $_GET['page'];
 $action = new AssignmentLoader();
 ?>

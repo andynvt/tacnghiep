@@ -1,9 +1,13 @@
 <?php
 include_once("../database/model/ChangeClass.php");
+include_once("../common/staff.php");
 $user = $_SESSION["user"];
 $emp_id = $user["emp_id"];
 $changeClass = new ChangeClass();
 $class = $changeClass->getAll($emp_id);
+?>
+<?php
+$account = $_SESSION['user'];
 ?>
 <div class="content">
     <div class="container-fluid">
