@@ -2,9 +2,7 @@
 <html lang="en">
 <?php include_once("../common/header.php"); ?>
 <?php include_once("../common/script.php"); ?>
-<?php
-$account = $_SESSION['user'];
-?>
+
 <body>
 <div class="wrapper">
     <!--    Sidebar-->
@@ -32,48 +30,6 @@ $account = $_SESSION['user'];
         ?>
         <!-- End Content -->
         <?php include_once("../common/footer.php"); ?>
-    </div>
-</div>
-
-<div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post">
-                    <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Ten tai khoan</label>
-                        <input type="text" class="form-control" name="username" value="<?= $account['username'] ?>"
-                               readonly="readonly" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Mật khẩu cũ</label>
-                        <input type="password" class="form-control" name="oldPass" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Mật khẩu mới</label>
-                        <input type="password" class="form-control" name="newPass" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Nhập lại mật khẩu</label>
-                        <input type="password" class="form-control" name="passwordconfirm" required>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                        <span></span>
-                        <button type="submit" name="chane" class="btn btn-primary">Lưu Lại</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
     </div>
 </div>
 
