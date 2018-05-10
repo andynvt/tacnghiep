@@ -29,6 +29,18 @@ $getDep = $dep->getAll();
                         echo "<script>alertAdd(false,'Thêm nhân viên thất bại!');</script>";
                     }
                 }
+                if (isset($_POST["delete-dep"])) {
+                    $dep_id = $_POST["id"];
+                    $dep_name = $_POST["name"];
+
+                    $check = $dep->delete($id);
+                    if ($check) {
+                        echo "<script>alertAdd(true,'Đã thêm <b>" . $name . "</b> thành công!');</script>";
+                        echo("<meta http-equiv='refresh' content='3.5'>");
+                    } else {
+                        echo "<script>alertAdd(false,'Thêm nhân viên thất bại!');</script>";
+                    }
+                }
 
 
                 ?>
@@ -130,6 +142,7 @@ $getDep = $dep->getAll();
 <?php
 foreach ($getDep as $gd) {
     $getEmpNoDep = $emp->getEmpNoDep($gd["dep_id"]);
+    $getEmp = $emp->getEmpByDepId($gd["dep_id"]);
     ?>
     <div class="modal fade" id="add-dep-<?= $gd["dep_id"] ?>" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel"
@@ -242,7 +255,7 @@ foreach ($getDep as $gd) {
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label ">
                                     <input class="form-check-input" type="checkbox" name="checkall"
-                                           id="checkAll<?= $gd["dep_id"] ?>" value="option1">
+                                           id="checkAll<?= $gd["dep_id"] ?>1" value="option1">
                                     <span class="form-check-sign">
                                                     <span class="check"></span>
                                     </span>
@@ -271,7 +284,7 @@ foreach ($getDep as $gd) {
                                     <div class="form-check ">
                                         <label class="form-check-label check-add">
                                             <input class="form-check-input" type="checkbox" name="ID[]" id="checkItem"
-                                                   value="<?= $gd["dep_id"] ?>">
+                                                   value="<?= $gd["dep_id"] ?>1">
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                                 </span>
@@ -297,39 +310,51 @@ foreach ($getDep as $gd) {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Xác nhận xoá <b></b></h3>
+                    <h3 class="modal-title">Xác nhận xoá tổ <b><?= $gd["dep_name"] ?></b><b></b></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xóa thành viên này ? <b></b> ?</p>
+                    <p>Thao tác này sẽ làm mất dữ liệu !<br>Bạn chắc chắn muốn xoá tổ <b><?= $gd["dep_name"] ?></b> ?</p>
                 </div>
                 <div class="modal-footer">
                     <form method="post">
-                        <input type="hidden" name="id" value="<?= $st["student_id"] ?>">
+                        <input type="hidden" name="id" value="<?= $gd["dep_id"] ?>">
+                        <input type="hidden" name="name" value="<?= $gd["dep_name"] ?>">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
                         <span></span>
-                        <button type="submit" class="btn btn-primary" name="delete-student">CHẤP NHẬN</button>
+                        <button type="submit" class="btn btn-primary" name="delete-dep">CHẤP NHẬN</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        <?php
+        foreach ($getDep as $st) {
+        ?>
+        $("#checkAll<?= $st["dep_id"] ?>").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+        <?php
+        }
+        ?>
+
+        <?php
+        foreach ($getDep as $st) {
+        ?>
+        $("#checkAll<?= $st["dep_id"] ?>1").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+        <?php
+        }
+        ?>
+    </script>
     <?php
 }
 ?>
-<script>
-    <?php
-    foreach ($getDep as $st) {
-    ?>
-    $("#checkAll<?= $st["dep_id"] ?>").click(function () {
-        $('input:checkbox').not(this).prop('checked', this.checked);
-    });
-    <?php
-    }
-    ?>
-</script>
+
 <!--    End Modal-->
 </div>
 

@@ -74,12 +74,14 @@ class Department extends Pagination
         }
         return $data;
     }
-    public function delete($username)
-    {
-        $query = "DELETE FROM $this->table WHERE username = $username";
+    public function delete($id){
+        $query = "DELETE FROM $this->table WHERE dep_id = $id";
+        $query2 = "DELETE FROM department_employee WHERE dep_id = $id";
         $stmt = $this->conn->query($query);
-        if ($stmt == false) echo "<script>alert('Delete failed')</script>";
-        return $stmt == true;
+        $stmt2 = $this->conn->query($query2);
+
+        if ($stmt == false || $stmt2 == false) return false;
+        else return true;
     }
 
     public function insert($name){
