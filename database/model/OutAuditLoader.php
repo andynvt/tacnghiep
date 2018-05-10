@@ -13,7 +13,7 @@ class OutAuditLoader
 
     public function __construct()
     {
-        $this->inAudit = new OutAudit();
+        $this->outAudit = new OutAudit();
         $this->emp = new Employee();
         $this->emp_name_arr = $this->emp->getAll();
     }
@@ -21,11 +21,9 @@ class OutAuditLoader
     public function display($page)
     {
         $i = 0;
-        $this->inAudit_array = $this->inAudit->pagination(10, $page);
-        $this->pagination = $this->inAudit_array->showPagination();
+        $this->outAudit_array = $this->outAudit->loadAll();
         $html = '';
-        foreach ($this->inAudit_array->getResult() as $value) {
-            $class_round = $i % 2 == 1 ? "btn-round" : "";
+        foreach ($this->outAudit_array as $value) {
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td>' . $value["oa_desc"] . '</td>';
@@ -34,17 +32,17 @@ class OutAuditLoader
             $html .= '<td class="text-primary">' . $this->emp->loadNameByID($value["emp_id"]) . '</td>';
             $html .= '<td class="td-actions text-center">';
             $html .= '<button type="button" rel="tooltip" class="btn btn-info"
-                        data-toggle="modal" data-target="#detailOutAuditModal">
+                        data-toggle="modal" data-target="#detailInAuditModal">
                     <i class="material-icons">remove_red_eye</i>
                 </button> ';
             $html .= ' <button type="button" value=" ' . $value["oa_id"] . '" rel="tooltip"
                         class="btn btn-success" data-toggle="modal"
-                        data-target="#editOutAuditModal">
+                        data-target="#editInAuditModal">
                     <i class="material-icons">edit</i>
                 </button> ';
             $html .= '<button type="button" value=" ' . $value["oa_id"] . '" rel="tooltip"
                         class="btn btn-danger" data-toggle="modal"
-                        data-target="#deleteOutAuditModal">
+                        data-target="#deleteInAuditModal">
                     <i class="material-icons">close</i>
                 </button>';
             $html .= '</td>';
@@ -56,11 +54,9 @@ class OutAuditLoader
     public function viewOnly($page)
     {
         $i = 0;
-        $this->inAudit_array = $this->inAudit->pagination(10, $page);
-        $this->pagination = $this->inAudit_array->showPagination();
+        $this->outAudit_array = $this->outAudit->loadAll();
         $html = '';
-        foreach ($this->inAudit_array->getResult() as $value) {
-            $class_round = $i % 2 == 1 ? "btn-round" : "";
+        foreach ($this->outAudit_array as $value) {
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td>' . $value["oa_desc"] . '</td>';
@@ -69,7 +65,7 @@ class OutAuditLoader
             $html .= '<td class="text-primary">' . $this->emp->loadNameByID($value["emp_id"]) . '</td>';
             $html .= '<td class="td-actions text-center">';
             $html .= '<button type="button" rel="tooltip" class="btn btn-info"
-                        data-toggle="modal" data-target="#detailOutAuditModal">
+                        data-toggle="modal" data-target="#detailInAuditModal">
                     <i class="material-icons">remove_red_eye</i>
                 </button> ';
             $html .= '</td>';

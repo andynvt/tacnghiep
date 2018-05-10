@@ -47,7 +47,7 @@ $action = new InAuditLoader();
                                 <tbody id="table-body"><?php echo $action->display($page); ?></tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?php echo $action->getPagination(); ?></div>
+<!--                        <div id="pagination">--><?php //echo $action->getPagination(); ?><!--</div>-->
                     </div>
                 </div>
             </div>

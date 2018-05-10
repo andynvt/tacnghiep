@@ -2,7 +2,8 @@
 include_once("../database/model/InAuditLoader.php");
 include_once("../database/model/OutAuditLoader.php");
 
-$page = $_GET['page'] == null ? 0 : $_GET['page'];
+$pageInAudit = $_GET['page'] == null ? 0 : $_GET['page'];
+$pageOutAudit = $_GET['page'] == null ? 0 : $_GET['page'];
 $inAuditLoader = new InAuditLoader();
 $outAuditLoader = new OutAuditLoader();
 ?>
@@ -93,8 +94,8 @@ $outAuditLoader = new OutAuditLoader();
     <button type="button" class="btn btn-secondary btn-lg" role="button" aria-disabled="true" id="btnOutAudit">PHÍ CHI
     </button>
 
-    <div class="container-fluid" id="formInAudit">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row" id="formInAudit">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
@@ -127,10 +128,9 @@ $outAuditLoader = new OutAuditLoader();
                                     Thao tác
                                 </th>
                                 </thead>
-                                <tbody id="table-body"><?php echo $inAuditLoader->viewOnly($page); ?></tbody>
+                                <tbody id="table-body"><?php echo $inAuditLoader->viewOnly($pageInAudit); ?></tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?php echo $inAuditLoader->getPagination(); ?></div>
                     </div>
                 </div>
             </div>
@@ -168,31 +168,14 @@ $outAuditLoader = new OutAuditLoader();
                                     Thao tác
                                 </th>
                                 </thead>
-                                <tbody id="table-body"><?php echo $outAuditLoader->viewOnly($page); ?></tbody>
+                                <tbody id="table-body"><?php echo $outAuditLoader->viewOnly($pageInAudit); ?></tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?php echo $outAuditLoader->getPagination(); ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/jquery.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/bootstrap-material-design.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
-    <script src="../assets/js/plugins/chartist.min.js"></script>
-    <!-- Library for adding dinamically elements -->
-    <script src="../assets/js/plugins/arrive.min.js" type="text/javascript"></script>
-    <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
-    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-    <!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
-    <script src="../assets/js/material-dashboard.js?v=2.0.0"></script>
-    <!-- demo init -->
-    <script src="../assets/js/plugins/demo.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -201,11 +184,6 @@ $outAuditLoader = new OutAuditLoader();
         });
 
         $(window).on('load', function () {
-            if ($("#formInAudit").is(':visible')) {
-                $("#btnInAudit").trigger('click');
-            } else {
-                $("#btnOutAudit").trigger('click');
-            }
             $(".btn-info").click(function () {
                 var modal = $(this).data("target");
                 var tdata = $(this).closest("tr").find("td");
