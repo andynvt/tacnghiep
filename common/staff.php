@@ -39,6 +39,9 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
+<?php
+$account = $_SESSION['user'];
+?>
 
 <div class="modal fade" id="detailstaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
