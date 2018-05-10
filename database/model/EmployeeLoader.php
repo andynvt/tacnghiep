@@ -14,11 +14,11 @@ class EmployeeLoader
         $html .= '<form style="width: 45%; float: left" method="post">';
         $html .= '<div class="form-group">';
         $html .= '<label class="col-form-label">Họ Tên</label>';
-        $html .= '<input class="form-control" type="text" value="'.$user['emp_name'].'" readonly>';
+        $html .= '<input class="form-control" type="text" value="'.$user['emp_name'].'" readonly/>';
         $html .= '</div>';
         $html .= '<div class="form-group">';
         $html .= '<label class="col-form-label">Năm Sinh</label>';
-        $html .= '<input class="form-control" type="text" value="'.$user['dob'].'" readonly>';
+        $html .= '<input class="form-control" type="text" value="'.$user['dob'].'" readonly/>';
 
         $html .= '</div>';
         $html .= '<div class="form-group">';
@@ -28,12 +28,12 @@ class EmployeeLoader
         $html .= '</div>';
         $html .= '<div class="form-group">';
         $html .= '<label class="col-form-label">CMND</label>';
-        $html .= '<input class="form-control" type="text" name="idcard" value="'.$user['id_card'].'" readonly>';
+        $html .= '<input class="form-control" type="text" name="idcard" value="'.$user['id_card'].'" readonly/>';
 
         $html .= '</div>';
         $html .= '<div class="form-group">';
         $html .= '<label class="col-form-label">Ngày Vào</label>';
-        $html .= '<input class="form-control" type="text" name="doi" value="'.$user['doi'].'"/>';
+        $html .= '<input class="form-control" type="text" name="doi" value="'.$user['doi'].'" readonly/>';
         $html .= '</div>';
 
         $html .= '</form>';
@@ -42,17 +42,17 @@ class EmployeeLoader
 
         $html .= '<div class="form-group">';
         $html .= '<label class="col-form-label">Quê Quán</label>';
-        $html .= '<input class="form-control" type="text" name="hometown" value="'.$user['hometown'].'" readonly>';
+        $html .= '<input class="form-control" type="text" name="hometown" value="'.$user['hometown'].'" readonly/>';
 
         $html .= '</div>';
         $html .= '<div class="form-group">';
         $html .= '<label class="col-form-label">Địa Chỉ</label>';
-        $html .= '<input class="form-control" type="text" name="address" value="'.$user['address'].'" readonly>';
+        $html .= '<input class="form-control" type="text" name="address" value="'.$user['address'].'" readonly/>';
 
         $html .= '</div>';
         $html .= '<div class="form-group">';
         $html .= ' <label class="col-form-label">Địa Chỉ Hiện Tại</label>';
-        $html .= '<input class="form-control" type="text" name="currAddress" value="'.$user['current_address'].'" readonly>';
+        $html .= '<input class="form-control" type="text" name="currAddress" value="'.$user['current_address'].'" readonly/>';
 
         $html .= '</div>';
         $html .= '<div class="form-group">';
