@@ -18,7 +18,7 @@ include_once("../database/model/Teacher.php");
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #ab47bc, #8e24aa)">
-                            <h4 class="card-title ">Danh sách học sinh lớp <?= $class; ?></h4>
+                            <h4 class="card-title ">Danh sách học sinh lớp <?=$class; ?></h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
