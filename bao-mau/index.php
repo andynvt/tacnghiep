@@ -17,13 +17,10 @@
         switch ($menu) {
             case 0:
             default:
-                include_once("../ban-giam-hieu/account.php");
+                include_once("../ban-giam-hieu/personal.php");
                 break;
             case 1:
-                include_once("../bao-mau/teacher.php");
-                break;
-            case 2:
-                include_once("../bao-mau/audit.php");
+                include_once("../bao-mau/student.php");
                 break;
         }
         ?>
