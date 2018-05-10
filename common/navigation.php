@@ -3,8 +3,7 @@
         <div class="navbar-wrapper">
             <a class="navbar-brand" href="#pablo" id="title-item">NHÂN VIÊN</a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-                aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -14,8 +13,7 @@
             <form class="navbar-form">
                 <div class="input-group no-border">
 
-                    <input id="tbl_filter" type="text" value="" class="form-control dataTables_filter"
-                           placeholder="Tìm kiếm...">
+                    <input id="tbl_filter" type="text" value="" class="form-control dataTables_filter" placeholder="Tìm kiếm...">
                     <button type="button" class="btn btn-white btn-round btn-just-icon" id="filter">
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>
@@ -32,8 +30,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">notifications</i>
                         <span class="notification">5</span>
                         <p>
@@ -49,12 +46,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://example.com" id="dropdown-user" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="http://example.com" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">person</i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePass" >Thông tin tài khoản</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePass">Thay đổi mật khẩu</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logout">Đăng
                             xuất</a>
 
@@ -98,11 +94,12 @@
         float: right;
     }
 
-    #filter_tbl_length > label {
+    #filter_tbl_length>label {
         color: #ffffff !important;
         font-size: 1rem;
 
     }
+
 </style>
 <script>
     var perm = "<?=$_SESSION['perm']?>";
@@ -120,7 +117,7 @@
     menu = menu == undefined ? 0 : menu;
     $("#title-item").text(title[menu]);
 
-    $(window).on("load", function () {
+    $(window).on("load", function() {
         filterTable();
     });
 

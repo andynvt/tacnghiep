@@ -16,7 +16,7 @@ if (!empty($ia_desc) && !empty($money) && !empty($date) && !empty($payer) && !em
     $tbody = $inAuditLoader->display($_GET["page"]);
     $pagination = $inAuditLoader->getPagination();
 
-    $result = array("success" => $rs, "content" => $tbody, "pagination" => $pagination);
+    $result = array("success" => $rs, "content" => $tbody);
     echo json_encode($result);
 
 }

@@ -47,7 +47,7 @@ $action = new InAuditLoader();
                                 <tbody id="table-body"><?php echo $action->display($page); ?></tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?php echo $action->getPagination(); ?></div>
+<!--                        <div id="pagination">--><?php //echo $action->getPagination(); ?><!--</div>-->
                     </div>
                 </div>
             </div>
@@ -258,21 +258,21 @@ $action = new InAuditLoader();
         var messInsert_fl = "Thêm thất bại";
 
         $("#add-in-audit").on("click", function () {
-            submitInsert(urlInsert, $("#frmAdd"), $("#table-body"), $("#pagination"), messInsert_sc, messInsert_fl);
+            submitInsert(urlInsert, $("#frmAdd"), $("#table-body"), messInsert_sc, messInsert_fl);
         });
 
         var urlEdit = "../database/action/update-in-audit.php?menu=<?=$_GET['menu']?>&page=<?=$page?>";
         var messEdit_sc = "Cập nhật thành công";
         var messEdit_fl = "Cập nhật thất bại";
         $("#edit-in-audit").on("click", function () {
-            submitEdit(urlEdit, $("#frmEdit"), $("#table-body"), $("#pagination"), messEdit_sc, messEdit_fl);
+            submitEdit(urlEdit, $("#frmEdit"), $("#table-body"), messEdit_sc, messEdit_fl);
         });
 
         var urlDelete = "../database/action/delete-in-audit.php?menu=<?=$_GET['menu']?>&page=<?=$page?>";
         var messDel_sc = "Xóa thành công";
         var messDel_fl = "Xóa thất bại";
         $("#delete-in-audit").on("click", function () {
-            submitDelete(urlDelete, $("#frmDelete"), $("#table-body"), $("#pagination"), messDel_sc, messDel_fl);
+            submitDelete(urlDelete, $("#frmDelete"), $("#table-body"), messDel_sc, messDel_fl);
         });
     }
 
