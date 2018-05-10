@@ -17,7 +17,7 @@ function submitInsert(url, form, tbody, success_msg, failure_msg) {
 }
 
 function submitEdit(url, form, tbody, success_msg, failure_msg) {
-    // console.log(form.serialize());
+    console.log(form.serialize());
     $.ajax({
         type: "POST",
         url: url,
@@ -36,6 +36,7 @@ function submitEdit(url, form, tbody, success_msg, failure_msg) {
 }
 
 function submitDelete(url, form, tbody, success_msg, failure_msg) {
+    console.log(form.serialize());
     $.ajax({
         type: "POST",
         url: url,

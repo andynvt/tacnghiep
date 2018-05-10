@@ -90,18 +90,24 @@ $classes = new Class_per();
     <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="title"></h3>
+                <h3 class="modal-title" id="title">Cập nhật thành tích</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form id="frmChuyenLop">
+                    <div class="form-control">
+                        <label>Chọn thời điểm</label>
+                        <select class="select">
+                            <?= $empLoader->makeNamhoc($class["year"]) ?>
+                        </select>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover" id="filter_tbl">
                             <thead class=" text-primary">
                             <th>
-                                Mã học sinh
+                                STT
                             </th>
                             <th>
                                 Tên học sinh
@@ -112,47 +118,28 @@ $classes = new Class_per();
                             <th>
                                 Giới tính
                             </th>
-                            <th>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th hidden>
-                                Địa chỉ thường trú
-                            </th>
-                            <th class="text-center">
-                                Tác vụ
+
+                            <th class="td-actions text-center check-add" style="padding: 0px 8px 21px 0px">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label ">
+                                        <input class="form-check-input" type="checkbox" name="checkall"
+                                               id="checkAll<?= $st["class_id"] ?>" value="option1">
+                                        <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                    </label>
+                                </div>
                             </th>
                             </thead>
                             <tbody id="table-body">
-                            <?php echo $empLoader->displayAll($getStudent, $class) ?>
+                            <?php echo $empLoader->displayThanhTich($getStudent, $class) ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">ĐÓNG</button>
                         <span></span>
-                        <button type="button" class="btn btn-warning " data-dismiss="modal">Chuyển lớp
-                        </button>
+                        <button type="button" class="btn btn-warning " data-dismiss="modal">Chuyển lớp</button>
                     </div>
                 </form>
             </div>
