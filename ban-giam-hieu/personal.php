@@ -122,7 +122,7 @@ if(isset($_POST["update-emp"])) {
                     if($one['emp_id']==$user['emp_id']){
                         ?>
                             <div class="modal-body">
-                                <input value="<?= $one['emp_id'] ?>" id="id" hidden name="empId">
+                                <input value="<?= $one['emp_id'] ?>" hidden name="empId">
                                 <div class="form-group">
                                     <label class="col-form-label">Họ Tên</label>
                                     <input class="form-control" name="empname" type="text" value="<?= $one['emp_name'] ?>">
