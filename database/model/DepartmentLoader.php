@@ -35,7 +35,7 @@ class DepartmentLoader
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td >' . $value["dep_name"] . '</td>';
-
+            $html .= '<td > 1</td>';
             $html .= '<td class="td-actions text-center">';
             $html .= '<button value="' . $value["dep_id"] . '"' .
                 ' type="button" rel="tooltip" class="btn btn-info"  data-toggle="modal" data-target="#ViewListModal">'.

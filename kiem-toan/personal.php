@@ -235,39 +235,3 @@ if(isset($_POST["update-emp"])) {
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Mật khẩu cũ</label>
-                        <input type="password" class="form-control" id="exampleInput1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Mật khẩu mới</label>
-                        <input type="password" class="form-control" id="exampleInput1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">Nhập lại mật khẩu</label>
-                        <input type="password" class="form-control" id="exampleInput1" required>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
-                        <span></span>
-                        <button type="button" class="btn btn-primary">Lưu Lại</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>

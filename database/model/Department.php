@@ -5,11 +5,7 @@ include_once("Pagination.php");
 class Department extends Pagination
 {
     private $table = "department";
-    private $username = "user";
-    private $pwd = "user";
-    private $emp_id;
-    private $per_name;
-
+    private $dep_id = "dep_id";
     public function getAll(){
         $data = array();
         $query = "SELECT * FROM $this->table";
@@ -19,6 +15,7 @@ class Department extends Pagination
         }
         return $data;
     }
+
     public function pagination($limit = 10, $current_page = 1)
     {
         $sql = "SELECT * FROM $this->table";
@@ -47,7 +44,7 @@ class Department extends Pagination
         $sql = "SELECT employee.emp_id, employee.emp_name, employee.gender, employee.phone FROM department " .
             " INNER JOIN department_employee ON department_employee.dep_id = department.dep_id " .
             "INNER JOIN employee ON employee.emp_id = department_employee.emp_id " .
-            "WHERE department.dep_id =  " . $id;
+            "WHERE department.dep_id =$id";
         $q = $this->conn->query($sql) or die("failed!");
         while ($r = $q->fetch_assoc()) {
             array_push($data, $r);
@@ -69,25 +66,25 @@ class Department extends Pagination
             } else {
                 array_push($data, $r['emp_id'], $r['emp_name'], $r['username'], $r['per_name']);
             }
-
         }
         return $data;
     }
-    public function delete($username)
-    {
-        $query = "DELETE FROM $this->table WHERE username = $username";
+    public function delete($id){
+        $query = "DELETE FROM $this->table WHERE dep_id = $id";
+        $query2 = "DELETE FROM department_employee WHERE dep_id = $id";
         $stmt = $this->conn->query($query);
-        if ($stmt == false) echo "<script>alert('Delete failed')</script>";
-        return $stmt == true;
+        $stmt2 = $this->conn->query($query2);
+
+        if ($stmt == false || $stmt2 == false) return false;
+        else return true;
     }
 
-    public function insert($username, $password, $emp_id, $per_id)
-    {
-        $query = "INSERT INTO `account` (`username`, `password`, `emp_id`, `per_id`) VALUES ('$username', '$password', '$emp_id', '$per_id')";
+    public function insert($name){
+        $dep_id = $this->makeDepId();
+        $query = "INSERT INTO $this->table VALUES ($dep_id, '$name')";
         $stmt = $this->conn->query($query);
-        echo "<script>alert('" . $query . " " . $stmt . "')</script>";
-        if ($stmt === false) echo "<script>alert('Insert failed')</script>";
-        return $stmt === true;
+        if ($stmt == false) return false;
+        else return true;
     }
 
     public function update($username_old, $username_new, $password, $per_id)
@@ -125,6 +122,10 @@ class Department extends Pagination
         $q = $this->conn->query($sql) or die("failed!");
         $data[] = $q->fetch_assoc();
         return $data;
+    }
+
+    public function makeDepId(){
+        return parent::getMaxId($this->dep_id, $this->table) + 1;
     }
 
 

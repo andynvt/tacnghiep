@@ -30,6 +30,15 @@ class DepartmentEmployee extends Database
         if ($stmt == false) return false;
         else return true;
     }
+
+    public function countEmpByDepId($dep_id){
+        $query = "SELECT COUNT(emp_id) FROM $this->table WHERE dep_id = $dep_id";
+        $stmt = $this->conn->query($query) or die("failed!!!!!");
+        while ($r = $stmt->fetch_assoc()) {
+            $data = $r["COUNT(emp_id)"];
+        }
+        return $data;
+    }
     public function makeDeEmpId(){
         return parent::getMaxId($this->dep_emp_id, $this->table) + 1;
     }

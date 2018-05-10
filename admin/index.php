@@ -98,7 +98,10 @@
         }
         else{
             $sql=mysqli_query($con,"UPDATE account SET password='$newPass' where username='$username'");
-            echo "<script>alertAdd(true,'Sửa thành công!');</script>";
+            echo "<script>alertAdd(true,'Đổi mật khẩu thành công ! Vui lòng đăng nhập lại ahihi !');</script>";
+            session_destroy();
+            echo("<meta http-equiv='refresh' content='0.5'>");
+            header('Location: http://localhost/tacnghiep/login');
 
         }
     }

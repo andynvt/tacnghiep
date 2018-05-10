@@ -101,11 +101,11 @@ $perid_next = $perid_curr["max(per_id)"] + 1;
                         
                         <div class="form-group">
                             <label for="per_name" class="bmd-label-floating">Quyền Hạn</label>
-                            <input type ="text" class="form-control" id="per_name" name="per_name" value="">
+                            <input type ="text" class="form-control" id="per_name" name="per_name" value="" required>
                         </div>
                         <div class="form-group">
                             <label for="description" class="bmd-label-floating">Mô Tả</label>
-                            <input type ="text" class="form-control" id="description" name="description" value="">
+                            <input type ="text" class="form-control" id="description" name="description" value="" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
@@ -180,7 +180,7 @@ $perid_next = $perid_curr["max(per_id)"] + 1;
                         <div class="form-group">
                             <label class="bmd-label-floating">Quyền Hạn</label>
                             <input class="form-control" type="text" value="<?= $per_info["per_name"] ?>"
-                                   readonly="readonly">
+                                   readonly="readonly" >
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Mô tả</label>
@@ -214,11 +214,11 @@ $perid_next = $perid_curr["max(per_id)"] + 1;
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Quyền Hạn</label>
-                            <input class="form-control" type="text" name="update_per_name"value="<?= $per_info["per_name"] ?>">
+                            <input class="form-control" type="text" name="update_per_name"value="<?= $per_info["per_name"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label class="bmd-label-floating">Mô Tả</label>
-                            <input class="form-control" type="text" name="update_desc" value="<?= $per_info["description"] ?>">
+                            <input class="form-control" type="text" name="update_desc" value="<?= $per_info["description"] ?>" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ĐÓNG</button>
