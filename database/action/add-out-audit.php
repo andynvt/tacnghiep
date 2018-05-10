@@ -15,7 +15,7 @@ if (!empty($oa_desc) && !empty($money) && !empty($date) && !empty($emp_id)) {
     $tbody = $outAuditLoader->display($_GET["page"]);
     $pagination = $outAuditLoader->getPagination();
 
-    $result = array("success" => $rs, "content" => $tbody, "pagination" => $pagination);
+    $result = array("success" => $rs, "content" => $tbody);
     echo json_encode($result);
 }
 

@@ -12,6 +12,6 @@ if (!empty($ia_id)) {
     $tbody = $inAuditLoader->display($_GET["page"]);
     $pagination = $inAuditLoader->getPagination();
 
-    $result = array("success" => $rs, "content" => $tbody, "pagination" => $pagination);
+    $result = array("success" => $rs, "content" => $tbody);
     echo json_encode($result);
 }

@@ -32,17 +32,17 @@ class OutAuditLoader
             $html .= '<td class="text-primary">' . $this->emp->loadNameByID($value["emp_id"]) . '</td>';
             $html .= '<td class="td-actions text-center">';
             $html .= '<button type="button" rel="tooltip" class="btn btn-info"
-                        data-toggle="modal" data-target="#detailInAuditModal">
+                        data-toggle="modal" data-target="#detailOutAuditModal">
                     <i class="material-icons">remove_red_eye</i>
                 </button> ';
             $html .= ' <button type="button" value=" ' . $value["oa_id"] . '" rel="tooltip"
                         class="btn btn-success" data-toggle="modal"
-                        data-target="#editInAuditModal">
+                        data-target="#editOutAuditModal">
                     <i class="material-icons">edit</i>
                 </button> ';
             $html .= '<button type="button" value=" ' . $value["oa_id"] . '" rel="tooltip"
                         class="btn btn-danger" data-toggle="modal"
-                        data-target="#deleteInAuditModal">
+                        data-target="#deleteOutAuditModal">
                     <i class="material-icons">close</i>
                 </button>';
             $html .= '</td>';
