@@ -1,7 +1,7 @@
 <?php
 include_once("../database/model/Student.php");
 include_once("../database/model/Teacher.php");
-    $class_name = $_SESSION['class'];
+    $class_name = $_SESSION['user'];
     $idgv = $class_name['emp_id'];
 
     $student = new Student();

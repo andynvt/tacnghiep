@@ -65,6 +65,8 @@
 <script>
     var perm = "<?=$_SESSION['perm']?>";
     var menu = "<?=$_GET['menu']?>";
+    var page = "<?=$_GET['page'] == null ? 0 : $_GET['page']?>";
+
     var title_admin = ["THÔNG TIN CÁ NHÂN", "PHÂN QUYỀN", "TÀI KHOẢN"];
     var title_bangiamhieu = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ NHÂN VIÊN", "QUẢN LÝ HỌC SINH", "QUẢN LÝ TỔ", "QUẢN LÝ LỚP HỌC", "PHÂN CÔNG GIẢNG DẠY", "QUẢN LÝ TÀI CHÍNH"];
     var title_baomau = ["THÔNG TIN CÁ NHÂN", "QUẢN LÝ HỌC SINH"];
@@ -81,7 +83,7 @@
         $.ajax({
             url: ("../common/filter.php"),
             type: "POST",
-            data: {request:val, menu:menu, perm:perm},
+            data: {request:val, menu:menu, perm:perm, page:page},
             // beforeSend: function(){
             //     $("#filter_tbl").html("Đang tìm kiếm...");
             // }
