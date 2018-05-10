@@ -1,9 +1,9 @@
 <?php
 include_once("../model/StudentLoader.php");
 include_once("../model/Student.php");
-//$st = $_POST["student-id"];
+$st = $_POST["student-id"];
 $student = new Student();
-$stden = $student->getOne(1);
+$stden = $student->getOne($st);
 $dob = $stden["dob"];
 $std = new StudentLoader();
 $next = $std->getNextClass($dob);

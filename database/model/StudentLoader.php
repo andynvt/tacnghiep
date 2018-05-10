@@ -1,6 +1,7 @@
 <?php
 
 include_once("Class_per.php");
+include_once("Student.php");
 
 /**
  * Created by PhpStorm.
@@ -40,16 +41,23 @@ class StudentLoader
     {
         $html = "";
         $i = 0;
+        $student = new Student();
         foreach ($data as $st) {
+            $stud_id = $st["student_id"];
+            $score = $student->getScore($stud_id, $class["class_id"]);
+            $checked = $score ? "checked" : "";
             $html .= '<tr class="class-style"  style="cursor: pointer">';
-            $html .= '<td>' . ++$i . '</td>';
+            $html .= '<td>' . $st["student_id"] . '</td>';
             $html .= '<td>' . $st["student_name"] . '</td>';
             $html .= '<td>' . $st["dob"] . '</td>';
             $html .= '<td>' . $st["gender"] . '</td>';
+            $html .= '<td hidden>' . $class["class_id"] . '</td>';
+            $html .= '<td hidden>' . $class["year"] . '</td>';
             $html .= '<td class="td-actions text-center">';
             $html .= '<div class="form-check form-check-inline">';
-            $html .= '<label class="form-check-label ">';
-            $html .= '<input class="form-check-input" type="checkbox">';
+            $html .= '<label class="form-check-label">';
+            $html .= "<input type='hidden' name='id[]' " . $checked . "/>";
+            $html .= "<input class='form-check-input check-box' type='checkbox' name='id[]' value='" . $stud_id . "'" . $checked . "/>";
             $html .= '<span class="form-check-sign">';
             $html .= '<span class="check"></span>';
             $html .= '</span>';
@@ -63,23 +71,36 @@ class StudentLoader
 
     public function makeNamhoc($year)
     {
+        $current = date("Y-m");
+        $bitCurrent = explode('-', $current);
         $bits = explode('-', $year);
         $begin = $bits[0];
         $end = $bits[1];
         $html = "";
+        $html .= '<select class="form-control" name="time-score">';
+        $selected = "";
         if (date("Y") >= $begin && date("Y") <= $end) {
             for ($i = 0; $i < 9; $i++) {
                 if ($i <= 3) {
-                    $m = ($i + 9) >=10 ? ($i + 9) : "0" . ($i + 9);
-                    $html .= "<option value='$i'>" . $m . "/" . $begin . "</option>";
+                    $m = ($i + 9) >= 10 ? ($i + 9) : "0" . ($i + 9);
+                    if ($begin == $bitCurrent[0] && ($i + 9) == $bitCurrent[1]) {
+                        $selected = "selected";
+                    }
+                    $html .= "<option class='select-option' value='$m" . '-' . $begin . "'" . $selected . " >" . $m . "-" . $begin . "</option>";
                 } else {
                     $m = ($i - 3) > 10 ? ($i - 3) : "0" . ($i - 3);
-                    $html .= "<option value='$i'>" . $m . "/" . $end . "</option>";
+                    if ($end == $bitCurrent[0] && ($i - 3) == $bitCurrent[1]) {
+                        $selected = "selected";
+                    }
+                    $html .= "<option class='select-option' value='$m" . '-' . $end . "'" . $selected . ">" . $m . "-" . $end . "</option>";
                 }
-
-
             }
+        } else if (date("Y") < $begin) {
+
+        } else if (date("Y") > $end) {
+
         }
+        $html .= '</select>';
         return $html;
 
     }

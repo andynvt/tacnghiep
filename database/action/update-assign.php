@@ -4,7 +4,7 @@ require_once("../model/AssignmentLoader.php");
 
 $class_id = $_POST["class-id"];
 $emp_id = $_POST["emp-id"];
-$assign_id = $_POST["student-id"];
+$assign_id = $_POST["assign-id"];
 
 if (!empty($assign_id) && !empty($class_id) && !empty($emp_id)) {
     $assign = new Assignment();

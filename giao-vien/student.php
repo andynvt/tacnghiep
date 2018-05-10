@@ -96,18 +96,17 @@ $classes = new Class_per();
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frmChuyenLop">
-                    <div class="form-control">
-                        <label>Chọn thời điểm</label>
-                        <select class="select">
-                            <?= $empLoader->makeNamhoc($class["year"]) ?>
-                        </select>
+                <form id="frmThanhTich" method="post">
+                    <div class="form-group">
+                        <label>Chọn thời gian cập nhật</label>
+                        <input type="hidden" value="<?= $class["class_id"] ?>" name="class-id"/>
+                        <?= $empLoader->makeNamhoc($class["year"]) ?>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover" id="filter_tbl">
                             <thead class=" text-primary">
                             <th>
-                                STT
+                                Mã học sinh
                             </th>
                             <th>
                                 Tên học sinh
@@ -123,10 +122,8 @@ $classes = new Class_per();
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label ">
                                         <input class="form-check-input" type="checkbox" name="checkall"
-                                               id="checkAll<?= $st["class_id"] ?>" value="option1">
-                                        <span class="form-check-sign">
-                                                    <span class="check"></span>
-                                                </span>
+                                               id="checkAll">
+                                        <span class="form-check-sign"> <span class="check"></span></span>
                                     </label>
                                 </div>
                             </th>
@@ -139,7 +136,8 @@ $classes = new Class_per();
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">ĐÓNG</button>
                         <span></span>
-                        <button type="button" class="btn btn-warning " data-dismiss="modal">Chuyển lớp</button>
+                        <button type="button" class="btn btn-success" id="btn-update" data-dismiss="modal">Cập nhật
+                        </button>
                     </div>
                 </form>
             </div>
@@ -306,6 +304,7 @@ $classes = new Class_per();
             })
 
         });
+
     }
 
     function setupModal() {
@@ -315,11 +314,54 @@ $classes = new Class_per();
         $(".btn-submit").on("click", function () {
             submitEdit(urlEdit, $("#frmChonLop"), $("#table-body"), messEdit_sc, messEdit_fl);
         });
+
+        var urlInsert = "../database/action/update-score.php?menu=<?=$_GET['menu']?>";
+        var messInsert_sc = "Thêm thành tích thành công";
+        var messInsert_fl = "Thêm thành tích thất bại";
+
+        $("#btn-update").on("click", function () {
+            submitInsert(urlInsert, $("#frmThanhTich"), $("#table-body"), messInsert_sc, messInsert_fl);
+        })
+    }
+
+    function checkCheckbox() {
+        var checkboxes = $('input');
+        var n = 0;
+        var length = 0;
+        var checkboxes = document.getElementsByTagName('input');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                length++;
+                if (checkboxes[i].checked) {
+                    n++;
+                }
+            }
+        }
+        return length - 1 == n;
     }
 
     $(window).on("load", function () {
         reloadjQuery();
         setupModal();
+        $("#checkAll").prop("checked", checkCheckbox());
+        $("#checkAll").on("change", function () {
+            var selected = $(this).prop("checked");
+            var checkboxes = document.getElementsByTagName('input');
+            if (selected) {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = true;
+                    }
+                }
+            } else {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    console.log(i)
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = false;
+                    }
+                }
+            }
+        })
     })
 
     $(document).ajaxComplete(function (event, request, settings) {

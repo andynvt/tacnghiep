@@ -1,10 +1,11 @@
 function submitInsert(url, form, tbody, success_msg, failure_msg) {
-    console.log(form.serialize());
+    // console.log(form.serialize());
     $.ajax({
         type: "POST",
         url: url,
         data: form.serialize(),
         success: function (data) {
+            console.log(data);
             data = JSON.parse(data);
             if (data["success"]) {
                 alertAdd(true, success_msg);

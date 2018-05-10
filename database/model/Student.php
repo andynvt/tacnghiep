@@ -82,6 +82,30 @@ class Student extends Pagination
         else return true;
     }
 
+    public function addScore($student_id, $date, $score, $class_id)
+    {
+        $sql = "INSERT INTO `score` VALUES (NULL, $student_id, '$date', $score, $class_id)";
+        $stmt = $this->conn->query($sql);
+        if ($stmt == false) return false;
+        else return true;
+    }
+
+    public function updateScore($student_id, $date, $score, $class_id)
+    {
+        $sql = "UPDATE `score` SET score =  $score WHERE student_id = $student_id AND class_id = $class_id";
+        $stmt = $this->conn->query($sql);
+        if ($stmt == false) return false;
+        else return true;
+    }
+
+    public function getScore($student_id, $class_id)
+    {
+        $query = "SELECT * FROM score WHERE student_id = $student_id AND class_id = $class_id";
+        $stmt = $this->conn->query($query) or die("failed!");
+        $data = $stmt->fetch_assoc();
+        return $data["score"];
+    }
+
     public function makeStudentId()
     {
         return parent::getMaxId($this->student_id, $this->table) + 1;
