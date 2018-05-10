@@ -19,7 +19,7 @@ $action = new OutAuditLoader();
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="filter_tbl">
                                 <thead class=" text-primary">
                                 <th>
                                     Số thứ tự
@@ -43,7 +43,7 @@ $action = new OutAuditLoader();
                                 <tbody id="table-body"><?php echo $action->display($page); ?></tbody>
                             </table>
                         </div>
-                        <div id="pagination"><?php echo $action->getPagination(); ?></div>
+<!--                        <div id="pagination">--><?php //echo $action->getPagination(); ?><!--</div>-->
                     </div>
                 </div>
             </div>

@@ -21,11 +21,9 @@ class InAuditLoader
     public function display($page)
     {
         $i = 0;
-        $this->inAudit_array = $this->inAudit->pagination(10, $page);
-        $this->pagination = $this->inAudit_array->showPagination();
+        $this->inAudit_array = $this->inAudit->loadAll();
         $html = '';
-        foreach ($this->inAudit_array->getResult() as $value) {
-            $class_round = $i % 2 == 1 ? "btn-round" : "";
+        foreach ($this->inAudit_array as $value) {
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td>' . $value["ia_desc"] . '</td>';
@@ -57,11 +55,9 @@ class InAuditLoader
     public function viewOnly($page)
     {
         $i = 0;
-        $this->inAudit_array = $this->inAudit->pagination(10, $page);
-        $this->pagination = $this->inAudit_array->showPagination();
+        $this->inAudit_array = $this->inAudit->loadAll();
         $html = '';
-        foreach ($this->inAudit_array->getResult() as $value) {
-            $class_round = $i % 2 == 1 ? "btn-round" : "";
+        foreach ($this->inAudit_array as $value) {
             $html .= '<tr>';
             $html .= '<td>' . ++$i . '</td>';
             $html .= '<td>' . $value["ia_desc"] . '</td>';
