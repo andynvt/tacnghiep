@@ -34,7 +34,9 @@ $account = $_SESSION['user'];
         <?php include_once("../common/footer.php"); ?>
     </div>
 </div>
+
 <?php include_once("../common/staff.php"); ?>
+
 <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -75,6 +77,7 @@ $account = $_SESSION['user'];
         </div>
     </div>
 </div>
+
 
 <div class="modal fade" id="question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
