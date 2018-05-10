@@ -55,12 +55,17 @@ if (isset($_POST['chane'])) {
     } else if ($newPass != $passwordconfirm) {
         echo "<script>alertAdd(false,'Sai mật khẩu xác nhận!');</script>";
     } else {
-        $sql = mysqli_query($con, "UPDATE account SET password='$newPass' where username='$username'");
-        echo "<script>alertAdd(true,'Đổi mật khẩu thành công ! Vui lòng đăng nhập lại ahihi !');</script>";
-        session_destroy();
-        echo("<meta http-equiv='refresh' content='0.5'>");
-        header('Location: http://localhost/tacnghiep/login');
+        $sql=mysqli_query($con,"UPDATE account SET password='$newPass' where username='$username'");
+        //        echo "<script>alertAdd(true,'Đổi mật khẩu thành công ! Vui lòng đăng nhập lại !');</script>";
+        echo '<script type="text/javascript"> $("#question").modal("show"); </script>';
+        if(isset($_POST['confirm']) ){
 
+            header('Location: http://localhost/tacnghiep/login');
+            session_destroy();
+        }
+        else{
+            return;
+        }
     }
 }
 ?>

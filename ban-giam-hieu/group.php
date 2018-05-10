@@ -108,8 +108,7 @@ $getDep = $dep->getAll();
                                 </tbody>
                             </table>
                         </div>
-                        <!--                        <div id="pagination">-->
-                        <? //= $getDep->showPagination() ?><!--</div>-->
+
                     </div>
                 </div>
             </div>

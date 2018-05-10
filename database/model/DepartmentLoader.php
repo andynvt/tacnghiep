@@ -68,7 +68,28 @@ class DepartmentLoader
         }
         return $html;
     }
+    public function displayListMemByID($emp_id)
+    {
+        $i = 0;
 
+        $dep_id = $this->department->getDepID($emp_id);
+        $array = $this->department->getListMember($dep_id);
+        $html = '';
+        foreach ($array as $value) {
+            $html .= '<tr>';
+            $html .= '<td>' . ++$i . '</td>';
+            $html .= '<td >' . $value["emp_id"] . '</td>';
+            $html .= '<td >' . $value["emp_name"] . '</td>';
+            $html .= '<td >' . $value["dob"] . '</td>';
+            $html .= '<td >' . $value["gender"] . '</td>';
+            $html .= '<td >' . $value["id_card"] . '</td>';
+            $html .= '<td >' . $value["current_address"] . '</td>';
+            $html .= '<td >' . $value["phone"] . '</td>';
+
+            $html .= '</tr>';
+        }
+        return $html;
+    }
     public function getPagination()
     {
         return $this->pagination;

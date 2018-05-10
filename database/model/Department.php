@@ -20,6 +20,16 @@ class Department extends Pagination
         return $data;
     }
 
+    public function getDepID($emp_id){
+
+
+        $sql = "SELECT dep_id FROM department_employee WHERE emp_id = $emp_id";
+        $q = $this->conn->query($sql) or die("failed!");
+        $data = $q->fetch_assoc();
+
+        return $data['dep_id'];
+    }
+
     public function pagination($limit = 10, $current_page = 1)
     {
         $sql = "SELECT * FROM $this->table";
@@ -45,7 +55,7 @@ class Department extends Pagination
     public function getListMember($id)
     {
         $data = array();
-        $sql = "SELECT employee.emp_id, employee.emp_name, employee.gender, employee.phone FROM department " .
+        $sql = "SELECT employee.* FROM department " .
             " INNER JOIN department_employee ON department_employee.dep_id = department.dep_id " .
             "INNER JOIN employee ON employee.emp_id = department_employee.emp_id " .
             "WHERE department.dep_id =$id";
@@ -92,8 +102,9 @@ class Department extends Pagination
         else return true;
     }
     public function add_tea($checkBox_del ,$idclass_del){
-        $query = "INSERT INTO department_employee(emp_id, dep_id) VALUES ('$checkBox_del','$idclass_del')";
+        $query = "INSERT INTO department_employee(emp_id, dep_id, job_id) VALUES ('$checkBox_del','$idclass_del',5)";
         $stmt = $this->conn->query($query);
+        echo $stmt;
         if ($stmt == false) return false;
         else return true;
      

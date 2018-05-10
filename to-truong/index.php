@@ -24,7 +24,7 @@ $account = $_SESSION['user'];
                             include_once("../ban-giam-hieu/personal.php");
                             break;
                         case 1:
-                            include_once("../ban-giam-hieu/group.php");
+                            include_once("../to-truong/members.php");
                             break;
                     }
                     ?>
