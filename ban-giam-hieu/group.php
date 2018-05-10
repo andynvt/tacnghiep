@@ -1,8 +1,10 @@
 <?php
 include_once("../database/model/Department.php");
 include_once("../database/model/Employee.php");
+include_once("../database/model/DepartmentEmployee.php");
 $page = $_GET['page'] == null ? 0 : $_GET['page'];
 $dep = new Department();
+$depEmp = new DepartmentEmployee();
 $emp = new Employee();
 //$getDep = $department->pagination(10,$_GET['page']);
 $getDep = $dep->getAll();
@@ -33,9 +35,9 @@ $getDep = $dep->getAll();
                     $dep_id = $_POST["id"];
                     $dep_name = $_POST["name"];
 
-                    $check = $dep->delete($id);
+                    $check = $dep->delete($dep_id);
                     if ($check) {
-                        echo "<script>alertAdd(true,'Đã thêm <b>" . $name . "</b> thành công!');</script>";
+                        echo "<script>alertAdd(true,'Đã thêm <b>" . $dep_name . "</b> thành công!');</script>";
                         echo("<meta http-equiv='refresh' content='3.5'>");
                     } else {
                         echo "<script>alertAdd(false,'Thêm nhân viên thất bại!');</script>";
@@ -59,7 +61,7 @@ $getDep = $dep->getAll();
                                     Tên Tổ
                                 </th>
                                 <th>
-                                    Số lượng
+                                    Số lượng thành viên
                                 </th>
                                 <th class="text-center">
                                     Thao tác
@@ -77,7 +79,10 @@ $getDep = $dep->getAll();
                                             <?= $gd["dep_name"] ?>
                                         </td>
                                         <td>
-                                            2
+                                            <?php
+                                                $no = $depEmp->countEmpByDepId($gd["dep_id"]);
+                                                echo $no;
+                                            ?>
                                         </td>
                                         <td class="text-center">
                                             <button type="button" rel="tooltip" title="Thêm nhân viên vào tổ"
@@ -141,7 +146,7 @@ $getDep = $dep->getAll();
 </div>
 <?php
 foreach ($getDep as $gd) {
-    $getEmpNoDep = $emp->getEmpNoDep($gd["dep_id"]);
+    $getEmpNoDep = $emp->getEmpNoDep();
     $getEmp = $emp->getEmpByDepId($gd["dep_id"]);
     ?>
     <div class="modal fade" id="add-dep-<?= $gd["dep_id"] ?>" tabindex="-1" role="dialog"

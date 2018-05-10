@@ -90,10 +90,10 @@ class Employee extends Pagination
         }
         return $data;
     }
-    public function getEmpNoDep($dep_id){
+    public function getEmpNoDep(){
         $data = array();
         $query = "SELECT * FROM employee WHERE employee.emp_id not in (SELECT department_employee.emp_id " .
-            "FROM department_employee WHERE department_employee.dep_id = $dep_id)";
+            "FROM department_employee)";
         $stmt = $this->conn->query($query) or die("failed!!!!!!");
         while ($r = $stmt->fetch_assoc()) {
             array_push($data, $r);
